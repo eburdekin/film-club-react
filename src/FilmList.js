@@ -21,14 +21,16 @@ export default function FilmList() {
   }, []);
 
   return (
-    <div className="m-10">
-      <b>Popular Films</b>
+    <div className="mt-8">
+      <h3 className="text-xl font-bold mb-6 dark:text-gray-300">
+        Popular Films
+      </h3>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {films.map((film) => (
           <div key={film.id} className="p-4 bg-gray-100 rounded-md">
-            <h2 className="text-lg font-semibold text-gray-800">
+            <h4 className="text-sm font-semibold text-gray-800">
               {film.title}
-            </h2>
+            </h4>
             <img
               className="mt-2 w-full h-auto"
               src={`https://image.tmdb.org/t/p/w185${film.poster_image}`}
