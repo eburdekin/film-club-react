@@ -1,6 +1,6 @@
 const HeaderNavLink = ({ href, children }) => {
   const pathname = window.location.pathname;
-  const active = href === pathname;
+  const active = pathname.startsWith(href);
 
   return (
     <a

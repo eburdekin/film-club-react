@@ -23,7 +23,9 @@ export default function ClubDetails() {
 
   return (
     <div>
-      <h3 className="text-xl font-bold mb-6 dark:text-gray-300">{club.name}</h3>
+      <h2 className="text-3xl font-bold text-gray-900 dark:text-white leading-[1.4] mb-5">
+        {club.name}
+      </h2>
       <div className="flex flex-col md:flex-row gap-8">
         {/* Navigation as tabs on small screens */}
 

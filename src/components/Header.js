@@ -88,7 +88,7 @@ import { DarkThemeToggle } from "flowbite-react";
 import HeaderNavLink from "./HeaderNavLink";
 
 const menuItems = [
-  { label: `Home`, url: `/` },
+  { label: `Home`, url: `/home` },
   { label: `Films`, url: `/films` },
   { label: `Clubs`, url: `/clubs` },
   { label: `Profile`, url: `/profile/my_clubs` },

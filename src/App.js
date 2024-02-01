@@ -25,7 +25,7 @@ function App() {
       <Flowbite>
         <Layout>
           <Switch>
-            <Route exact path="/">
+            <Route exact path="/home">
               <Home />
             </Route>
             <Route exact path="/films">
