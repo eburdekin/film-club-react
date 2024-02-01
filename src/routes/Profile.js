@@ -1,4 +1,4 @@
-import ProfileNavLink from "./ProfileNavLink";
+import ProfileNavLink from "../components/ProfileNavLink";
 
 const ProfileLayout = ({ children }) => {
   return (

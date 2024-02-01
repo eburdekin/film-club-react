@@ -11,7 +11,7 @@ hosted URL for demo will be here.
 #### Frontend
 
 - Next.js app with nested layout
-- Tailwind CSS
+- Tailwind CSS - dark mode / "theatre mode"
 
 #### Backend
 

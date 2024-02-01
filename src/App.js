@@ -3,13 +3,13 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { Flowbite } from "flowbite-react";
 
-import Layout from "./Layout";
-import Home from "./Home";
-import Films from "./Films";
-import Clubs from "./Clubs";
-import Profile from "./Profile";
-import MyClubs from "./MyClubs";
-import Settings from "./Settings";
+import Layout from "./components/Layout";
+import Home from "./routes/Home";
+import Films from "./routes/Films";
+import Clubs from "./routes/Clubs";
+import Profile from "./routes/Profile";
+import MyClubs from "./routes/MyClubs";
+import Settings from "./routes/Settings";
 
 function App() {
   // const [user, setUser] = useState();

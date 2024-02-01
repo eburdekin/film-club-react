@@ -1,4 +1,4 @@
-import ClubSearch from "./ClubSearch";
+import ClubSearch from "../components/ClubSearch";
 
 export default function Home() {
   return (

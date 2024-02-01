@@ -1,5 +1,5 @@
-import FilmSearch from "./FilmSearch";
-import FilmList from "./FilmList";
+import FilmSearch from "../components/FilmSearch";
+import FilmList from "../components/FilmList";
 
 export default function Home() {
   return (
