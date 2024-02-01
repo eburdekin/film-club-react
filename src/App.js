@@ -7,6 +7,7 @@ import Layout from "./components/Layout";
 import Home from "./routes/Home";
 import Films from "./routes/Films";
 import Clubs from "./routes/Clubs";
+import ClubPage from "./routes/ClubPage";
 import Profile from "./routes/Profile";
 import MyClubs from "./components/MyClubs";
 import Settings from "./components/Settings";
@@ -32,6 +33,10 @@ function App() {
             </Route>
             <Route exact path="/clubs">
               <Clubs />
+            </Route>
+            <Route path="/clubs/:clubId">
+              {/* Access clubId in component props */}
+              <ClubPage />
             </Route>
             <Route exact path="/profile">
               <Profile />

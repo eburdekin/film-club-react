@@ -27,12 +27,14 @@ export default function ClubList() {
       <h3 className="text-xl font-bold mb-6 dark:text-gray-300">All clubs</h3>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {clubs.map((club) => (
-          <div
-            key={club.id}
-            className="p-4 bg-gray-100 rounded-md hover-effect"
-          >
-            {club.name}
-          </div>
+          <a href={`/clubs/${club.id}`}>
+            <div
+              key={club.id}
+              className="p-4 bg-gray-100 rounded-md hover-effect"
+            >
+              {club.name}
+            </div>
+          </a>
         ))}
       </div>
     </div>
