@@ -140,7 +140,7 @@ const Header = () => {
         <div className="ml-auto md:hidden">
           <button onClick={toggleMenu}>
             <svg
-              className="w-6 h-6"
+              className="w-6 h-6 text-gray-900 dark:text-white"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"

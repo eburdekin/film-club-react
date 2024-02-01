@@ -1,4 +1,4 @@
-import Profile from "./Profile";
+import Profile from "../routes/Profile";
 
 export default function MyClubs() {
   return (

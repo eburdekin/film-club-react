@@ -8,8 +8,8 @@ import Home from "./routes/Home";
 import Films from "./routes/Films";
 import Clubs from "./routes/Clubs";
 import Profile from "./routes/Profile";
-import MyClubs from "./routes/MyClubs";
-import Settings from "./routes/Settings";
+import MyClubs from "./components/MyClubs";
+import Settings from "./components/Settings";
 
 function App() {
   // const [user, setUser] = useState();
