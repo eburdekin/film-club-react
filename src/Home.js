@@ -7,7 +7,9 @@ export default function Home() {
       <h1 className="text-5xl font-bold text-gray-900 dark:text-white leading-[1.4] mb-5">
         Film Club
       </h1>
-      <p className="text-2xl text-gray-700">Always screening near you.</p>
+      <p className="text-2xl text-gray-700 dark:text-gray-300">
+        Always screening near you.
+      </p>
     </>
     // </Layout>
   );
