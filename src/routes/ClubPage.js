@@ -51,7 +51,7 @@ export default function ClubDetails() {
         </aside>
         {/* Main content */}
         <div className="bg-gray-100 dark:bg-gray-300 flex-[8] p-4 rounded min-h-[300px]">
-          {club.name} info will go here.
+          {club.description}
         </div>
       </div>
       <Link
