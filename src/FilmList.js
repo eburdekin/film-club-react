@@ -27,7 +27,10 @@ export default function FilmList() {
       </h3>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {films.map((film) => (
-          <div key={film.id} className="p-4 bg-gray-100 rounded-md">
+          <div
+            key={film.id}
+            className="p-4 bg-gray-100 rounded-md hover-effect"
+          >
             <h4 className="text-sm font-semibold text-gray-800">
               {film.title}
             </h4>

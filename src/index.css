@@ -18,3 +18,13 @@ code {
 @tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@800&display=swap');
+
+.hover-effect {
+  transition: transform 0.3s ease;
+  /* Add a transition for the transform property */
+}
+
+.hover-effect:hover {
+  transform: scale(1.05);
+  /* Make the div 5% bigger on hover */
+}
