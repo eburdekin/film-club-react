@@ -66,13 +66,13 @@ const Header = () => {
             width={36}
             height={36}
             src="/favicon.ico"
-            className="w-8 md:w-9"
+            className="w-8 md:w-9 dark:invert"
             alt="logo"
           />
         </a>
         <nav className="ml-8 md:flex md:items-center md:gap-x-8">
           <ul
-            className={`flex flex-wrap gap-x-8 text-gray-900 ${
+            className={`flex flex-wrap gap-x-8 text-gray-900 dark:text-white ${
               isMenuOpen ? "block" : "hidden"
             } md:flex`}
           >
@@ -83,6 +83,7 @@ const Header = () => {
             ))}
           </ul>
         </nav>
+        <DarkThemeToggle />
         <div className="ml-auto md:hidden">
           <button onClick={toggleMenu}>
             <svg
@@ -109,9 +110,6 @@ const Header = () => {
               )}
             </svg>
           </button>
-        </div>
-        <div className="p-2">
-          <DarkThemeToggle />
         </div>
       </div>
     </header>
