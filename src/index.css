@@ -25,6 +25,6 @@ code {
 }
 
 .hover-effect:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
   /* Make the div 5% bigger on hover */
 }
