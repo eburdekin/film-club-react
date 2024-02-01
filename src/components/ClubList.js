@@ -30,7 +30,7 @@ export default function ClubList() {
           <a href={`/clubs/${club.id}`}>
             <div
               key={club.id}
-              className="p-4 bg-gray-100 rounded-md hover-effect"
+              className="p-4 bg-gray-100 dark:bg-gray-300  rounded-md hover-effect"
             >
               {club.name}
             </div>
