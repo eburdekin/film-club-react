@@ -110,17 +110,15 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <a href="/" className="flex items-center">
           <img
-            width={36}
-            height={36}
             src="/favicon.ico"
-            className="w-8 md:w-9 dark:invert"
+            className="w-8 md:w-9 m-1 dark:invert"
             alt="logo"
           />
           <span
             className=" text-gray-900 text-2xl md:text-3xl dark:text-white h-2 leading-[1.4] mb-5"
             style={{ fontFamily: "Gabarito", fontWeight: 800 }}
           >
-            Film Club
+            FilmClub
           </span>
         </a>
         <nav className="ml-8 md:flex md:items-center md:gap-x-8">
@@ -171,17 +169,15 @@ const Header = () => {
           <div className="container mx-auto px-4 py-4 flex items-center justify-between">
             <a href="/" className="flex items-center">
               <img
-                width={36}
-                height={36}
                 src="/favicon.ico"
-                className="w-8 md:w-9 dark:invert"
+                className="w-8 md:w-9 m-1 dark:invert"
                 alt="logo"
               />
               <span
                 className=" text-gray-900 text-2xl md:text-3xl dark:text-white h-2 leading-[1.4] mb-5"
                 style={{ fontFamily: "Gabarito", fontWeight: 800 }}
               >
-                Film Club
+                FilmClub
               </span>
             </a>
             <DarkThemeToggle />

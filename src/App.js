@@ -35,7 +35,6 @@ function App() {
               <Clubs />
             </Route>
             <Route path="/clubs/:clubId">
-              {/* Access clubId in component props */}
               <ClubPage />
             </Route>
             <Route exact path="/profile">

@@ -1,4 +1,4 @@
-import ProfileNavLink from "../components/ProfileNavLink";
+import SideNavLink from "../components/SideNavLink";
 
 const ProfileLayout = ({ children }) => {
   return (
@@ -7,14 +7,14 @@ const ProfileLayout = ({ children }) => {
       <nav className="bg-gray-100 p-2 rounded-md md:hidden">
         <ul className="flex justify-evenly">
           <li>
-            <ProfileNavLink href="/profile/my_clubs">My Clubs</ProfileNavLink>
+            <SideNavLink href="/profile/my_clubs">My Clubs</SideNavLink>
           </li>
           {/* Uncomment the following when needed */}
           {/* <li>
             <ProfileNavLink href="/profile/account">Account</ProfileNavLink>
           </li> */}
           <li>
-            <ProfileNavLink href="/profile/settings">Settings</ProfileNavLink>
+            <SideNavLink href="/profile/settings">Settings</SideNavLink>
           </li>
         </ul>
       </nav>
@@ -23,14 +23,14 @@ const ProfileLayout = ({ children }) => {
         <nav>
           <ul className="grid gap-3">
             <li>
-              <ProfileNavLink href="/profile/my_clubs">My Clubs</ProfileNavLink>
+              <SideNavLink href="/profile/my_clubs">My Clubs</SideNavLink>
             </li>
             {/* Uncomment the following when needed */}
             {/* <li>
               <ProfileNavLink href="/profile/account">Account</ProfileNavLink>
             </li> */}
             <li>
-              <ProfileNavLink href="/profile/settings">Settings</ProfileNavLink>
+              <SideNavLink href="/profile/settings">Settings</SideNavLink>
             </li>
           </ul>
         </nav>

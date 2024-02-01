@@ -2,7 +2,9 @@
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
-export default function ClubDetails({ children }) {
+import SideNavLink from "../components/SideNavLink";
+
+export default function ClubDetails() {
   const [club, setClub] = useState([]);
   const { clubId } = useParams(); // Get clubId from URL parameters
 
@@ -27,30 +29,29 @@ export default function ClubDetails({ children }) {
 
         <nav className="bg-gray-100 p-2 rounded-md md:hidden">
           <ul className="flex justify-evenly">
-            <li>Club Link</li>
+            <SideNavLink>Join/Leave</SideNavLink>
             {/* Uncomment the following when needed */}
             {/* <li>
             <ProfileNavLink href="/profile/account">Account</ProfileNavLink>
           </li> */}
-            <li>Club Link</li>
+            {/* <SideNavLink>Club Link</SideNavLink> */}
           </ul>
         </nav>
         {/* Sidebar navigation on larger screens */}
         <aside className="hidden md:flex md:flex-[2]">
           <nav>
             <ul className="grid gap-3">
-              <li>Club Link</li>
+              <SideNavLink>Join/Leave</SideNavLink>
               {/* Uncomment the following when needed */}
               {/* <li>
               <ProfileNavLink href="/profile/account">Account</ProfileNavLink>
             </li> */}
-              <li>Club Link</li>
             </ul>
           </nav>
         </aside>
         {/* Main content */}
         <div className="bg-gray-100 flex-[8] p-4 rounded min-h-[300px]">
-          {children}
+          {club.name} info will go here.
         </div>
       </div>
       <Link

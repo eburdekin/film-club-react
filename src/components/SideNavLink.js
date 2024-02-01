@@ -1,4 +1,4 @@
-const ProfileNavLink = ({ href, children }) => {
+const SideNavLink = ({ href, children }) => {
   //   const pathname = usePathname();
   const active = href === window.location.pathname;
 
@@ -17,4 +17,4 @@ const ProfileNavLink = ({ href, children }) => {
   );
 };
 
-export default ProfileNavLink;
+export default SideNavLink;

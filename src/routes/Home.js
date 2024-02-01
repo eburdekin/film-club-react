@@ -5,7 +5,7 @@ export default function Home() {
         className=" text-gray-900 dark:text-white leading-[1.4] mb-5"
         style={{ fontFamily: "Gabarito", fontWeight: 800, fontSize: 80 }}
       >
-        Film Club
+        FilmClub
       </h1>
       <p className="text-2xl text-gray-700 dark:text-gray-300">
         Always screening near you.
