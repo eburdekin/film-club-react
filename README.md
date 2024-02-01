@@ -21,4 +21,4 @@ hosted URL for demo will be here.
 ### Lessons learned
 
 - Python object relationships
-- Client-side vs server-side rendering - using Nextjs with useState, useEffect
+- Using window.location.pathname to highlight active page
