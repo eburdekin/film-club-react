@@ -15,6 +15,8 @@ hosted URL for demo will be here.
 
 #### Backend
 
+![dbdiagram](/public/dbdiagram.png)
+
 - Flask app
 - SQLAlchemy
 
@@ -22,3 +24,7 @@ hosted URL for demo will be here.
 
 - Python object relationships
 - Using window.location.pathname to highlight active page
+
+### Future ideas
+
+- Integrate with Letterboxd to post ratings
