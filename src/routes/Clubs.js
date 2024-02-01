@@ -1,4 +1,5 @@
 import ClubSearch from "../components/ClubSearch";
+import ClubList from "../components/ClubList";
 
 export default function Home() {
   return (
@@ -7,6 +8,7 @@ export default function Home() {
         Browse clubs
       </h2>
       <ClubSearch />
+      <ClubList />
     </>
   );
 }
