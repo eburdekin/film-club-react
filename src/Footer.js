@@ -44,6 +44,14 @@ const Footer = () => {
             {" "}
             @eburdekin
           </a>
+          . Film data from{" "}
+          <a
+            href="https://developer.themoviedb.org/docs/getting-started"
+            className="hover:text-cyan-600 dark:hover:text-cyan-300"
+          >
+            TMDB
+          </a>
+          .
         </p>
       </div>
     </footer>
