@@ -23,8 +23,8 @@ export default function ClubList() {
   return (
     <div className="mt-8">
       <span className="text-red-600">If logged in:</span>
-      <h3 className="text-xl font-bold mb-6 dark:text-gray-300">My clubs</h3>
-      <h3 className="text-xl font-bold mb-6 dark:text-gray-300">All clubs</h3>
+      <h3 className="text-2xl mb-6 dark:text-gray-300">My clubs</h3>
+      <h3 className="text-2xl mb-6 dark:text-gray-300">All clubs</h3>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {clubs.map((club) => (
           <a href={`/clubs/${club.id}`}>

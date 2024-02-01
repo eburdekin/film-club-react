@@ -17,7 +17,7 @@ code {
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800&display=swap');
 
 .hover-effect {
   transition: transform 0.3s ease;
@@ -27,4 +27,8 @@ code {
 .hover-effect:hover {
   transform: scale(1.03);
   /* Make the div 5% bigger on hover */
+}
+
+h1, h2, h3 {
+  font-family: 'Gabarito';
 }

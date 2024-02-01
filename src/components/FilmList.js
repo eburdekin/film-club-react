@@ -22,9 +22,7 @@ export default function FilmList() {
 
   return (
     <div className="mt-8">
-      <h3 className="text-xl font-bold mb-6 dark:text-gray-300">
-        Popular Films
-      </h3>
+      <h3 className="text-2xl mb-6 dark:text-gray-300">Popular Films</h3>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {films.map((film) => (
           <div

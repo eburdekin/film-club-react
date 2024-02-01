@@ -7,9 +7,9 @@ export default function Home() {
       >
         FilmClub
       </h1>
-      <p className="text-2xl text-gray-700 dark:text-gray-300">
+      <h2 className="text-2xl text-gray-700 dark:text-gray-300">
         Always screening near you.
-      </p>
+      </h2>
     </>
   );
 }
