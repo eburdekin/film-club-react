@@ -10,6 +10,8 @@ hosted URL for demo will be here.
 
 #### Frontend
 
+animated screenshot demo will be here.
+
 - Next.js app with nested layout
 - Tailwind CSS - dark mode / "theatre mode"
 
@@ -19,12 +21,12 @@ hosted URL for demo will be here.
 
 - Flask app
 - SQLAlchemy
-- Marshmallow for serialization
+- Marshmallow for serialization and validation
 
-### Lessons learned
+### Goals & lessons learned
 
 - Python object relationships
-- Using window.location.pathname to highlight active page
+- User authentication
 
 ### Future ideas
 
