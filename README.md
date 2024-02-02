@@ -19,6 +19,7 @@ hosted URL for demo will be here.
 
 - Flask app
 - SQLAlchemy
+- Marshmallow for serialization
 
 ### Lessons learned
 
