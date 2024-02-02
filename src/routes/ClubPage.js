@@ -53,7 +53,19 @@ export default function ClubDetails() {
         </aside>
         {/* Main content */}
         <div className="bg-gray-100 dark:bg-gray-300 flex-[8] p-4 rounded min-h-[300px]">
-          {club.description}
+          <h3 className="text-bold text-lg">{club.description}</h3>
+          <h3 className="text-bold text-lg mt-2">Screening Rooms</h3>
+          <ul>
+            {club.screening_rooms.map((room) => (
+              <li key={room.id}>{room.name}</li>
+            ))}
+          </ul>
+          <h3 className="text-bold text-lg mt-2">Members</h3>
+          <ul>
+            {club.members.map((member) => (
+              <li key={member.id}>{member.username}</li>
+            ))}
+          </ul>
         </div>
       </div>
       <Link
