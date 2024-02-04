@@ -7,6 +7,8 @@ const NewClubModal = ({ onClose }) => {
     public: true,
   });
 
+  const [errorMessage, setErrorMessage] = useState("");
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -37,10 +39,22 @@ const NewClubModal = ({ onClose }) => {
         console.log("New club created:", data);
         onClose(); // Close the modal after successful creation
       } else {
-        throw new Error("Failed to create club");
+        const errorData = await response.json();
+        // Check if errorData contains specific field errors
+        if (errorData.error && typeof errorData.error === "object") {
+          const errorMessage = Object.values(errorData.error)
+            .map((errors) => errors.join(", "))
+            .join(", ");
+          throw new Error(errorMessage);
+        } else {
+          throw new Error("Failed to create club");
+        }
       }
     } catch (error) {
       console.error("Error creating club:", error.message);
+      setErrorMessage(
+        error.message || "Failed to create club. Please try again."
+      );
     }
   };
 
@@ -49,6 +63,7 @@ const NewClubModal = ({ onClose }) => {
       <div className="absolute inset-0 bg-black opacity-50"></div>
       <div className="bg-white w-96 p-8 rounded-lg shadow-lg z-10 text-center">
         <h2 className="text-2xl font-semibold mb-4">New Club</h2>
+        {errorMessage && <p className="text-red-500 mb-2">{errorMessage}</p>}
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label
