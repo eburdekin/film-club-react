@@ -86,6 +86,7 @@
 import { useState } from "react";
 import { DarkThemeToggle } from "flowbite-react";
 import HeaderNavLink from "./HeaderNavLink";
+import LoginModal from "../components/LoginModal";
 
 const menuItems = [
   { label: `Home`, url: `/home` },
@@ -96,9 +97,14 @@ const menuItems = [
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
   };
 
   const closeMenu = () => {
@@ -132,6 +138,12 @@ const Header = () => {
                 <HeaderNavLink href={url}>{label}</HeaderNavLink>
               </li>
             ))}
+            <button
+              onClick={toggleModal}
+              className="bg-gray-300 dark:text-black dark:hover:text-white p-2 rounded block"
+            >
+              Log In / Sign Up
+            </button>
           </ul>
         </nav>
         <DarkThemeToggle />
@@ -204,9 +216,16 @@ const Header = () => {
                 <HeaderNavLink href={url}>{label}</HeaderNavLink>
               </li>
             ))}
+            <button
+              onClick={toggleModal}
+              className="bg-gray-100 text-black dark:hover:text-white p-2 rounded block"
+            >
+              Log In / Sign Up
+            </button>
           </ul>
         </div>
       )}
+      {isModalOpen && <LoginModal onClose={() => setIsModalOpen(false)} />}
     </header>
   );
 };

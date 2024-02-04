@@ -1,9 +1,32 @@
 // Layout.js
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleUp } from "@fortawesome/free-solid-svg-icons";
 import Header from "./Header";
 import Footer from "./Footer";
 
 const Layout = ({ children }) => {
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 400) {
+        setShowBackToTop(true);
+      } else {
+        setShowBackToTop(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <div className="dark:bg-gray-900">
       <Header />
@@ -13,6 +36,18 @@ const Layout = ({ children }) => {
         </div>
       </div>
       <Footer />
+      {showBackToTop && (
+        <button
+          className="fixed bottom-4 p-1 right-4 rounded-2xl shadow-lg hover:bg-gray-100"
+          onClick={scrollToTop}
+        >
+          <FontAwesomeIcon
+            icon={faCircleUp}
+            size="2xl"
+            className="dark:invert"
+          />
+        </button>
+      )}
     </div>
   );
 };

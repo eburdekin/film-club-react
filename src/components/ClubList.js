@@ -27,11 +27,8 @@ export default function ClubList() {
       <h3 className="text-2xl mb-6 dark:text-gray-300">All clubs</h3>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {clubs.map((club) => (
-          <a href={`/clubs/${club.id}`}>
-            <div
-              key={club.id}
-              className="p-4 bg-gray-100 dark:bg-gray-300  rounded-md hover-effect"
-            >
+          <a href={`/clubs/${club.id}`} key={club.id}>
+            <div className="p-4 bg-gray-100 dark:bg-gray-300  rounded-md hover-effect">
               {club.name}
             </div>
           </a>
