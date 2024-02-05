@@ -26,7 +26,9 @@ animated screenshot demo will be here.
 ### Goals & lessons learned
 
 - Python object relationships
-- User authentication
+- User authentication, user/admin roles
+- Connecting API CRUD routes to front-end routes
+- Translating backend error messages to frontend errors/alerts
 
 ### Future ideas
 

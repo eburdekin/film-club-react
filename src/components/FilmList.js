@@ -6,7 +6,7 @@ export default function FilmList() {
   useEffect(() => {
     const fetchFilms = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:5555/movies");
+        const response = await fetch("/movies");
         if (!response.ok) {
           throw new Error("Failed to fetch films");
         }

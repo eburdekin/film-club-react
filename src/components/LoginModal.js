@@ -1,41 +1,71 @@
 import { useState } from "react";
 
 const LoginModal = ({ onClose }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "",
+  });
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
   };
 
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add your login logic here
+    try {
+      const response = await fetch("http://127.0.0.1:5555/login", {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Successful login", data);
+        // onClose(); // Close the modal after successful creation
+      } else {
+        const errorData = await response.json();
+        // Check if errorData contains specific field errors
+        if (errorData.error && typeof errorData.error === "object") {
+          const errorMessage = Object.values(errorData.error)
+            .map((errors) => errors.join(", "))
+            .join(", ");
+          throw new Error(errorMessage);
+        } else {
+          throw new Error("Failed to create club");
+        }
+      }
+    } catch (error) {
+      console.error("Error creating club:", error.message);
+    }
   };
 
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50">
       <div className="absolute inset-0 bg-black opacity-50"></div>
-      <div className="bg-white w-96 p-8 rounded-lg shadow-lg z-10 text-center">
+      <div className="bg-gray-100 dark:bg-gray-300 w-96 p-8 rounded-lg shadow-lg z-10 text-center">
         <h2 className="text-2xl font-semibold mb-4">Log In</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label
-              htmlFor="email"
+              htmlFor="username"
               className="block text-sm font-medium text-gray-700"
             >
-              Email
+              Username
             </label>
             <input
-              type="email"
-              id="email"
+              type="username"
+              id="username"
+              name="username"
               className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              value={email}
-              onChange={handleEmailChange}
+              value={formData.username}
+              onChange={handleInputChange}
               required
             />
           </div>
@@ -49,9 +79,10 @@ const LoginModal = ({ onClose }) => {
             <input
               type="password"
               id="password"
+              name="password"
               className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm"
-              value={password}
-              onChange={handlePasswordChange}
+              value={formData.password}
+              onChange={handleInputChange}
               required
             />
           </div>

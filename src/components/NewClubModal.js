@@ -61,7 +61,7 @@ const NewClubModal = ({ onClose }) => {
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50">
       <div className="absolute inset-0 bg-black opacity-50"></div>
-      <div className="bg-white w-96 p-8 rounded-lg shadow-lg z-10 text-center">
+      <div className="bg-gray-100 dark:bg-gray-300 w-96 p-8 rounded-lg shadow-lg z-10 text-center">
         <h2 className="text-2xl font-semibold mb-4">New Club</h2>
         {errorMessage && <p className="text-red-500 mb-2">{errorMessage}</p>}
         <form onSubmit={handleSubmit}>
