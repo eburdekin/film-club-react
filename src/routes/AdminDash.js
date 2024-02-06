@@ -43,7 +43,7 @@ export default function AdminDash() {
 
   return (
     <div className="mt-8">
-      <h3 className="text-2xl mb-6 dark:text-gray-300">Users</h3>
+      <h3 className="text-2xl mb-6 font-bold dark:text-gray-300">Users</h3>
       <table className="table-auto">
         <thead>
           <tr>
