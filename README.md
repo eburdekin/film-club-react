@@ -13,7 +13,7 @@ hosted URL for demo will be here.
 animated screenshot demo will be here.
 
 - React app with nested layout
-- Tailwind CSS - dark mode / "theatre mode"
+- Tailwind CSS - fully responsive - dark mode / "theatre mode"
 - useContext hook for user state
 
 #### Backend
@@ -21,13 +21,16 @@ animated screenshot demo will be here.
 ![dbdiagram](/public/dbdiagram.png)
 
 - Flask app
+- SQLite for development, will be PostgreSQL for deployment
 - SQLAlchemy
+- Bcrypt for password hashing
+- Flask-user for user/moderator/admin roles
 - Marshmallow for serialization and validation
 
 ### Goals & lessons learned
 
 - Python object relationships
-- User authentication, user/admin roles
+- User authentication, user/moderator/admin roles
 - Connecting API CRUD routes to front-end routes
 - Translating backend error messages to frontend errors/alerts
 
