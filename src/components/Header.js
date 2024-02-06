@@ -5,15 +5,18 @@ import SignupLoginModal from "./SignupLoginModal";
 
 import { useUser } from "./UserContext";
 
-const menuItems = [
-  { label: `Home`, url: `/home` },
-  { label: `Films`, url: `/films` },
-  { label: `Clubs`, url: `/clubs` },
-  { label: `Profile`, url: `/profile/my_clubs` },
-];
-
 const Header = () => {
   const { user, setUser } = useUser();
+
+  const menuItems = [
+    { label: `Home`, url: `/home` },
+    { label: `Films`, url: `/films` },
+    { label: `Clubs`, url: `/clubs` },
+    { label: `Profile`, url: `/profile/my_clubs` },
+    user && user.role && user.role.name === "admin"
+      ? { label: `Admin`, url: `/admin` }
+      : null,
+  ].filter((item) => item !== null);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);

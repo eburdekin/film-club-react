@@ -15,7 +15,7 @@ export const UserProvider = ({ children }) => {
   useEffect(() => {
     const checkSession = async () => {
       try {
-        const response = await fetch("http://localhost:5555/check_session");
+        const response = await fetch("/check_session");
         if (!response.ok) {
           throw new Error("No user found");
         }

@@ -12,6 +12,7 @@ import ClubPage from "./routes/ClubPage";
 import Profile from "./routes/Profile";
 import MyClubs from "./components/MyClubs";
 import Settings from "./components/Settings";
+import AdminDash from "./routes/AdminDash";
 
 import { UserProvider } from "./components/UserContext";
 
@@ -45,6 +46,9 @@ function App() {
               </Route>
               <Route exact path="/profile/settings">
                 <Settings />
+              </Route>
+              <Route exact path="/admin">
+                <AdminDash />
               </Route>
             </Switch>
           </Layout>
