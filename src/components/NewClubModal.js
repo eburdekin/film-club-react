@@ -27,7 +27,7 @@ const NewClubModal = ({ onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://127.0.0.1:5555/clubs", {
+      const response = await fetch("/clubs", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

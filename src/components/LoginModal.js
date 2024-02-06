@@ -17,13 +17,14 @@ const LoginModal = ({ onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://127.0.0.1:5555/login", {
+      const response = await fetch("/login", {
         method: "POST",
-        mode: "no-cors",
         headers: {
           "Content-Type": "application/json",
+          // "Access-Control-Allow-Credentials": "true",
         },
         body: JSON.stringify(formData),
+        // credentials: "include",
       });
       if (response.ok) {
         const data = await response.json();
@@ -38,11 +39,11 @@ const LoginModal = ({ onClose }) => {
             .join(", ");
           throw new Error(errorMessage);
         } else {
-          throw new Error("Failed to create club");
+          throw new Error("Log in failed");
         }
       }
     } catch (error) {
-      console.error("Error creating club:", error.message);
+      console.error("Log in failed:", error.message);
     }
   };
 

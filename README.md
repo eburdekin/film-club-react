@@ -12,8 +12,9 @@ hosted URL for demo will be here.
 
 animated screenshot demo will be here.
 
-- Next.js app with nested layout
+- React app with nested layout
 - Tailwind CSS - dark mode / "theatre mode"
+- useContext hook for user state
 
 #### Backend
 

@@ -1,4 +1,4 @@
-// import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, createContext, useContext } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { Flowbite } from "flowbite-react";
@@ -14,12 +14,20 @@ import MyClubs from "./components/MyClubs";
 import Settings from "./components/Settings";
 
 function App() {
-  // const [user, setUser] = useState();
-  // useEffect(() => {
-  //   fetch("/check_session")
-  //     .then((r) => r.json())
-  //     .then((u) => setUser(u));
-  // }, []);
+  // // Create a context for managing user state
+  // const UserContext = createContext();
+
+  // // Custom hook to access the user context
+  // export function useUser() {
+  //   return useContext(UserContext);
+  // }
+
+  const [user, setUser] = useState();
+  useEffect(() => {
+    fetch("/check_session")
+      .then((r) => r.json())
+      .then((u) => setUser(u));
+  }, []);
 
   return (
     <Router>
@@ -27,7 +35,7 @@ function App() {
         <Layout>
           <Switch>
             <Route exact path="/home">
-              <Home />
+              <Home user={user} />
             </Route>
             <Route exact path="/films">
               <Films />
