@@ -13,7 +13,7 @@ const menuItems = [
 ];
 
 const Header = () => {
-  const { user } = useUser();
+  const { user, setUser } = useUser();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -28,6 +28,26 @@ const Header = () => {
 
   const closeMenu = () => {
     setIsMenuOpen(false);
+  };
+
+  const handleLogout = async () => {
+    try {
+      const response = await fetch("/logout", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (response.ok) {
+        console.log("Logout successful");
+        setUser(null);
+        // Perform any additional actions after successful logout
+      } else {
+        throw new Error("Logout failed");
+      }
+    } catch (error) {
+      console.error("Logout failed:", error.message);
+    }
   };
 
   return (
@@ -57,12 +77,21 @@ const Header = () => {
                 <HeaderNavLink href={url}>{label}</HeaderNavLink>
               </li>
             ))}
-            <button
-              onClick={toggleModal}
-              className="bg-gray-300 dark:text-black dark:hover:text-white p-2 rounded block"
-            >
-              {user ? "Log out" : "Sign in"}
-            </button>
+            {user ? (
+              <button
+                onClick={handleLogout}
+                className="bg-gray-300 dark:text-black dark:hover:text-white p-2 rounded block"
+              >
+                Log out
+              </button>
+            ) : (
+              <button
+                onClick={toggleModal}
+                className="bg-gray-300 dark:text-black dark:hover:text-white p-2 rounded block"
+              >
+                Log in
+              </button>
+            )}
           </ul>
         </nav>
         <DarkThemeToggle />
