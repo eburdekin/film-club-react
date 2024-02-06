@@ -10,7 +10,7 @@ export default function ClubDetails() {
 
   // Fetch club details using clubId
   useEffect(() => {
-    fetch(`http://127.0.0.1:5555/movies/${filmId}`)
+    fetch(`/movies/${filmId}`)
       .then((response) => response.json())
       .then((film) => {
         // Process club details
