@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { DarkThemeToggle } from "flowbite-react";
 import HeaderNavLink from "./HeaderNavLink";
-import LoginModal from "../components/LoginModal";
+import SignupLoginModal from "./SignupLoginModal";
 
 import { useUser } from "./UserContext";
 
@@ -173,7 +173,9 @@ const Header = () => {
           </ul>
         </div>
       )}
-      {isModalOpen && <LoginModal onClose={() => setIsModalOpen(false)} />}
+      {isModalOpen && (
+        <SignupLoginModal onClose={() => setIsModalOpen(false)} />
+      )}
     </header>
   );
 };
