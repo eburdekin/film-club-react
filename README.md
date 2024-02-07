@@ -20,20 +20,18 @@ animated screenshot demo will be here.
 
 ![dbdiagram](/public/dbdiagram.png)
 
+User role/access level map here.
+
 - Flask app
 - SQLite for development, will be PostgreSQL for deployment
 - SQLAlchemy
 - Bcrypt for password hashing
-- Flask-user for user/moderator/admin roles
+- Manually built user/moderator/admin roles
 - Marshmallow for serialization and validation
 
 ### Goals & lessons learned
 
 - Python object relationships
-- User authentication, user/moderator/admin roles
+- User authentication, user/moderator/admin roles - didn't use Flask-User because latest version was yanked
 - Connecting API CRUD routes to front-end routes
 - Translating backend error messages to frontend errors/alerts
-
-### Future ideas
-
-- Integrate with Letterboxd to post ratings
