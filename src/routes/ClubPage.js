@@ -4,7 +4,11 @@ import { Link, useParams } from "react-router-dom";
 
 import SideNavLink from "../components/SideNavLink";
 
+import { useUser } from "../components/UserContext";
+
 export default function ClubDetails() {
+  const { user } = useUser();
+
   const [club, setClub] = useState([]);
   const { clubId } = useParams(); // Get clubId from URL parameters
 
@@ -28,50 +32,53 @@ export default function ClubDetails() {
       </h2>
       <div className="flex flex-col md:flex-row gap-8">
         {/* Navigation as tabs on small screens */}
-
-        <nav className="bg-gray-100 p-2 rounded-md md:hidden">
-          <ul className="flex justify-evenly">
-            <SideNavLink>Join/Leave</SideNavLink>
-            {/* Uncomment the following when needed */}
-            {/* <li>
-            <ProfileNavLink href="/profile/account">Account</ProfileNavLink>
-          </li> */}
-            {/* <SideNavLink>Club Link</SideNavLink> */}
-          </ul>
-        </nav>
-        {/* Sidebar navigation on larger screens */}
-        <aside className="hidden md:flex md:flex-[2]">
-          <nav>
-            <ul className="grid gap-3">
-              <SideNavLink>Join/Leave</SideNavLink>
-              {/* Uncomment the following when needed */}
-              {/* <li>
-              <ProfileNavLink href="/profile/account">Account</ProfileNavLink>
-            </li> */}
-            </ul>
-          </nav>
-        </aside>
+        {user ? (
+          <>
+            <nav className="bg-gray-100 p-2 rounded-md md:hidden">
+              <ul className="flex justify-evenly">
+                <SideNavLink>Join/Leave</SideNavLink>
+              </ul>
+            </nav>
+            <aside className="hidden md:flex md:flex-[2]">
+              <nav>
+                <ul className="grid gap-3">
+                  <SideNavLink>Join/Leave</SideNavLink>
+                </ul>
+              </nav>
+            </aside>
+          </>
+        ) : (
+          ""
+        )}
         {/* Main content */}
         <div className="bg-gray-100 dark:bg-gray-300 flex-[8] p-4 rounded min-h-[300px]">
           <h3 className="text-bold text-lg">{club.description}</h3>
           <h3 className="text-bold text-lg mt-2">Screening Rooms</h3>
-          <ul>
-            {club.screening_rooms &&
-              club.screening_rooms.map((room) => (
-                <a key={room.id} href={`/rooms/${room.id}`}>
-                  <li className="bg-gray-400 p-2 rounded-md hover-effect">
-                    {room.name}
-                  </li>
-                </a>
-              ))}
-          </ul>
+          {user ? (
+            <ul>
+              {club.screening_rooms &&
+                club.screening_rooms.map((room) => (
+                  <a key={room.id} href={`/rooms/${room.id}`}>
+                    <li className="bg-gray-400 p-2 rounded-md hover-effect">
+                      {room.name}
+                    </li>
+                  </a>
+                ))}
+            </ul>
+          ) : (
+            <>Log in or create an account to view.</>
+          )}
           <h3 className="text-bold text-lg mt-2">Members</h3>
-          <ul>
-            {club.members &&
-              club.members.map((member) => (
-                <li key={member.id}>{member.username}</li>
-              ))}
-          </ul>
+          {user ? (
+            <ul>
+              {club.members &&
+                club.members.map((member) => (
+                  <li key={member.id}>{member.username}</li>
+                ))}
+            </ul>
+          ) : (
+            <>Log in or create an account to view.</>
+          )}
         </div>
       </div>
       <Link

@@ -4,7 +4,10 @@ import { Link, useParams } from "react-router-dom";
 
 import SideNavLink from "../components/SideNavLink";
 
+import { useUser } from "../components/UserContext";
+
 export default function ClubDetails() {
+  const { user } = useUser();
   const [film, setFilm] = useState([]);
   const { filmId } = useParams(); // Get clubId from URL parameters
 
@@ -57,16 +60,20 @@ export default function ClubDetails() {
           />
           Average rating, latest posts, all screening rooms
           <h3 className="text-bold text-lg mt-2">Screening Rooms</h3>
-          <ul>
-            {film.screening_rooms &&
-              film.screening_rooms.map((room) => (
-                <a key={room.id} href={`/rooms/${room.id}`}>
-                  <li className="bg-gray-400 p-2 rounded-md hover-effect">
-                    <b>{room.name}</b>, hosted by {room.club.name}
-                  </li>
-                </a>
-              ))}
-          </ul>
+          {user ? (
+            <ul>
+              {film.screening_rooms &&
+                film.screening_rooms.map((room) => (
+                  <a key={room.id} href={`/rooms/${room.id}`}>
+                    <li className="bg-gray-400 p-2 rounded-md hover-effect">
+                      <b>{room.name}</b>, hosted by {room.club.name}
+                    </li>
+                  </a>
+                ))}
+            </ul>
+          ) : (
+            <>Log in or create an account to view.</>
+          )}
         </div>
       </div>
       <Link

@@ -26,27 +26,28 @@ export default function ScreeningRoom() {
       <h2 className="text-3xl font-bold text-gray-900 dark:text-white leading-[1.4] mb-5">
         {room.name}
       </h2>
-      {/* Display the name of the movie */}
-      <div>
-        <h3>Movie: {room.movie.title}</h3>
-      </div>
-      {/* Display posts */}
-      <div>
-        <h3>Posts:</h3>
-        <ul>
-          {room.posts.map((post) => (
-            <li key={post.id}>{post.content}</li>
-          ))}
-        </ul>
-      </div>
-      {/* Display ratings */}
-      <div>
-        <h3>Ratings:</h3>
-        <ul>
-          {room.ratings.map((rating) => (
-            <li key={rating.id}>{rating.rating}</li>
-          ))}
-        </ul>
+      <div className="bg-gray-100 dark:bg-gray-300 flex-[8] p-4 rounded min-h-[300px]">
+        <div>
+          <h3>Movie: {room.movie.title}</h3>
+        </div>
+        {/* Display posts */}
+        <div>
+          <h3>Posts:</h3>
+          <ul>
+            {room.posts.map((post) => (
+              <li key={post.id}>{post.content}</li>
+            ))}
+          </ul>
+        </div>
+        {/* Display ratings */}
+        <div>
+          <h3>Ratings:</h3>
+          <ul>
+            {room.ratings.map((rating) => (
+              <li key={rating.id}>{rating.rating}</li>
+            ))}
+          </ul>
+        </div>
       </div>
       <Link
         to={`/clubs/${room.club.id}`}
