@@ -15,12 +15,16 @@ animated screenshot demo will be here.
 - React app with nested layout
 - Tailwind CSS - fully responsive - dark mode / "theatre mode"
 - useContext hook for user state
+- Navbar, loading animation controlled by global user state
+- Modals for user data entry
+
+Access map will be here.
 
 #### Backend
 
 ![dbdiagram](/public/dbdiagram.png)
 
-User role/access level map here.
+User role map will be here.
 
 - Flask app
 - SQLite for development, will be PostgreSQL for deployment
