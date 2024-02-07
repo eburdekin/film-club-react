@@ -90,14 +90,14 @@ const Header = React.memo(() => {
             {user ? (
               <button
                 onClick={handleLogout}
-                className="bg-gray-300 dark:text-black dark:hover:text-white p-2 rounded block"
+                className="bg-gray-300 dark:text-black dark:hover:text-white p-2 rounded block hover-effect"
               >
                 Log out
               </button>
             ) : (
               <button
                 onClick={toggleModal}
-                className="bg-gray-300 dark:text-black dark:hover:text-white p-2 rounded block"
+                className="bg-gray-300 dark:text-black dark:hover:text-white p-2 rounded block hover-effect"
               >
                 Log in
               </button>
@@ -174,12 +174,21 @@ const Header = React.memo(() => {
                 <HeaderNavLink href={url}>{label}</HeaderNavLink>
               </li>
             ))}
-            <button
-              onClick={toggleModal}
-              className="bg-gray-100 text-black dark:hover:text-white p-2 rounded block"
-            >
-              Log in
-            </button>
+            {user ? (
+              <button
+                onClick={handleLogout}
+                className="bg-gray-300 dark:text-black dark:hover:text-white p-2 rounded block hover-effect"
+              >
+                Log out
+              </button>
+            ) : (
+              <button
+                onClick={toggleModal}
+                className="bg-gray-300 dark:text-black dark:hover:text-white p-2 rounded block hover-effect"
+              >
+                Log in
+              </button>
+            )}
           </ul>
         </div>
       )}
