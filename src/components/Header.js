@@ -1,11 +1,11 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { DarkThemeToggle } from "flowbite-react";
 import HeaderNavLink from "./HeaderNavLink";
 import SignupLoginModal from "./SignupLoginModal";
 
 import { useUser } from "./UserContext";
 
-const Header = () => {
+const Header = React.memo(() => {
   const { user, setUser } = useUser();
 
   const menuItems = [
@@ -181,6 +181,6 @@ const Header = () => {
       )}
     </header>
   );
-};
+});
 
 export default Header;

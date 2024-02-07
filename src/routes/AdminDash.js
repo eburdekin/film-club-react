@@ -66,14 +66,14 @@ export default function AdminDash() {
   return (
     <div className="mt-8">
       <h3 className="text-2xl mb-6 font-bold dark:text-gray-300">Users</h3>
-      <table className="table-auto">
+      <table className="table-auto  dark:text-gray-300">
         <thead>
           <tr>
-            <th className="px-4 py-2">Username</th>
-            <th className="px-4 py-2">Email</th>
-            <th className="px-4 py-2">Clubs</th>
-            <th className="px-4 py-2">Role</th>
-            <th className="px-4 py-2">Actions</th>
+            <th className="px-4 py-2 w-1/5">Username</th>
+            <th className="px-4 py-2 w-1/5">Email</th>
+            <th className="px-4 py-2 w-1/5">Clubs</th>
+            <th className="px-4 py-2 w-1/6">Role</th>
+            <th className="px-4 py-2 w-1/4">Actions</th>
           </tr>
         </thead>
         <tbody>
