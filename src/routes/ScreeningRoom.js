@@ -27,6 +27,7 @@ export default function ScreeningRoom() {
         {room.name}
       </h2>
       <div className="bg-gray-100 dark:bg-gray-300 flex-[8] p-4 rounded min-h-[300px]">
+        {/* Display the name of the movie */}
         <div>
           <h3>Movie: {room.movie.title}</h3>
         </div>
