@@ -30,6 +30,7 @@ const LoginModal = ({ onClose }) => {
       if (response.ok) {
         const data = await response.json();
         console.log("Successful operation", data);
+        onClose();
       } else {
         const errorData = await response.json();
         // Handle errors

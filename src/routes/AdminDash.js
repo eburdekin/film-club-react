@@ -1,7 +1,17 @@
 import React, { useState, useEffect } from "react";
 
+import UserRoleModal from "../components/UserRoleModal";
+
 export default function AdminDash() {
   const [users, setUsers] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedUser, setSelectedUser] = useState(null);
+
+  const toggleModal = (user) => {
+    setIsModalOpen(!isModalOpen);
+    console.log(user);
+    setSelectedUser(user);
+  };
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -20,10 +30,22 @@ export default function AdminDash() {
     fetchUsers();
   }, []);
 
-  const handleEdit = (userId) => {
-    // Handle edit action
-    console.log("Edit user with id:", userId);
+  const handleRoleAssigned = async () => {
+    try {
+      const response = await fetch("/users");
+      if (!response.ok) {
+        throw new Error("Failed to fetch users");
+      }
+      const data = await response.json();
+      setUsers(data); // Update the users state with the fetched data
+    } catch (error) {
+      console.error("Error fetching users:", error);
+    }
   };
+  //   const handleEdit = (userId) => {
+  //     // Handle edit action
+  //     console.log("Edit user with id:", userId);
+  //   };
 
   const handleDelete = async (userId) => {
     try {
@@ -66,7 +88,7 @@ export default function AdminDash() {
               <td className="border px-4 py-2">{user.role.name}</td>
               <td className="border px-4 py-2">
                 <button
-                  onClick={() => handleEdit(user.id)}
+                  onClick={(e) => toggleModal(user)}
                   className="mr-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                 >
                   Edit
@@ -82,6 +104,13 @@ export default function AdminDash() {
           ))}
         </tbody>
       </table>
+      {isModalOpen && (
+        <UserRoleModal
+          onClose={() => setIsModalOpen(false)}
+          user={selectedUser}
+          onRoleAssigned={handleRoleAssigned}
+        />
+      )}
     </div>
   );
 }
