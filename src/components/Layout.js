@@ -31,17 +31,16 @@ const Layout = ({ children }) => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  if (loading) {
-    // Render loading screen while waiting for user data
-    return <LoadingScreen />;
-  }
-
   return (
     <div className="dark:bg-gray-900">
       <Header />
       <div className="flex flex-col min-h-screen mx-auto max-w-4xl px-4 pt-8 pb-16">
         <div className="flex-grow">
-          <main className="my-0 py-16">{children}</main>
+          {loading ? (
+            <LoadingScreen />
+          ) : (
+            <main className="my-0 py-16">{children}</main>
+          )}
         </div>
       </div>
       <Footer />
