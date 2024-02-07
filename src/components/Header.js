@@ -6,7 +6,7 @@ import SignupLoginModal from "./SignupLoginModal";
 import { useUser } from "./UserContext";
 
 const Header = React.memo(() => {
-  const { user, setUser } = useUser();
+  const { user, loginUser, logoutUser } = useUser();
 
   const menuItems = [
     { label: `Home`, url: `/home` },
@@ -33,6 +33,13 @@ const Header = React.memo(() => {
     setIsMenuOpen(false);
   };
 
+  const handleUserLogin = (userData) => {
+    loginUser(userData);
+    console.log(userData.role);
+    console.log(userData.role.name);
+    setIsModalOpen(false);
+  };
+
   const handleLogout = async () => {
     try {
       const response = await fetch("/logout", {
@@ -43,7 +50,7 @@ const Header = React.memo(() => {
       });
       if (response.ok) {
         console.log("Logout successful");
-        setUser(null);
+        logoutUser();
         // Perform any additional actions after successful logout
       } else {
         throw new Error("Logout failed");
@@ -176,9 +183,7 @@ const Header = React.memo(() => {
           </ul>
         </div>
       )}
-      {isModalOpen && (
-        <SignupLoginModal onClose={() => setIsModalOpen(false)} />
-      )}
+      {isModalOpen && <SignupLoginModal onClose={handleUserLogin} />}
     </header>
   );
 });

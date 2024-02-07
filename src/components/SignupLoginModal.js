@@ -28,9 +28,9 @@ const LoginModal = ({ onClose }) => {
         body: JSON.stringify(formData),
       });
       if (response.ok) {
-        const data = await response.json();
-        console.log("Successful operation", data);
-        onClose();
+        const userData = await response.json(); // Assuming the response contains user data
+        console.log("Successful operation", userData);
+        onClose(userData);
       } else {
         const errorData = await response.json();
         // Handle errors

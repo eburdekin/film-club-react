@@ -29,8 +29,16 @@ export const UserProvider = ({ children }) => {
     checkSession();
   }, []);
 
+  const loginUser = (userData) => {
+    setUser(userData);
+  };
+
+  const logoutUser = () => {
+    setUser(null);
+  };
+
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider value={{ user, loginUser, logoutUser }}>
       {children}
     </UserContext.Provider>
   );
