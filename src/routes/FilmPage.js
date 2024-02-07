@@ -56,20 +56,17 @@ export default function ClubDetails() {
             alt={film.title}
           />
           Average rating, latest posts, all screening rooms
-          {/* <h3 className="text-bold text-lg mt-2">Screening Rooms</h3>
+          <h3 className="text-bold text-lg mt-2">Screening Rooms</h3>
           <ul>
-            {club.screening_rooms &&
-              club.screening_rooms.map((room) => (
-                <li key={room.id}>{room.name}</li>
+            {film.screening_rooms &&
+              film.screening_rooms.map((room) => (
+                <a key={room.id} href={`/rooms/${room.id}`}>
+                  <li className="bg-gray-400 p-2 rounded-md hover-effect">
+                    <b>{room.name}</b>, hosted by {room.club.name}
+                  </li>
+                </a>
               ))}
           </ul>
-          <h3 className="text-bold text-lg mt-2">Members</h3>
-          <ul>
-            {club.members &&
-              club.members.map((member) => (
-                <li key={member.id}>{member.username}</li>
-              ))}
-          </ul> */}
         </div>
       </div>
       <Link
