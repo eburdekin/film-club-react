@@ -35,9 +35,8 @@ const Header = React.memo(() => {
 
   const handleUserLogin = (userData) => {
     loginUser(userData);
-    console.log(userData.role);
-    console.log(userData.role.name);
     setIsModalOpen(false);
+    setIsMenuOpen(false);
   };
 
   const handleLogout = async () => {
