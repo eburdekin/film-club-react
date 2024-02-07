@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
-export default function RoomPage() {
+export default function ScreeningRoom() {
   const [room, setRoom] = useState(null);
   const { roomId } = useParams();
 
@@ -48,6 +48,24 @@ export default function RoomPage() {
           ))}
         </ul>
       </div>
+      <Link
+        to={`/clubs/${room.club.id}`}
+        className="flex items-center mt-4 text-gray-600 dark:text-gray-400 transition-transform hover:translate-x-1"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-4 w-4 mr-2"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+        >
+          <path
+            fillRule="evenodd"
+            d="M10.293 3.293a1 1 0 0 1 1.414 1.414L6.414 10l5.293 5.293a1 1 0 0 1-1.414 1.414l-6-6a1 1 0 0 1 0-1.414l6-6a1 1 0 0 1 0 1.414z"
+            clipRule="evenodd"
+          />
+        </svg>
+        Back to {room.club.name}
+      </Link>
     </div>
   );
 }
