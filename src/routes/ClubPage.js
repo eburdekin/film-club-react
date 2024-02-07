@@ -58,7 +58,9 @@ export default function ClubDetails() {
           <ul>
             {club.screening_rooms &&
               club.screening_rooms.map((room) => (
-                <li key={room.id}>{room.name}</li>
+                <a key={room.id} href={`/rooms/${room.id}`}>
+                  <li>{room.name}</li>
+                </a>
               ))}
           </ul>
           <h3 className="text-bold text-lg mt-2">Members</h3>

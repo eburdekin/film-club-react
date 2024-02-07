@@ -9,6 +9,7 @@ import Films from "./routes/Films";
 import FilmPage from "./routes/FilmPage";
 import Clubs from "./routes/Clubs";
 import ClubPage from "./routes/ClubPage";
+import RoomPage from "./routes/RoomPage";
 import Profile from "./routes/Profile";
 import MyClubs from "./components/MyClubs";
 import Settings from "./components/Settings";
@@ -37,6 +38,9 @@ function App() {
               </Route>
               <Route path="/clubs/:clubId">
                 <ClubPage />
+              </Route>
+              <Route path="/rooms/:roomId">
+                <RoomPage />
               </Route>
               <Route exact path="/profile">
                 <Profile />
