@@ -5,6 +5,7 @@ const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState();
+  const [loading, setLoading] = useState(true);
 
   //   useEffect(() => {
   //     fetch("/check_session")
@@ -23,6 +24,8 @@ export const UserProvider = ({ children }) => {
         setUser(data);
       } catch (error) {
         console.error(error);
+      } finally {
+        setLoading(false); // Set loading to false when fetch completes
       }
     };
 
@@ -38,7 +41,7 @@ export const UserProvider = ({ children }) => {
   };
 
   return (
-    <UserContext.Provider value={{ user, loginUser, logoutUser }}>
+    <UserContext.Provider value={{ user, loading, loginUser, logoutUser }}>
       {children}
     </UserContext.Provider>
   );

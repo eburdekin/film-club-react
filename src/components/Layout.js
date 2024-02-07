@@ -4,8 +4,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleUp } from "@fortawesome/free-solid-svg-icons";
 import Header from "./Header";
 import Footer from "./Footer";
+import LoadingScreen from "./LoadingScreen";
+
+import { useUser } from "./UserContext";
 
 const Layout = ({ children }) => {
+  const { loading } = useUser();
   const [showBackToTop, setShowBackToTop] = useState(false);
 
   useEffect(() => {
@@ -26,6 +30,11 @@ const Layout = ({ children }) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+  if (loading) {
+    // Render loading screen while waiting for user data
+    return <LoadingScreen />;
+  }
 
   return (
     <div className="dark:bg-gray-900">
