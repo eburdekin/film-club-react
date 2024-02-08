@@ -4,7 +4,7 @@ const NewClubModal = ({ onClose }) => {
   const [formData, setFormData] = useState({
     name: "",
     description: "",
-    public: true,
+    // public: true,
   });
 
   const [errorMessage, setErrorMessage] = useState("");
@@ -17,12 +17,12 @@ const NewClubModal = ({ onClose }) => {
     });
   };
 
-  const handleToggleChange = () => {
-    setFormData({
-      ...formData,
-      public: !formData.public,
-    });
-  };
+  // const handleToggleChange = () => {
+  //   setFormData({
+  //     ...formData,
+  //     public: !formData.public,
+  //   });
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -99,7 +99,7 @@ const NewClubModal = ({ onClose }) => {
               required
             ></input>
           </div>
-          <div className="flex items-center justify-between mb-4">
+          {/* <div className="flex items-center justify-between mb-4">
             <span className="text-sm font-medium text-gray-700">
               Visibility:
             </span>
@@ -113,7 +113,7 @@ const NewClubModal = ({ onClose }) => {
               />
               <span className="ml-2 text-sm text-gray-700">Public</span>
             </label>
-          </div>
+          </div> */}
           <div className="flex items-center justify-between">
             <button
               type="submit"

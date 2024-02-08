@@ -8,9 +8,9 @@ import { useUser } from "../components/UserContext";
 
 export default function ClubDetails() {
   const { user } = useUser();
-
+  const { clubId } = useParams();
   const [club, setClub] = useState([]);
-  const { clubId } = useParams(); // Get clubId from URL parameters
+  const [isMember, setIsMember] = useState(false);
 
   // Fetch club details using clubId
   useEffect(() => {
@@ -19,11 +19,40 @@ export default function ClubDetails() {
       .then((club) => {
         // Process club details
         setClub(club);
+        if (user && club.members.some((member) => member.id === user.id)) {
+          setIsMember(true);
+        } else {
+          setIsMember(false);
+        }
       })
       .catch((error) => {
         console.error("Error fetching club details:", error);
       });
-  }, [clubId]);
+  }, [clubId, user]);
+
+  const handleJoinLeave = () => {
+    const url = isMember
+      ? `/clubs/${clubId}/remove_user`
+      : `/clubs/${clubId}/add_user`;
+    const method = isMember ? "DELETE" : "POST";
+
+    fetch(url, {
+      method: method,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ user_id: user.id }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        // Toggle the membership status
+        setIsMember(!isMember);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
 
   return (
     <div>
@@ -36,13 +65,23 @@ export default function ClubDetails() {
           <>
             <nav className="bg-gray-100 p-2 rounded-md md:hidden">
               <ul className="flex justify-evenly">
-                <SideNavLink>Join/Leave</SideNavLink>
+                <button
+                  className="dark:text-gray-100"
+                  onClick={handleJoinLeave}
+                >
+                  {isMember ? "Leave" : "Join"}
+                </button>
               </ul>
             </nav>
             <aside className="hidden md:flex md:flex-[2]">
               <nav>
                 <ul className="grid gap-3">
-                  <SideNavLink>Join/Leave</SideNavLink>
+                  <button
+                    className="dark:text-gray-100"
+                    onClick={handleJoinLeave}
+                  >
+                    {isMember ? "Leave" : "Join"}
+                  </button>
                 </ul>
               </nav>
             </aside>
