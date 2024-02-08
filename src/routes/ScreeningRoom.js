@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useUser } from "../components/UserContext";
 
@@ -8,6 +8,7 @@ export default function ScreeningRoom() {
   const [selectedRating, setSelectedRating] = useState(0);
   const { roomId } = useParams();
   const { user } = useUser();
+  const postsEndRef = useRef(null);
 
   useEffect(() => {
     // Fetch room details using roomId
@@ -20,6 +21,13 @@ export default function ScreeningRoom() {
         console.error("Error fetching room details:", error);
       });
   }, [roomId, newPostContent, selectedRating]);
+
+  useEffect(() => {
+    // Scroll to the bottom of the posts container whenever new posts are added
+    if (room && postsEndRef.current) {
+      postsEndRef.current.scrollTop = postsEndRef.current.scrollHeight;
+    }
+  }, [room]);
 
   const handlePostSubmit = () => {
     // Prepare data for the new post
@@ -111,22 +119,26 @@ export default function ScreeningRoom() {
         {/* Display posts */}
         <div>
           <h3>Posts:</h3>
-          <ul className="list-none p-0">
-            {room.posts.map((post) => (
-              <li
-                key={post.id}
-                className="mb-4 bg-gray-100 dark:bg-gray-800 rounded-lg p-4"
-              >
-                <div className="font-bold">{post.author.username}</div>
-                <div className="text-gray-700 dark:text-gray-300 mt-2">
-                  {post.content}
-                </div>
-                <div className="text-sm text-gray-500 mt-1">
-                  {post.timestamp}
-                </div>
-              </li>
-            ))}
-          </ul>
+          <div ref={postsEndRef} className="h-80 overflow-y-auto">
+            <ul className="list-none p-0">
+              {room.posts.map((post) => (
+                <li
+                  key={post.id}
+                  className="mb-2 bg-gray-200 dark:bg-gray-400 rounded-lg p-4"
+                >
+                  <div className="font-bold text-sm">
+                    {post.author.username}
+                  </div>
+                  <div className="text-gray-700 dark:text-gray-300 mt-2">
+                    {post.content}
+                  </div>
+                  <div className="text-xs font-bold text-gray-500 mt-1">
+                    {post.timestamp}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
         {/* Display ratings */}
         <div>
