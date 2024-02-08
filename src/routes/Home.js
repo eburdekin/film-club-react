@@ -60,7 +60,7 @@ export default function Home() {
                   {film.title}
                 </h4>
                 <img
-                  className="mt-2 w-auto h-60"
+                  className="mt-2 w-auto h-70"
                   src={`https://image.tmdb.org/t/p/w185${film.poster_image}`}
                   alt={film.title}
                 />
