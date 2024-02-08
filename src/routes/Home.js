@@ -2,8 +2,6 @@ import { useEffect, useState, useRef } from "react";
 
 export default function Home() {
   const [films, setFilms] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [moviesPerPage] = useState(20); // Set the number of movies per page
 
   const scrollContainerRef = useRef(null);
 
@@ -53,7 +51,7 @@ export default function Home() {
         className="scroll-container overflow-x-auto whitespace-nowrap mb-4"
       >
         {films.map((film) => (
-          <div key={film.id} className="inline-block px-2 m-4">
+          <div key={film.id} className="inline-block px-1 md:px-2 m-2 md:m-4">
             <a href={`/films/${film.id}`}>
               <div className="hover-effect">
                 {/* <h4 className="text-sm font-semibold text-gray-800">
