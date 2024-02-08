@@ -46,3 +46,23 @@ h1, h2, h3 {
   display: none;
   /* Hide the scrollbar in Webkit browsers (Chrome, Safari, etc.) */
 }
+
+.star {
+  cursor: pointer;
+  color: #ccc;
+  /* Default color for unselected stars */
+  font-size: 24px;
+  /* Adjust size as needed */
+  margin-right: 5px;
+  /* Adjust spacing between stars */
+}
+
+.star:hover {
+  color: #ffcc00;
+  /* Change color on hover for unselected stars */
+}
+
+.star.selected {
+  color: #ffcc00;
+  /* Color for selected stars */
+}

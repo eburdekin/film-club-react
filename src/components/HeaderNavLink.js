@@ -8,11 +8,11 @@ const HeaderNavLink = ({ href, children }) => {
     <a
       href={href}
       //   className="hover:bg-gray-100 p-2 rounded block"
-      className={`hover:bg-gray-100 dark:hover:text-black p-2 rounded block ${
+      className={`hover:bg-gray-100 dark:hover:text-black p-2 rounded-xl block ${
         active ||
         (href.startsWith("/profile") && pathname.startsWith("/profile"))
-          ? "text-black font-semibold dark:text-white"
-          : "text-gray-500 dark:text-gray-200"
+          ? "text-black font-bold dark:text-white"
+          : "text-gray-700 dark:text-gray-400"
       }`}
     >
       {children}

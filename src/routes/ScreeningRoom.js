@@ -135,15 +135,16 @@ export default function ScreeningRoom() {
                 src={`https://image.tmdb.org/t/p/w185${room.movie.poster_image}`}
                 alt={room.movie.title}
               />
+              <div>
+                <h3>
+                  Average Rating from {room.club.name}: {averageRating}
+                </h3>
+              </div>
             </div>
           </nav>
         </aside>
 
         <div className="bg-gray-100 dark:bg-gray-300 flex-[8] p-4 rounded min-h-[300px]">
-          <div>
-            <h3>Average Rating: {averageRating}</h3>
-          </div>
-
           <div>
             <h3>Posts:</h3>
             <div ref={postsEndRef} className="h-80 overflow-y-auto">
@@ -182,7 +183,7 @@ export default function ScreeningRoom() {
               value={newPostContent}
               onChange={(e) => setNewPostContent(e.target.value)}
             />
-            <button onClick={handlePostSubmit}>Submit</button>
+            <button onClick={handlePostSubmit}>Submit Post</button>
           </div>
           {/* Rate movie */}
           <div>
@@ -192,13 +193,12 @@ export default function ScreeningRoom() {
               <span
                 key={star}
                 className={star <= selectedRating ? "star selected" : "star"}
-                onMouseEnter={() => setSelectedRating(star)}
-                onMouseLeave={() => setSelectedRating(0)}
-                onClick={handleRatingSubmit}
+                onClick={() => setSelectedRating(star)}
               >
                 &#9733;
               </span>
             ))}
+            <button onClick={handleRatingSubmit}>Submit Rating</button>
           </div>
         </div>
       </div>
