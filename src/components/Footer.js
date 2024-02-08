@@ -39,7 +39,7 @@ const Footer = () => {
           &copy; {new Date().getFullYear().toString()} by
           <a
             href="https://github.com/eburdekin"
-            className="hover:text-cyan-600 dark:hover:text-cyan-300"
+            className="text-cyan-600 dark:text-cyan-400"
           >
             {" "}
             @eburdekin
@@ -47,7 +47,7 @@ const Footer = () => {
           . Film data from{" "}
           <a
             href="https://developer.themoviedb.org/docs/getting-started"
-            className="hover:text-cyan-600 dark:hover:text-cyan-300"
+            className="text-cyan-600 dark:text-cyan-400"
           >
             TMDB
           </a>

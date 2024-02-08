@@ -60,7 +60,7 @@ const Header = React.memo(() => {
   };
 
   return (
-    <header className="flex flex-col gap-5 mx-auto">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 backdrop-blur-md dark:backdrop-blur-md bg-opacity-60 dark:bg-opacity-60">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <a href="/" className="flex items-center">
           <img
@@ -89,14 +89,14 @@ const Header = React.memo(() => {
             {user ? (
               <button
                 onClick={handleLogout}
-                className="bg-gray-300 dark:text-black dark:hover:text-white p-2 rounded block hover-effect"
+                className=" bg-cyan-600 dark:bg-cyan-400 text-white dark:text-black dark:hover:text-white p-2 rounded-xl block hover-effect"
               >
                 Log out
               </button>
             ) : (
               <button
                 onClick={toggleModal}
-                className="bg-gray-300 dark:text-black dark:hover:text-white p-2 rounded block hover-effect"
+                className=" bg-cyan-600 dark:bg-cyan-400 text-white dark:text-black dark:hover:text-white p-2 rounded-xl block hover-effect"
               >
                 Log in
               </button>
@@ -134,7 +134,7 @@ const Header = React.memo(() => {
       </div>
       {/* Overlay menu */}
       {isMenuOpen && (
-        <div className="md:hidden fixed inset-0 bg-white dark:bg-gray-900 z-10">
+        <div className="md:hidden fixed inset-0 bg-white dark:bg-gray-900  z-10">
           <div className="container mx-auto px-4 py-4 flex items-center justify-between">
             <a href="/" className="flex items-center">
               <img
@@ -167,23 +167,23 @@ const Header = React.memo(() => {
               </svg>
             </button>
           </div>
-          <ul className="flex flex-col items-center mt-12">
+          <ul className="flex flex-col items-center pt-12 bg-white dark:bg-gray-900 min-h-screen">
             {menuItems.map(({ url, label }, index) => (
-              <li key={index} className="my-4">
+              <li key={index} className="my-4 text-2xl">
                 <HeaderNavLink href={url}>{label}</HeaderNavLink>
               </li>
             ))}
             {user ? (
               <button
                 onClick={handleLogout}
-                className="bg-gray-300 dark:text-black dark:hover:text-white p-2 rounded block hover-effect"
+                className="text-xl bg-cyan-600 dark:bg-cyan-400 text-white dark:text-black dark:hover:text-white mt-4 p-3 rounded-xl block hover-effect"
               >
                 Log out
               </button>
             ) : (
               <button
                 onClick={toggleModal}
-                className="bg-gray-300 dark:text-black dark:hover:text-white p-2 rounded block hover-effect"
+                className="text-xl bg-cyan-600 dark:bg-cyan-400 text-white dark:text-black dark:hover:text-white mt-4 p-3 rounded-xl block hover-effect"
               >
                 Log in
               </button>

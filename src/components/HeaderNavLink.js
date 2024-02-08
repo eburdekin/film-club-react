@@ -12,7 +12,7 @@ const HeaderNavLink = ({ href, children }) => {
         active ||
         (href.startsWith("/profile") && pathname.startsWith("/profile"))
           ? "text-black font-semibold dark:text-white"
-          : "text-gray-500"
+          : "text-gray-500 dark:text-gray-200"
       }`}
     >
       {children}

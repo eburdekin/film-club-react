@@ -107,73 +107,99 @@ export default function ScreeningRoom() {
   const averageRating = totalRatings > 0 ? sumOfRatings / totalRatings : 0;
 
   return (
-    <div>
+    <>
+      Screening Room:
       <h2 className="text-3xl font-bold text-gray-900 dark:text-white leading-[1.4] mb-5">
         {room.name}
       </h2>
-      <div className="bg-gray-100 dark:bg-gray-300 p-4 rounded min-h-[300px]">
-        {/* Display the average rating */}
-        <div>
-          <h3>Average Rating: {averageRating}</h3>
-        </div>
-        {/* Display posts */}
-        <div>
-          <h3>Posts:</h3>
-          <div ref={postsEndRef} className="h-80 overflow-y-auto">
-            <ul className="list-none p-0">
-              {room.posts.map((post) => (
-                <li
-                  key={post.id}
-                  className="mb-2 bg-gray-200 dark:bg-gray-400 rounded-lg p-4"
-                >
-                  <div className="font-bold text-sm">
-                    {post.author.username}
-                  </div>
-                  <div className="text-gray-700 dark:text-gray-300 mt-2">
-                    {post.content}
-                  </div>
-                  <div className="text-xs font-bold text-gray-500 mt-1">
-                    {post.timestamp}
-                  </div>
-                </li>
+      <div className="flex flex-col md:flex-row gap-8">
+        <nav className="bg-gray-100 p-2 rounded-md md:hidden">
+          <div className="col-span-1">
+            <h4>Discussing:</h4>
+            <h3 className="text-bold text-xl">{room.movie.title}</h3>
+            <img
+              className="w-20 h-auto"
+              src={`https://image.tmdb.org/t/p/w185${room.movie.poster_image}`}
+              alt={room.movie.title}
+            />
+          </div>
+        </nav>
+        {/* Sidebar navigation on larger screens */}
+        <aside className="hidden md:flex md:flex-[2]">
+          <nav>
+            <div className="col-span-1">
+              <h4>Discussing:</h4>
+              <h3 className="text-bold text-xl">{room.movie.title}</h3>
+              <img
+                className="w-30 h-auto"
+                src={`https://image.tmdb.org/t/p/w185${room.movie.poster_image}`}
+                alt={room.movie.title}
+              />
+            </div>
+          </nav>
+        </aside>
+
+        <div className="bg-gray-100 dark:bg-gray-300 flex-[8] p-4 rounded min-h-[300px]">
+          <div>
+            <h3>Average Rating: {averageRating}</h3>
+          </div>
+
+          <div>
+            <h3>Posts:</h3>
+            <div ref={postsEndRef} className="h-80 overflow-y-auto">
+              <ul className="list-none p-0">
+                {room.posts.map((post) => (
+                  <li
+                    key={post.id}
+                    className="mb-2 bg-gray-200 dark:bg-gray-400 rounded-lg p-4"
+                  >
+                    <div className="font-bold text-sm">
+                      {post.author.username}
+                    </div>
+                    <div className="text-gray-700 mt-2">{post.content}</div>
+                    <div className="text-xs font-bold text-gray-500 mt-1">
+                      {post.timestamp}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          {/* Display ratings */}
+          <div>
+            <h3>Ratings:</h3>
+            <ul>
+              {room.ratings.map((rating) => (
+                <li key={rating.id}>{rating.rating}</li>
               ))}
             </ul>
           </div>
-        </div>
-        {/* Display ratings */}
-        <div>
-          <h3>Ratings:</h3>
-          <ul>
-            {room.ratings.map((rating) => (
-              <li key={rating.id}>{rating.rating}</li>
+          {/* New post input form */}
+          <div>
+            <h3>New Post:</h3>
+            <input
+              type="text"
+              value={newPostContent}
+              onChange={(e) => setNewPostContent(e.target.value)}
+            />
+            <button onClick={handlePostSubmit}>Submit</button>
+          </div>
+          {/* Rate movie */}
+          <div>
+            <h3>Rate Movie:</h3>
+            {/* Star rating system */}
+            {[1, 2, 3, 4, 5].map((star) => (
+              <span
+                key={star}
+                className={star <= selectedRating ? "star selected" : "star"}
+                onMouseEnter={() => setSelectedRating(star)}
+                onMouseLeave={() => setSelectedRating(0)}
+                onClick={handleRatingSubmit}
+              >
+                &#9733;
+              </span>
             ))}
-          </ul>
-        </div>
-        {/* New post input form */}
-        <div>
-          <h3>New Post:</h3>
-          <input
-            type="text"
-            value={newPostContent}
-            onChange={(e) => setNewPostContent(e.target.value)}
-          />
-          <button onClick={handlePostSubmit}>Submit</button>
-        </div>
-        {/* Rate movie */}
-        <div>
-          <h3>Rate Movie:</h3>
-          {/* Star rating system */}
-          {[1, 2, 3, 4, 5].map((star) => (
-            <span
-              key={star}
-              className={star <= selectedRating ? "star selected" : "star"}
-              onMouseEnter={() => setSelectedRating(star)}
-              onMouseLeave={() => setSelectedRating(0)}
-              onClick={handleRatingSubmit}
-            >
-              &#9733;
-            </span>
-          ))}
+          </div>
         </div>
       </div>
       <Link
@@ -194,6 +220,6 @@ export default function ScreeningRoom() {
         </svg>
         Back to {room.club.name}
       </Link>
-    </div>
+    </>
   );
 }
