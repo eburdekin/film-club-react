@@ -1,28 +1,10 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 
-export default function FilmList() {
-  const [films, setFilms] = useState([]);
+export default function FilmList({ films }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [moviesPerPage] = useState(20); // Set the number of movies per page
 
-  const scrollContainerRef = useRef(null);
-
-  useEffect(() => {
-    const fetchFilms = async () => {
-      try {
-        const response = await fetch("/movies");
-        if (!response.ok) {
-          throw new Error("Failed to fetch films");
-        }
-        const data = await response.json();
-        setFilms(data);
-      } catch (error) {
-        console.error("Error fetching films:", error);
-      }
-    };
-
-    fetchFilms();
-  }, []);
+  // const scrollContainerRef = useRef(null);
 
   // Calculate total number of pages
   const totalPages = Math.ceil(films.length / moviesPerPage);
@@ -34,41 +16,18 @@ export default function FilmList() {
     }
   };
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (scrollContainerRef.current) {
-        scrollContainerRef.current.scrollLeft += 1;
-      }
-    }, 30); // Adjust scrolling speed as needed
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     if (scrollContainerRef.current) {
+  //       scrollContainerRef.current.scrollLeft += 1;
+  //     }
+  //   }, 30); // Adjust scrolling speed as needed
 
-    return () => clearInterval(interval);
-  }, []);
+  //   return () => clearInterval(interval);
+  // }, []);
 
   return (
     <div className="mt-8">
-      <h3 className="text-2xl mb-6 dark:text-gray-300">Most Popular</h3>
-      <div
-        ref={scrollContainerRef}
-        className="overflow-x-auto whitespace-nowrap mb-4"
-      >
-        {films.slice(0, 10).map((film) => (
-          <div key={film.id} className="inline-block px-4 m-2">
-            <a href={`/films/${film.id}`}>
-              <div className="p-4 bg-gray-100 dark:bg-gray-300 rounded-md hover-effect">
-                <h4 className="text-sm font-semibold text-gray-800">
-                  {film.title}
-                </h4>
-                <img
-                  className="mt-2 w-auto h-70"
-                  src={`https://image.tmdb.org/t/p/w185${film.poster_image}`}
-                  alt={film.title}
-                />
-              </div>
-            </a>
-          </div>
-        ))}
-      </div>
-
       <h3 className="text-2xl mb-6 dark:text-gray-300">All Films</h3>
       {/* Pagination */}
       <div className="flex justify-center mb-4">
