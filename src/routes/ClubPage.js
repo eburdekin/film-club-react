@@ -74,7 +74,7 @@ export default function ClubDetails() {
                   className="dark:text-gray-100"
                   onClick={handleJoinLeave}
                 >
-                  {isMember ? "Leave" : "Join"}
+                  {isMember ? "Leave group" : "Join group"}
                 </button>
                 <button
                   className="dark:text-gray-100"

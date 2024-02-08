@@ -5,7 +5,7 @@ import { useUser } from "../components/UserContext";
 export default function ScreeningRoom() {
   const [room, setRoom] = useState(null);
   const [newPostContent, setNewPostContent] = useState("");
-  const [selectedRating, setSelectedRating] = useState(0);
+  const [selectedRating, setSelectedRating] = useState(null);
   const { roomId } = useParams();
   const { user } = useUser();
   const postsEndRef = useRef(null);
@@ -104,7 +104,8 @@ export default function ScreeningRoom() {
     (acc, rating) => acc + rating.rating,
     0
   );
-  const averageRating = totalRatings > 0 ? sumOfRatings / totalRatings : 0;
+  const averageRating =
+    totalRatings > 0 ? (sumOfRatings / totalRatings).toFixed(1) : 0;
 
   return (
     <>
@@ -113,7 +114,7 @@ export default function ScreeningRoom() {
         {room.name}
       </h2>
       <div className="flex flex-col md:flex-row gap-8">
-        <nav className="bg-gray-100 p-2 rounded-md md:hidden">
+        <nav className="p-2 rounded-md md:hidden">
           <div className="col-span-1">
             <h4>Discussing:</h4>
             <h3 className="text-bold text-xl">{room.movie.title}</h3>
@@ -136,9 +137,11 @@ export default function ScreeningRoom() {
                 alt={room.movie.title}
               />
               <div>
-                <h3>
-                  Average Rating from {room.club.name}: {averageRating}
-                </h3>
+                <h4 className="text-sm">
+                  Average Rating from {room.club.name}:
+                  <br />
+                  <span className="text-xl font-bold">{averageRating}</span>
+                </h4>
               </div>
             </div>
           </nav>
@@ -183,7 +186,12 @@ export default function ScreeningRoom() {
               value={newPostContent}
               onChange={(e) => setNewPostContent(e.target.value)}
             />
-            <button onClick={handlePostSubmit}>Submit Post</button>
+            <button
+              className="bg-cyan-600 dark:bg-cyan-400 text-sm p-1 rounded-xl text-white dark:text-black"
+              onClick={handlePostSubmit}
+            >
+              Submit Post
+            </button>
           </div>
           {/* Rate movie */}
           <div>
@@ -193,12 +201,19 @@ export default function ScreeningRoom() {
               <span
                 key={star}
                 className={star <= selectedRating ? "star selected" : "star"}
+                // onMouseEnter={() => setSelectedRating(star)}
+                // onMouseLeave={() => setSelectedRating(null)}
                 onClick={() => setSelectedRating(star)}
               >
                 &#9733;
               </span>
             ))}
-            <button onClick={handleRatingSubmit}>Submit Rating</button>
+            <button
+              className="bg-cyan-600 dark:bg-cyan-400 text-sm p-1 rounded-xl text-white dark:text-black"
+              onClick={handleRatingSubmit}
+            >
+              Submit Rating
+            </button>
           </div>
         </div>
       </div>

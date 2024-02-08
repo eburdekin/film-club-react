@@ -29,8 +29,10 @@ export const UserProvider = ({ children }) => {
       }
     };
 
-    checkSession();
-  }, []);
+    if (!user) {
+      checkSession();
+    }
+  }, [user]);
 
   const loginUser = (userData) => {
     setUser(userData);
