@@ -32,3 +32,17 @@ code {
 h1, h2, h3 {
   font-family: 'Gabarito';
 }
+
+.scroll-container {
+  overflow-x: auto;
+  /* Enable horizontal scrolling */
+  overflow-y: hidden;
+  /* Hide vertical scrollbar */
+  white-space: nowrap;
+  /* Prevent line breaks for inline-block elements */
+}
+
+.scroll-container::-webkit-scrollbar {
+  display: none;
+  /* Hide the scrollbar in Webkit browsers (Chrome, Safari, etc.) */
+}

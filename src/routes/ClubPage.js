@@ -55,6 +55,10 @@ export default function ClubDetails() {
       });
   };
 
+  const handleClose = () => {
+    setShowModal(false);
+  };
+
   return (
     <div>
       <h2 className="text-3xl font-bold text-gray-900 dark:text-white leading-[1.4] mb-5">
@@ -154,7 +158,7 @@ export default function ClubDetails() {
       {showModal && (
         <NewRoomModal
           clubId={clubId} // Pass the clubId to the modal component
-          onClose={() => setShowModal(false)}
+          onClose={handleClose}
         />
       )}
     </div>

@@ -50,17 +50,17 @@ export default function Home() {
       </h4>
       <div
         ref={scrollContainerRef}
-        className="overflow-x-auto whitespace-nowrap mb-4"
+        className="scroll-container overflow-x-auto whitespace-nowrap mb-4"
       >
         {films.map((film) => (
-          <div key={film.id} className="inline-block px-4 m-2">
+          <div key={film.id} className="inline-block px-2 m-4">
             <a href={`/films/${film.id}`}>
-              <div className="p-4 bg-gray-100 dark:bg-gray-300 rounded-md hover-effect">
-                <h4 className="text-sm font-semibold text-gray-800">
+              <div className="hover-effect">
+                {/* <h4 className="text-sm font-semibold text-gray-800">
                   {film.title}
-                </h4>
+                </h4> */}
                 <img
-                  className="mt-2 w-auto h-70"
+                  className="mt-2 mb-4 w-auto h-70"
                   src={`https://image.tmdb.org/t/p/w185${film.poster_image}`}
                   alt={film.title}
                 />
