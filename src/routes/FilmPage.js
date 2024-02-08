@@ -52,27 +52,41 @@ export default function ClubDetails() {
         </aside> */}
         {/* Main content */}
         <div className="bg-gray-100 dark:bg-gray-300 flex-[8] p-4 rounded min-h-[300px]">
-          <h3 className="text-bold text-lg">{film.summary}</h3>
-          <img
-            className="w-30 h-auto"
-            src={`https://image.tmdb.org/t/p/w185${film.poster_image}`}
-            alt={film.title}
-          />
-          Average rating, latest posts, all screening rooms
-          <h3 className="text-bold text-lg mt-2">Screening Rooms</h3>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="col-span-1">
+              <h3 className="text-bold text-lg">{film.summary}</h3>
+              <img
+                className="w-30 h-auto"
+                src={`https://image.tmdb.org/t/p/w185${film.poster_image}`}
+                alt={film.title}
+              />
+            </div>
+            <div className="col-span-1 text-left">
+              <ul>
+                <li>Release date: {film.release_date}</li>
+              </ul>
+            </div>
+          </div>
+
           {user ? (
-            <ul>
-              {film.screening_rooms &&
-                film.screening_rooms.map((room) => (
-                  <a key={room.id} href={`/rooms/${room.id}`}>
-                    <li className="bg-gray-400 p-2 rounded-md hover-effect">
-                      <b>{room.name}</b>, hosted by {room.club.name}
-                    </li>
-                  </a>
-                ))}
-            </ul>
+            <div>
+              <h3 className="text-bold text-lg mt-2">Screening Rooms</h3>
+              <ul>
+                {film.screening_rooms &&
+                  film.screening_rooms.map((room) => (
+                    <a key={room.id} href={`/rooms/${room.id}`}>
+                      <li className="bg-gray-400 p-2 rounded-md hover-effect">
+                        <b>{room.name}</b>, hosted by {room.club.name}
+                      </li>
+                    </a>
+                  ))}
+              </ul>
+            </div>
           ) : (
-            <>Log in or create an account to view.</>
+            <div className="font-bold text-xl p-4 m-4">
+              Log in or create an account to view average user rating, latest
+              posts, and more!
+            </div>
           )}
         </div>
       </div>
