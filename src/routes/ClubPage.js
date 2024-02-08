@@ -1,7 +1,7 @@
 // this will be a Club's main page, showing members, join/leave, screening rooms future, active, past.
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-
+import NewRoomModal from "../components/NewRoomModal";
 import SideNavLink from "../components/SideNavLink";
 
 import { useUser } from "../components/UserContext";
@@ -11,6 +11,7 @@ export default function ClubDetails() {
   const { clubId } = useParams();
   const [club, setClub] = useState([]);
   const [isMember, setIsMember] = useState(false);
+  const [showModal, setShowModal] = useState(false); // State to control the visibility of the modal
 
   // Fetch club details using clubId
   useEffect(() => {
@@ -71,6 +72,12 @@ export default function ClubDetails() {
                 >
                   {isMember ? "Leave" : "Join"}
                 </button>
+                <button
+                  className="dark:text-gray-100"
+                  onClick={() => setShowModal(true)}
+                >
+                  Add Screening Room
+                </button>
               </ul>
             </nav>
             <aside className="hidden md:flex md:flex-[2]">
@@ -81,6 +88,12 @@ export default function ClubDetails() {
                     onClick={handleJoinLeave}
                   >
                     {isMember ? "Leave" : "Join"}
+                  </button>
+                  <button
+                    className="dark:text-gray-100"
+                    onClick={() => setShowModal(true)}
+                  >
+                    Add Screening Room
                   </button>
                 </ul>
               </nav>
@@ -138,6 +151,12 @@ export default function ClubDetails() {
         </svg>
         Back to Clubs
       </Link>
+      {showModal && (
+        <NewRoomModal
+          clubId={clubId} // Pass the clubId to the modal component
+          onClose={() => setShowModal(false)}
+        />
+      )}
     </div>
   );
 }
