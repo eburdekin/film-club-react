@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { DarkThemeToggle } from "flowbite-react";
 import HeaderNavLink from "./HeaderNavLink";
 import SignupLoginModal from "./SignupLoginModal";
+import { Link } from "react-router-dom";
 
 import { useUser } from "./UserContext";
 
@@ -14,7 +15,7 @@ const Header = React.memo(() => {
     user ? { label: `Clubs`, url: `/clubs` } : null,
     user ? { label: `Profile`, url: `/profile/my_clubs` } : null,
     user && user.role && user.role.name === "admin"
-      ? { label: `Admin`, url: `/admin` }
+      ? { label: `Admin`, url: `/admin/user_dash` }
       : null,
   ].filter((item) => item !== null);
 
@@ -62,7 +63,7 @@ const Header = React.memo(() => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 backdrop-blur-md dark:backdrop-blur-md bg-opacity-60 dark:bg-opacity-60">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <a href="/" className="flex items-center">
+        <Link to="/" className="flex items-center">
           <img
             src="/favicon.ico"
             className="w-8 md:w-9 m-1 dark:invert"
@@ -74,7 +75,7 @@ const Header = React.memo(() => {
           >
             FilmClub
           </span>
-        </a>
+        </Link>
         <nav className="ml-8 md:flex md:items-center md:gap-x-8">
           <ul
             className={`hidden md:flex flex-wrap gap-x-8 text-gray-900 dark:text-white ${
@@ -136,7 +137,7 @@ const Header = React.memo(() => {
       {isMenuOpen && (
         <div className="md:hidden fixed inset-0 bg-white dark:bg-gray-900  z-10">
           <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-            <a href="/" className="flex items-center">
+            <Link to="/" className="flex items-center">
               <img
                 src="/favicon.ico"
                 className="w-8 md:w-9 m-1 dark:invert"
@@ -148,7 +149,7 @@ const Header = React.memo(() => {
               >
                 FilmClub
               </span>
-            </a>
+            </Link>
             <DarkThemeToggle />
             <button onClick={closeMenu}>
               <svg

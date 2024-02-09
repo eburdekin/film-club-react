@@ -10,10 +10,10 @@ import FilmPage from "./routes/FilmPage";
 import Clubs from "./routes/Clubs";
 import ClubPage from "./routes/ClubPage";
 import ScreeningRoom from "./routes/ScreeningRoom";
-import Profile from "./routes/Profile";
 import MyClubs from "./components/MyClubs";
 import Settings from "./components/Settings";
-import AdminDash from "./routes/AdminDash";
+import UserDash from "./components/UserDash";
+import ClubDash from "./components/ClubDash";
 
 import { UserProvider } from "./components/UserContext";
 
@@ -21,8 +21,8 @@ function App() {
   return (
     <UserProvider>
       <Router>
-        <Flowbite>
-          <Layout>
+        <Layout>
+          <Flowbite>
             <Switch>
               <Route exact path="/home">
                 <Home />
@@ -42,21 +42,21 @@ function App() {
               <Route path="/rooms/:roomId">
                 <ScreeningRoom />
               </Route>
-              <Route exact path="/profile">
-                <Profile />
-              </Route>
               <Route exact path="/profile/my_clubs">
                 <MyClubs />
               </Route>
               <Route exact path="/profile/settings">
                 <Settings />
               </Route>
-              <Route exact path="/admin">
-                <AdminDash />
+              <Route exact path="/admin/user_dash">
+                <UserDash />
+              </Route>
+              <Route exact path="/admin/club_dash">
+                <ClubDash />
               </Route>
             </Switch>
-          </Layout>
-        </Flowbite>
+          </Flowbite>
+        </Layout>
       </Router>
     </UserProvider>
   );

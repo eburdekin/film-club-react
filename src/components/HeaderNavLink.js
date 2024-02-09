@@ -1,12 +1,12 @@
-// import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const HeaderNavLink = ({ href, children }) => {
   const pathname = window.location.pathname;
   const active = pathname.startsWith(href);
 
   return (
-    <a
-      href={href}
+    <NavLink
+      to={href}
       //   className="hover:bg-gray-100 p-2 rounded block"
       className={`hover:bg-gray-100 dark:hover:text-black p-2 rounded-xl block ${
         active ||
@@ -16,7 +16,7 @@ const HeaderNavLink = ({ href, children }) => {
       }`}
     >
       {children}
-    </a>
+    </NavLink>
   );
 };
 

@@ -1,6 +1,6 @@
 import Profile from "../routes/Profile";
 import { useState, useEffect } from "react";
-import NewClubModal from "../components/NewClubModal";
+import NewClubModal from "./NewClubModal";
 
 import { useUser } from "./UserContext";
 
