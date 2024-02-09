@@ -56,7 +56,7 @@ export default function MyClubs() {
       {user && userClubs.length > 0 && (
         <div className="mb-8">
           <h3 className="text-2xl mb-6 dark:text-gray-300">My clubs</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {userClubs.map((club) => (
               <a href={`/clubs/${club.id}`} key={club.id}>
                 <div className="md:h-36 flex flex-col justify-center p-4 bg-gray-300 dark:bg-gray-400 rounded-md hover-effect">

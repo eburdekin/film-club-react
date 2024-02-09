@@ -1,10 +1,8 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 export default function FilmList({ films }) {
   const [currentPage, setCurrentPage] = useState(1);
-  const [moviesPerPage] = useState(20); // Set the number of movies per page
-
-  // const scrollContainerRef = useRef(null);
+  const moviesPerPage = 20; // Set the number of movies per page
 
   // Calculate total number of pages
   const totalPages = Math.ceil(films.length / moviesPerPage);
@@ -16,15 +14,9 @@ export default function FilmList({ films }) {
     }
   };
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     if (scrollContainerRef.current) {
-  //       scrollContainerRef.current.scrollLeft += 1;
-  //     }
-  //   }, 30); // Adjust scrolling speed as needed
-
-  //   return () => clearInterval(interval);
-  // }, []);
+  // Calculate start and end index of films to display on the current page
+  const startIndex = (currentPage - 1) * moviesPerPage;
+  const endIndex = Math.min(startIndex + moviesPerPage, films.length);
 
   return (
     <div className="mt-8">
@@ -38,17 +30,32 @@ export default function FilmList({ films }) {
         >
           Previous
         </button>
-        {Array.from({ length: Math.min(3, totalPages) }, (_, i) => (
+        {currentPage > 1 && (
           <button
-            key={i}
             className={`mx-1 px-3 py-1 border border-gray-300 rounded-md ${
-              currentPage === i + 1 ? "bg-gray-300" : ""
+              currentPage === 1 ? "bg-gray-300" : ""
             }`}
-            onClick={() => paginate(currentPage - 1 + i)}
+            onClick={() => paginate(currentPage - 1)}
           >
-            {currentPage - 1 + i}
+            {currentPage - 1}
           </button>
-        ))}
+        )}
+        <button
+          className={`mx-1 px-3 py-1 border border-gray-300 rounded-md bg-gray-300`}
+          onClick={() => paginate(currentPage)}
+        >
+          {currentPage}
+        </button>
+        {currentPage < totalPages && (
+          <button
+            className={`mx-1 px-3 py-1 border border-gray-300 rounded-md ${
+              currentPage === totalPages ? "bg-gray-300" : ""
+            }`}
+            onClick={() => paginate(currentPage + 1)}
+          >
+            {currentPage + 1}
+          </button>
+        )}
         <button
           className="mx-1 px-3 py-1 border border-gray-300 rounded-md"
           onClick={() => paginate(currentPage + 1)}
@@ -59,50 +66,20 @@ export default function FilmList({ films }) {
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {/* Display movies for the current page */}
-        {films
-          .slice((currentPage - 1) * moviesPerPage, currentPage * moviesPerPage)
-          .map((film) => (
-            <a key={film.id} href={`/films/${film.id}`}>
-              <div className="p-4 bg-gray-100 dark:bg-gray-300 rounded-md hover-effect">
-                <h4 className="text-sm font-semibold text-gray-800">
-                  {film.title}
-                </h4>
-                <img
-                  className="mt-2 w-full h-auto"
-                  src={`https://image.tmdb.org/t/p/w185${film.poster_image}`}
-                  alt={film.title}
-                />
-              </div>
-            </a>
-          ))}
-      </div>
-      {/* Pagination */}
-      <div className="flex justify-center mt-4">
-        <button
-          className="mx-1 px-3 py-1 border border-gray-300 rounded-md"
-          onClick={() => paginate(currentPage - 1)}
-          disabled={currentPage === 1}
-        >
-          Previous
-        </button>
-        {Array.from({ length: Math.min(3, totalPages) }, (_, i) => (
-          <button
-            key={i}
-            className={`mx-1 px-3 py-1 border border-gray-300 rounded-md ${
-              currentPage === i + 1 ? "bg-gray-300" : ""
-            }`}
-            onClick={() => paginate(currentPage - 1 + i)}
-          >
-            {currentPage - 1 + i}
-          </button>
+        {films.slice(startIndex, endIndex).map((film) => (
+          <a key={film.id} href={`/films/${film.id}`}>
+            <div className="p-4 bg-gray-100 dark:bg-gray-300 rounded-md hover-effect">
+              <h4 className="text-sm font-semibold text-gray-800">
+                {film.title}
+              </h4>
+              <img
+                className="mt-2 w-full h-auto"
+                src={`https://image.tmdb.org/t/p/w185${film.poster_image}`}
+                alt={film.title}
+              />
+            </div>
+          </a>
         ))}
-        <button
-          className="mx-1 px-3 py-1 border border-gray-300 rounded-md"
-          onClick={() => paginate(currentPage + 1)}
-          disabled={currentPage === totalPages}
-        >
-          Next
-        </button>
       </div>
     </div>
   );
