@@ -53,7 +53,6 @@ export default function MyClubs() {
       >
         + New Club
       </button>
-      <h3 className="text-2xl mb-6">My clubs</h3>
       {user && userClubs.length > 0 && (
         <div className="mb-8">
           <h3 className="text-2xl mb-6 dark:text-gray-300">My clubs</h3>
