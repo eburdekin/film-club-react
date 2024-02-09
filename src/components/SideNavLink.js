@@ -1,10 +1,12 @@
+import { Link } from "react-router-dom";
+
 const SideNavLink = ({ href, children }) => {
   //   const pathname = usePathname();
   const active = href === window.location.pathname;
 
   return (
-    <a
-      href={href}
+    <Link
+      to={href}
       //   className="hover:bg-gray-100 dark:text-white p-2 rounded block text-sm"
       className={`hover:bg-gray-100 dark:hover:text-black p-2 rounded block text-md ${
         active
@@ -13,7 +15,7 @@ const SideNavLink = ({ href, children }) => {
       }`}
     >
       {children}
-    </a>
+    </Link>
   );
 };
 
