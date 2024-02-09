@@ -76,12 +76,16 @@ export default function ClubDetails() {
                 >
                   {isMember ? "Leave club" : "Join club"}
                 </button>
-                <button
-                  className="dark:text-gray-100"
-                  onClick={() => setShowModal(true)}
-                >
-                  + Screening Room
-                </button>
+                {isMember ? (
+                  <button
+                    className="dark:text-gray-100"
+                    onClick={() => setShowModal(true)}
+                  >
+                    + Screening Room
+                  </button>
+                ) : (
+                  ""
+                )}
               </ul>
             </nav>
             <aside className="hidden md:flex md:flex-[2]">
@@ -93,12 +97,16 @@ export default function ClubDetails() {
                   >
                     {isMember ? "Leave club" : "Join club"}
                   </button>
-                  <button
-                    className="dark:text-gray-100"
-                    onClick={() => setShowModal(true)}
-                  >
-                    + Screening Room
-                  </button>
+                  {isMember ? (
+                    <button
+                      className="dark:text-gray-100"
+                      onClick={() => setShowModal(true)}
+                    >
+                      + Screening Room
+                    </button>
+                  ) : (
+                    ""
+                  )}
                 </ul>
               </nav>
             </aside>
@@ -116,7 +124,7 @@ export default function ClubDetails() {
                 club.screening_rooms.map((room) => (
                   <a key={room.id} href={`/rooms/${room.id}`}>
                     <li className="bg-gray-400 p-2 rounded-md hover-effect">
-                      {room.name}
+                      Screening: {room.movie.title} in Room {room.id}
                     </li>
                   </a>
                 ))}

@@ -191,7 +191,9 @@ const Header = React.memo(() => {
           </ul>
         </div>
       )}
-      {isModalOpen && <SignupLoginModal onClose={handleUserLogin} />}
+      {isModalOpen && (
+        <SignupLoginModal onClose={toggleModal} onLogin={handleUserLogin} />
+      )}
     </header>
   );
 });

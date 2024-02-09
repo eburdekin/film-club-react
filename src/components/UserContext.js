@@ -29,10 +29,10 @@ export const UserProvider = ({ children }) => {
       }
     };
 
-    if (!user) {
-      checkSession();
-    }
-  }, [user]);
+    // if (!user) {
+    checkSession();
+    // }
+  }, []);
 
   const loginUser = (userData) => {
     setUser(userData);

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const LoginModal = ({ onClose }) => {
+const LoginModal = ({ onClose, onLogin }) => {
   const [formData, setFormData] = useState({
     username: "",
     email: "", // New field for sign up
@@ -30,7 +30,7 @@ const LoginModal = ({ onClose }) => {
       if (response.ok) {
         const userData = await response.json(); // Assuming the response contains user data
         console.log("Successful operation", userData);
-        onClose(userData);
+        onLogin(userData);
       } else {
         const errorData = await response.json();
         // Handle errors
@@ -42,7 +42,7 @@ const LoginModal = ({ onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-50">
+    <div className="fixed inset-0 flex items-center justify-center z-50 min-h-screen">
       <div className="absolute inset-0 bg-black opacity-50"></div>
       <div className="bg-gray-100 dark:bg-gray-300 w-96 p-8 rounded-lg shadow-lg z-10 text-center">
         <h2 className="text-2xl font-semibold mb-4">
