@@ -35,7 +35,7 @@ export default function ClubDetails() {
     const url = isMember
       ? `/clubs/${clubId}/remove_user`
       : `/clubs/${clubId}/add_user`;
-    const method = isMember ? "DELETE" : "POST";
+    const method = isMember ? "POST" : "POST";
 
     fetch(url, {
       method: method,
@@ -74,13 +74,13 @@ export default function ClubDetails() {
                   className="dark:text-gray-100"
                   onClick={handleJoinLeave}
                 >
-                  {isMember ? "Leave group" : "Join group"}
+                  {isMember ? "Leave club" : "Join club"}
                 </button>
                 <button
                   className="dark:text-gray-100"
                   onClick={() => setShowModal(true)}
                 >
-                  Add Screening Room
+                  + Screening Room
                 </button>
               </ul>
             </nav>
@@ -91,13 +91,13 @@ export default function ClubDetails() {
                     className="dark:text-gray-100"
                     onClick={handleJoinLeave}
                   >
-                    {isMember ? "Leave" : "Join"}
+                    {isMember ? "Leave club" : "Join club"}
                   </button>
                   <button
                     className="dark:text-gray-100"
                     onClick={() => setShowModal(true)}
                   >
-                    Add Screening Room
+                    + Screening Room
                   </button>
                 </ul>
               </nav>
