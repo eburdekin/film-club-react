@@ -2,26 +2,8 @@ import { useState, useEffect } from "react";
 
 import { useUser } from "./UserContext";
 
-export default function ClubList() {
+export default function ClubList({ clubs }) {
   const { user } = useUser();
-  const [clubs, setClubs] = useState([]);
-
-  useEffect(() => {
-    const fetchClubs = async () => {
-      try {
-        const response = await fetch("/clubs");
-        if (!response.ok) {
-          throw new Error("Failed to fetch clubs");
-        }
-        const data = await response.json();
-        setClubs(data);
-      } catch (error) {
-        console.error("Error fetching clubs:", error);
-      }
-    };
-
-    fetchClubs();
-  }, []);
 
   return (
     <div className="mt-8">
