@@ -76,7 +76,7 @@ export default function ClubDetails() {
                   film.screening_rooms.map((room) => (
                     <a key={room.id} href={`/rooms/${room.id}`}>
                       <li className="bg-gray-400 p-2 rounded-md hover-effect">
-                        <b>{room.name}</b>, hosted by {room.club.name}
+                        <b>Room #{room.id}</b>, hosted by {room.club.name}
                       </li>
                     </a>
                   ))}

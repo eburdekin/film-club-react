@@ -8,25 +8,30 @@ export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  useEffect(() => {
-    const fetchClubs = async () => {
-      try {
-        const response = await fetch("/clubs");
-        if (!response.ok) {
-          throw new Error("Failed to fetch clubs");
-        }
-        const data = await response.json();
-        setClubs(data);
-      } catch (error) {
-        console.error("Error fetching clubs:", error);
+  const fetchClubs = async () => {
+    try {
+      const response = await fetch("/clubs");
+      if (!response.ok) {
+        throw new Error("Failed to fetch clubs");
       }
-    };
+      const data = await response.json();
+      setClubs(data);
+    } catch (error) {
+      console.error("Error fetching clubs:", error);
+    }
+  };
 
+  useEffect(() => {
     fetchClubs();
   }, []);
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
+  };
+
+  const handleClose = () => {
+    setIsModalOpen(false);
+    fetchClubs();
   };
 
   const filteredClubs = clubs.filter((club) =>
@@ -46,7 +51,7 @@ export default function Home() {
         + New Club
       </button>
       <ClubList clubs={filteredClubs} />
-      {isModalOpen && <NewClubModal onClose={() => setIsModalOpen(false)} />}
+      {isModalOpen && <NewClubModal onClose={handleClose} />}
     </>
   );
 }
