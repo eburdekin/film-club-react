@@ -1,6 +1,10 @@
 import { useState } from "react";
 
+import { useUser } from "./UserContext";
+
 const NewClubModal = ({ onClose }) => {
+  const { user } = useUser();
+
   const [formData, setFormData] = useState({
     name: "",
     description: "",
@@ -24,6 +28,26 @@ const NewClubModal = ({ onClose }) => {
   //   });
   // };
 
+  const handleJoin = (clubId) => {
+    const url = `/clubs/${clubId}/add_user`;
+    const method = "POST";
+
+    fetch(url, {
+      method: method,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ user_id: user.id }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -37,6 +61,7 @@ const NewClubModal = ({ onClose }) => {
       if (response.ok) {
         const data = await response.json();
         console.log("New club created:", data);
+        handleJoin(data.id);
         onClose(); // Close the modal after successful creation
       } else {
         const errorData = await response.json();
