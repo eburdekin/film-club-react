@@ -6,6 +6,7 @@ export default function AdminDash() {
   const [users, setUsers] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
+  const [clubs, setClubs] = useState([]);
 
   const toggleModal = (user) => {
     setIsModalOpen(!isModalOpen);
@@ -47,7 +48,7 @@ export default function AdminDash() {
   //     console.log("Edit user with id:", userId);
   //   };
 
-  const handleDelete = async (userId) => {
+  const handleUserDelete = async (userId) => {
     try {
       const response = await fetch(`/users/${userId}`, {
         method: "DELETE",
@@ -60,6 +61,38 @@ export default function AdminDash() {
       console.log("User deleted successfully");
     } catch (error) {
       console.error("Error deleting user:", error);
+    }
+  };
+
+  useEffect(() => {
+    const fetchClubs = async () => {
+      try {
+        const response = await fetch("/clubs");
+        if (!response.ok) {
+          throw new Error("Failed to fetch clubs");
+        }
+        const data = await response.json();
+        setClubs(data);
+      } catch (error) {
+        console.error("Error fetching clubs:", error);
+      }
+    };
+
+    fetchClubs();
+  }, []);
+
+  const handleClubDelete = async (clubId) => {
+    try {
+      const response = await fetch(`/clubs/${clubId}`, {
+        method: "DELETE",
+      });
+      if (!response.ok) {
+        throw new Error("Failed to delete club");
+      }
+      setClubs(clubs.filter((club) => club.id !== clubId));
+      console.log("Club deleted successfully");
+    } catch (error) {
+      console.error("Error deleting club:", error);
     }
   };
 
@@ -94,7 +127,37 @@ export default function AdminDash() {
                   Edit
                 </button>
                 <button
-                  onClick={() => handleDelete(user.id)}
+                  onClick={() => handleUserDelete(user.id)}
+                  className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <h3 className="text-2xl mb-6 font-bold mt-8 dark:text-gray-300">Clubs</h3>
+      <table className="table-auto  dark:text-gray-300">
+        <thead>
+          <tr>
+            <th className="px-4 py-2 w-1/5">Name</th>
+            <th className="px-4 py-2 w-1/5">Description</th>
+            <th className="px-4 py-2 w-1/5">Members</th>
+            <th className="px-4 py-2 w-1/4">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {clubs.map((club) => (
+            <tr key={club.id}>
+              <td className="border px-4 py-2">{club.name}</td>
+              <td className="border px-4 py-2">{club.description}</td>
+              <td className="border px-4 py-2">
+                {club.members.map((member) => member.username).join(", ")}
+              </td>
+              <td className="border px-4 py-2">
+                <button
+                  onClick={() => handleClubDelete(club.id)}
                   className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
                 >
                   Delete
