@@ -14,7 +14,7 @@ export default function ClubDetails() {
   const [showModal, setShowModal] = useState(false); // State to control the visibility of the modal
 
   // Fetch club details using clubId
-  useEffect(() => {
+  const fetchClubDetails = () => {
     fetch(`http://127.0.0.1:5555/clubs/${clubId}`)
       .then((response) => response.json())
       .then((club) => {
@@ -29,7 +29,12 @@ export default function ClubDetails() {
       .catch((error) => {
         console.error("Error fetching club details:", error);
       });
-  }, [clubId, user]);
+  };
+
+  // Fetch club details using clubId
+  useEffect(() => {
+    fetchClubDetails();
+  });
 
   const handleJoinLeave = () => {
     const url = isMember
@@ -44,19 +49,28 @@ export default function ClubDetails() {
       },
       body: JSON.stringify({ user_id: user.id }),
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to update membership status");
+        }
+        return response.json();
+      })
       .then((data) => {
         console.log(data);
         // Toggle the membership status
         setIsMember(!isMember);
+        // Only refetch club details if leaving club was successful
+        if (isMember) {
+          fetchClubDetails();
+        }
       })
       .catch((error) => {
         console.error("Error:", error);
       });
   };
-
   const handleClose = () => {
     setShowModal(false);
+    setClub([]);
   };
 
   return (
