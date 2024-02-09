@@ -67,24 +67,24 @@ export default function UserDash() {
 
   return (
     <Admin>
-      <div className="mt-8">
-        <h3 className="text-2xl mb-6 font-bold dark:text-gray-300">Users</h3>
-        <table className="table-auto w-full dark:text-gray-300">
+      <div>
+        <h3 className="text-2xl mb-6 font-bold">Users</h3>
+        <table className="table-auto w-full text-xs md:text-md">
           <thead>
             <tr>
-              <th className="px-4 py-2">Username</th>
-              <th className="px-4 py-2">Email</th>
-              <th className="px-4 py-2">Role</th>
-              <th className="px-4 py-2">Actions</th>
+              <th className="px-2 md:px-4 py-2">Username</th>
+              <th className="px-2 md:px-4 py-2">Email</th>
+              <th className="px-2 md:px-4 py-2">Role</th>
+              <th className="px-2 md:px-4 py-2">Actions</th>
             </tr>
           </thead>
           <tbody>
             {users.map((user) => (
               <tr key={user.id}>
-                <td className="border px-4 py-2">{user.username}</td>
-                <td className="border px-4 py-2">{user.email}</td>
-                <td className="border px-4 py-2">{user.role.name}</td>
-                <td className="border px-4 py-2">
+                <td className="border px-2 md:px-4 py-2">{user.username}</td>
+                <td className="border px-2 md:px-4 py-2">{user.email}</td>
+                <td className="border px-2 md:px-4 py-2">{user.role.name}</td>
+                <td className="border px-2 md:px-4 py-2">
                   <button
                     onClick={(e) => toggleModal(user)}
                     className="mr-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
