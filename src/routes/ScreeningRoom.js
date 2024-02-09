@@ -109,9 +109,8 @@ export default function ScreeningRoom() {
 
   return (
     <>
-      Screening Room:
-      <h2 className="text-3xl font-bold text-gray-900 dark:text-white leading-[1.4] mb-5">
-        {room.name}
+      <h2 className="text-3xl text-gray-900 dark:text-white leading-[1.4] mb-5">
+        <b>{room.club.name}</b>: Screening Room #{room.id}
       </h2>
       <div className="flex flex-col md:flex-row gap-8">
         <nav className="p-2 rounded-md md:hidden">
@@ -126,7 +125,7 @@ export default function ScreeningRoom() {
           </div>
         </nav>
         {/* Sidebar navigation on larger screens */}
-        <aside className="hidden md:flex md:flex-[2]">
+        <aside className="hidden md:flex md:flex-[2] dark:text-white">
           <nav>
             <div className="col-span-1">
               <h4>Discussing:</h4>

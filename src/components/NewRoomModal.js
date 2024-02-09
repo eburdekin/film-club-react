@@ -2,7 +2,6 @@ import { useState } from "react";
 
 const NewRoomModal = ({ onClose, clubId }) => {
   const [formData, setFormData] = useState({
-    name: "",
     movie_id: "", // Add movie ID field
     club_id: clubId, // Add club ID field
   });
@@ -52,23 +51,6 @@ const NewRoomModal = ({ onClose, clubId }) => {
         <h2 className="text-2xl font-semibold mb-4">New Screening Room</h2>
         {errorMessage && <p className="text-red-500 mb-2">{errorMessage}</p>}
         <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label
-              htmlFor="name"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Room Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleInputChange}
-              className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              required
-            />
-          </div>
           {/* Add input field for movie ID */}
           <div className="mb-4">
             <label
