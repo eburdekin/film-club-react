@@ -24,7 +24,7 @@ export default function FilmList({ films }) {
       {/* Pagination */}
       <div className="flex justify-center mb-4">
         <button
-          className="mx-1 px-3 py-1 border border-gray-300 rounded-md"
+          className="dark:text-white mx-1 px-3 py-1 border border-gray-300 rounded-md"
           onClick={() => paginate(currentPage - 1)}
           disabled={currentPage === 1}
         >
@@ -32,7 +32,7 @@ export default function FilmList({ films }) {
         </button>
         {currentPage > 1 && (
           <button
-            className={`mx-1 px-3 py-1 border border-gray-300 rounded-md ${
+            className={`dark:text-white mx-1 px-3 py-1 border border-gray-300 rounded-md ${
               currentPage === 1 ? "bg-gray-300" : ""
             }`}
             onClick={() => paginate(currentPage - 1)}
@@ -41,14 +41,14 @@ export default function FilmList({ films }) {
           </button>
         )}
         <button
-          className={`mx-1 px-3 py-1 border border-gray-300 rounded-md bg-gray-300`}
+          className={`text-white dark:text-black mx-1 px-3 py-1 border border-gray-300 rounded-md bg-cyan-600 dark:bg-cyan-400`}
           onClick={() => paginate(currentPage)}
         >
           {currentPage}
         </button>
         {currentPage < totalPages && (
           <button
-            className={`mx-1 px-3 py-1 border border-gray-300 rounded-md ${
+            className={`dark:text-white mx-1 px-3 py-1 border border-gray-300 rounded-md ${
               currentPage === totalPages ? "bg-gray-300" : ""
             }`}
             onClick={() => paginate(currentPage + 1)}
@@ -57,7 +57,7 @@ export default function FilmList({ films }) {
           </button>
         )}
         <button
-          className="mx-1 px-3 py-1 border border-gray-300 rounded-md"
+          className="dark:text-white mx-1 px-3 py-1 border border-gray-300 rounded-md"
           onClick={() => paginate(currentPage + 1)}
           disabled={currentPage === totalPages}
         >
@@ -80,6 +80,49 @@ export default function FilmList({ films }) {
             </div>
           </a>
         ))}
+      </div>
+      {/* Pagination */}
+      <div className="flex justify-center mt-4">
+        <button
+          className="dark:text-white mx-1 px-3 py-1 border border-gray-300 rounded-md"
+          onClick={() => paginate(currentPage - 1)}
+          disabled={currentPage === 1}
+        >
+          Previous
+        </button>
+        {currentPage > 1 && (
+          <button
+            className={`dark:text-white mx-1 px-3 py-1 border border-gray-300 rounded-md ${
+              currentPage === 1 ? "bg-gray-300" : ""
+            }`}
+            onClick={() => paginate(currentPage - 1)}
+          >
+            {currentPage - 1}
+          </button>
+        )}
+        <button
+          className={`text-white dark:text-black mx-1 px-3 py-1 border border-gray-300 rounded-md bg-cyan-600 dark:bg-cyan-400`}
+          onClick={() => paginate(currentPage)}
+        >
+          {currentPage}
+        </button>
+        {currentPage < totalPages && (
+          <button
+            className={`dark:text-white mx-1 px-3 py-1 border border-gray-300 rounded-md ${
+              currentPage === totalPages ? "bg-gray-300" : ""
+            }`}
+            onClick={() => paginate(currentPage + 1)}
+          >
+            {currentPage + 1}
+          </button>
+        )}
+        <button
+          className="dark:text-white mx-1 px-3 py-1 border border-gray-300 rounded-md"
+          onClick={() => paginate(currentPage + 1)}
+          disabled={currentPage === totalPages}
+        >
+          Next
+        </button>
       </div>
     </div>
   );
