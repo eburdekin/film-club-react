@@ -4,7 +4,7 @@ const ProfileLayout = ({ children }) => {
   return (
     <div className="flex flex-col md:flex-row gap-8">
       {/* Navigation as tabs on small screens */}
-      <nav className="bg-gray-100 p-2 rounded-md md:hidden">
+      <nav className="bg-gray-700 p-2 rounded-md md:hidden">
         <ul className="flex justify-evenly">
           <li>
             <SideNavLink href="/profile/my_clubs">My Clubs</SideNavLink>

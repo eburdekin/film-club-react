@@ -84,7 +84,9 @@ const Header = React.memo(() => {
           >
             {menuItems.map(({ url, label }, index) => (
               <li key={index}>
-                <HeaderNavLink href={url}>{label}</HeaderNavLink>
+                <HeaderNavLink href={url} onClick={closeMenu}>
+                  {label}
+                </HeaderNavLink>
               </li>
             ))}
             {user ? (
@@ -171,7 +173,9 @@ const Header = React.memo(() => {
           <ul className="flex flex-col items-center pt-12 bg-white dark:bg-gray-900 min-h-screen">
             {menuItems.map(({ url, label }, index) => (
               <li key={index} className="my-4 text-2xl">
-                <HeaderNavLink href={url}>{label}</HeaderNavLink>
+                <HeaderNavLink href={url} onClick={closeMenu}>
+                  {label}
+                </HeaderNavLink>
               </li>
             ))}
             {user ? (
