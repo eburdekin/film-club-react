@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 
-import Admin from "../routes/Admin";
+import Admin from "../../routes/Admin";
 
-import UserRoleModal from "./UserRoleModal";
+import UserRoleModal from "../modals/UserRoleModal";
 
 export default function UserDash() {
   const [users, setUsers] = useState([]);
@@ -11,7 +11,6 @@ export default function UserDash() {
 
   const toggleModal = (user) => {
     setIsModalOpen(!isModalOpen);
-    console.log(user);
     setSelectedUser(user);
   };
 

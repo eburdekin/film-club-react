@@ -4,9 +4,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleUp } from "@fortawesome/free-solid-svg-icons";
 import Header from "./Header";
 import Footer from "./Footer";
-import LoadingScreen from "./LoadingScreen";
+import LoadingScreen from "../LoadingScreen";
 
-import { useUser } from "./UserContext";
+import { useUser } from "../UserContext";
 
 const Layout = ({ children }) => {
   const { loading } = useUser();
@@ -32,7 +32,7 @@ const Layout = ({ children }) => {
   };
 
   return (
-    <div className="dark:bg-gray-900">
+    <div className="bg-gray-100 dark:bg-gray-900">
       <Header />
       <div className="flex flex-col min-h-screen mx-auto max-w-4xl px-4 pt-8 pb-16">
         <div className="flex-grow">

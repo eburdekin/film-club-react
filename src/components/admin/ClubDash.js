@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import Admin from "../routes/Admin";
+import Admin from "../../routes/Admin";
 
 export default function ClubDash() {
   const [clubs, setClubs] = useState([]);

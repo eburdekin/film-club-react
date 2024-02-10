@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { useUser } from "./UserContext";
+import { useUser } from "../UserContext";
 
 const NewClubModal = ({ onClose }) => {
   const { user } = useUser();

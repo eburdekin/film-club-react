@@ -3,17 +3,17 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { Flowbite } from "flowbite-react";
 
-import Layout from "./components/Layout";
+import Layout from "./components/UI/Layout";
 import Home from "./routes/Home";
 import Films from "./routes/Films";
-import FilmPage from "./routes/FilmPage";
+import FilmDetails from "./components/modals/FilmDetailsModal";
 import Clubs from "./routes/Clubs";
 import ClubPage from "./routes/ClubPage";
 import ScreeningRoom from "./routes/ScreeningRoom";
-import MyClubs from "./components/MyClubs";
-import Settings from "./components/Settings";
-import UserDash from "./components/UserDash";
-import ClubDash from "./components/ClubDash";
+import MyClubs from "./components/profile/MyClubs";
+import Settings from "./components/profile/Settings";
+import UserDash from "./components/admin/UserDash";
+import ClubDash from "./components/admin/ClubDash";
 
 import { UserProvider } from "./components/UserContext";
 
@@ -31,7 +31,7 @@ function App() {
                 <Films />
               </Route>
               <Route exact path="/films/:filmId">
-                <FilmPage />
+                <FilmDetails />
               </Route>
               <Route exact path="/clubs">
                 <Clubs />

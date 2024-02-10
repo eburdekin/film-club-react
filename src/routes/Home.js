@@ -35,12 +35,12 @@ export default function Home() {
   return (
     <>
       <h1
-        className=" text-gray-900 dark:text-white leading-[1.4] mb-5"
-        style={{ fontFamily: "Gabarito", fontWeight: 800, fontSize: 80 }}
+        className=" text-gray-900 dark:text-white leading-[1.4] mt-8 mb-1 text-7xl md:text-8xl"
+        style={{ fontWeight: 900 }}
       >
         FilmClub
       </h1>
-      <h2 className="text-2xl mb-16 text-cyan-600 dark:text-cyan-400">
+      <h2 className="text-xl md:text-2xl mb-20 font-bold text-cyan-600 dark:text-cyan-400">
         Always screening near you.
       </h2>
       <h4 className="text-lg font-bold mb-1 text-gray-700 dark:text-gray-300">

@@ -1,8 +1,8 @@
 // this will be a Club's main page, showing members, join/leave, screening rooms future, active, past.
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import NewRoomModal from "../components/NewRoomModal";
-import SideNavLink from "../components/SideNavLink";
+import NewRoomModal from "../components/modals/NewRoomModal";
+import SideNavLink from "../components/UI/SideNavLink";
 
 import { useUser } from "../components/UserContext";
 
@@ -82,7 +82,7 @@ export default function ClubDetails() {
         {/* Navigation as tabs on small screens */}
         {user ? (
           <>
-            <nav className="bg-gray-100 p-2 rounded-md md:hidden">
+            <nav className="bg-white p-2 rounded-md md:hidden">
               <ul className="flex justify-evenly">
                 <button
                   className="dark:text-gray-100"
@@ -104,7 +104,7 @@ export default function ClubDetails() {
             </nav>
             <aside className="hidden md:flex md:flex-[2]">
               <nav>
-                <ul className="grid gap-3">
+                <ul className="grid gap-3 rounded">
                   <button
                     className="dark:text-gray-100"
                     onClick={handleJoinLeave}
@@ -129,7 +129,7 @@ export default function ClubDetails() {
           ""
         )}
         {/* Main content */}
-        <div className="bg-gray-100 dark:bg-gray-300 flex-[8] p-4 rounded min-h-[300px]">
+        <div className="bg-white dark:bg-gray-300 flex-[8] p-4 rounded min-h-[300px]">
           <h3 className="text-bold text-lg">{club.description}</h3>
           <h3 className="text-bold text-lg mt-2">Screening Rooms</h3>
           {user ? (

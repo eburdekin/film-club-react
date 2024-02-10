@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { DarkThemeToggle } from "flowbite-react";
 import HeaderNavLink from "./HeaderNavLink";
-import SignupLoginModal from "./SignupLoginModal";
+import SignupLoginModal from "../modals/SignupLoginModal";
 import { Link } from "react-router-dom";
 
-import { useUser } from "./UserContext";
+import { useUser } from "../UserContext";
 
 const Header = React.memo(() => {
   const { user, loginUser, logoutUser } = useUser();
@@ -61,7 +61,7 @@ const Header = React.memo(() => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 backdrop-blur-md dark:backdrop-blur-md bg-opacity-60 dark:bg-opacity-60">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-gray-100 dark:bg-gray-900 backdrop-blur-md dark:backdrop-blur-md bg-opacity-60 dark:bg-opacity-60">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center">
           <img
@@ -69,12 +69,12 @@ const Header = React.memo(() => {
             className="w-8 md:w-9 m-1 dark:invert"
             alt="logo"
           />
-          <span
+          <h1
             className=" text-gray-900 text-2xl md:text-3xl dark:text-white h-2 leading-[1.4] mb-5"
-            style={{ fontFamily: "Gabarito", fontWeight: 800 }}
+            style={{ fontWeight: 800 }}
           >
             FilmClub
-          </span>
+          </h1>
         </Link>
         <nav className="ml-8 md:flex md:items-center md:gap-x-8">
           <ul
@@ -137,7 +137,7 @@ const Header = React.memo(() => {
       </div>
       {/* Overlay menu */}
       {isMenuOpen && (
-        <div className="md:hidden fixed inset-0 bg-white dark:bg-gray-900  z-10">
+        <div className="md:hidden fixed inset-0 bg-gray-100 dark:bg-gray-900  z-10">
           <div className="container mx-auto px-4 py-4 flex items-center justify-between">
             <Link to="/" className="flex items-center">
               <img
@@ -145,12 +145,12 @@ const Header = React.memo(() => {
                 className="w-8 md:w-9 m-1 dark:invert"
                 alt="logo"
               />
-              <span
+              <h1
                 className=" text-gray-900 text-2xl md:text-3xl dark:text-white h-2 leading-[1.4] mb-5"
-                style={{ fontFamily: "Gabarito", fontWeight: 800 }}
+                style={{ fontWeight: 800 }}
               >
                 FilmClub
-              </span>
+              </h1>
             </Link>
             <DarkThemeToggle />
             <button onClick={closeMenu}>
@@ -170,7 +170,7 @@ const Header = React.memo(() => {
               </svg>
             </button>
           </div>
-          <ul className="flex flex-col items-center pt-12 bg-white dark:bg-gray-900 min-h-screen">
+          <ul className="flex flex-col items-center pt-12 bg-gray-100 dark:bg-gray-900 min-h-screen">
             {menuItems.map(({ url, label }, index) => (
               <li key={index} className="my-4 text-2xl">
                 <HeaderNavLink href={url} onClick={closeMenu}>

@@ -1,11 +1,13 @@
 import FilmSearch from "../components/FilmSearch";
 import FilmList from "../components/FilmList";
+import LoadingScreen from "../components/LoadingScreen";
 
 import { useState, useEffect } from "react";
 
 export default function Films() {
   const [films, setFilms] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchFilms = async () => {
@@ -18,6 +20,8 @@ export default function Films() {
         setFilms(data);
       } catch (error) {
         console.error("Error fetching films:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -27,6 +31,10 @@ export default function Films() {
   const filteredFilms = films.filter((film) =>
     film.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  if (loading) {
+    return <LoadingScreen />;
+  }
 
   return (
     <>

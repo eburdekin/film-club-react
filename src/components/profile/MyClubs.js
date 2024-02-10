@@ -1,8 +1,8 @@
-import Profile from "../routes/Profile";
+import Profile from "../../routes/Profile";
 import { useState, useEffect } from "react";
-import NewClubModal from "./NewClubModal";
+import NewClubModal from "../modals/NewClubModal";
 
-import { useUser } from "./UserContext";
+import { useUser } from "../UserContext";
 
 export default function MyClubs() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -53,13 +53,13 @@ export default function MyClubs() {
       >
         + New Club
       </button>
-      {user && userClubs.length > 0 && (
-        <div className="mb-8">
-          <h3 className="text-2xl mb-6 dark:text-gray-300">My clubs</h3>
+      <div className="mb-8">
+        <h3 className="text-2xl mb-6">My clubs</h3>
+        {user && userClubs.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {userClubs.map((club) => (
               <a href={`/clubs/${club.id}`} key={club.id}>
-                <div className="md:h-36 flex flex-col justify-center p-4 bg-gray-300 dark:bg-gray-400 rounded-md hover-effect">
+                <div className="md:h-36 flex flex-col justify-center p-4 bg-gray-200 dark:bg-gray-400 rounded-md hover-effect">
                   <b>{club.name}</b>
                   <br />
                   <span className="text-xs">{club.description}</span>
@@ -67,8 +67,8 @@ export default function MyClubs() {
               </a>
             ))}
           </div>
-        </div>
-      )}
+        )}
+      </div>
       {isModalOpen && <NewClubModal onClose={handleClose} />}
     </Profile>
   );

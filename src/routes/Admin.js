@@ -1,4 +1,4 @@
-import SideNavLink from "../components/SideNavLink";
+import SideNavLink from "../components/UI/SideNavLink";
 
 const AdminLayout = ({ children }) => {
   return (
@@ -28,7 +28,7 @@ const AdminLayout = ({ children }) => {
         </nav>
       </aside>
       {/* Main content */}
-      <div className="bg-gray-100 dark:bg-gray-300  flex-[8] p-4 rounded min-h-[300px]">
+      <div className="bg-white dark:bg-gray-300  flex-[8] p-4 rounded min-h-[300px]">
         {children}
       </div>
     </div>

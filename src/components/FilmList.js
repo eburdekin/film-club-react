@@ -1,7 +1,16 @@
 import React, { useState } from "react";
 
+import FilmCard from "./FilmCard";
+
+import FilmDetailsModal from "./modals/FilmDetailsModal";
+
 export default function FilmList({ films }) {
   const [currentPage, setCurrentPage] = useState(1);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const [selectedFilm, setSelectedFilm] = useState(null);
+
   const moviesPerPage = 20; // Set the number of movies per page
 
   // Calculate total number of pages
@@ -17,6 +26,15 @@ export default function FilmList({ films }) {
   // Calculate start and end index of films to display on the current page
   const startIndex = (currentPage - 1) * moviesPerPage;
   const endIndex = Math.min(startIndex + moviesPerPage, films.length);
+
+  const handleCardClick = (film) => {
+    setIsModalOpen(true);
+    setSelectedFilm(film);
+  };
+
+  const handleClose = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <div className="mt-8">
@@ -67,18 +85,7 @@ export default function FilmList({ films }) {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {/* Display movies for the current page */}
         {films.slice(startIndex, endIndex).map((film) => (
-          <a key={film.id} href={`/films/${film.id}`}>
-            <div className="p-4 bg-gray-100 dark:bg-gray-300 rounded-md hover-effect">
-              <h4 className="text-sm font-semibold text-gray-800">
-                {film.title}
-              </h4>
-              <img
-                className="mt-2 w-full h-auto"
-                src={`https://image.tmdb.org/t/p/w185${film.poster_image}`}
-                alt={film.title}
-              />
-            </div>
-          </a>
+          <FilmCard key={film.id} film={film} onClick={handleCardClick} />
         ))}
       </div>
       {/* Pagination */}
@@ -124,6 +131,9 @@ export default function FilmList({ films }) {
           Next
         </button>
       </div>
+      {isModalOpen ? (
+        <FilmDetailsModal film={selectedFilm} onClose={handleClose} />
+      ) : null}
     </div>
   );
 }

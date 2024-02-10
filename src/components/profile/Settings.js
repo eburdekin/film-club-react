@@ -1,4 +1,4 @@
-import Profile from "../routes/Profile";
+import Profile from "../../routes/Profile";
 
 export default function Settings() {
   return (

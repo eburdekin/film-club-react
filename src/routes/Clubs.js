@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import ClubSearch from "../components/ClubSearch";
 import ClubList from "../components/ClubList";
-import NewClubModal from "../components/NewClubModal";
+import NewClubModal from "../components/modals/NewClubModal";
 
 export default function Home() {
   const [clubs, setClubs] = useState([]);
