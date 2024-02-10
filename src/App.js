@@ -6,7 +6,7 @@ import { Flowbite } from "flowbite-react";
 import Layout from "./components/UI/Layout";
 import Home from "./routes/Home";
 import Films from "./routes/Films";
-import FilmDetails from "./components/modals/FilmDetailsModal";
+import FilmPage from "./routes/FilmPage";
 import Clubs from "./routes/Clubs";
 import ClubPage from "./routes/ClubPage";
 import ScreeningRoom from "./routes/ScreeningRoom";
@@ -31,7 +31,7 @@ function App() {
                 <Films />
               </Route>
               <Route exact path="/films/:filmId">
-                <FilmDetails />
+                <FilmPage />
               </Route>
               <Route exact path="/clubs">
                 <Clubs />

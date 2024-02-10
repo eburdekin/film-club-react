@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import FilmCard from "./FilmCard";
 
-import FilmDetailsModal from "./modals/FilmDetailsModal";
+import FilmDetailsModal from "../routes/FilmPage";
 
 export default function FilmList({ films }) {
   const [currentPage, setCurrentPage] = useState(1);

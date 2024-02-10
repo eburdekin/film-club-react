@@ -136,11 +136,11 @@ export default function ClubDetails() {
             <ul>
               {club.screening_rooms &&
                 club.screening_rooms.map((room) => (
-                  <a key={room.id} href={`/rooms/${room.id}`}>
+                  <Link key={room.id} to={`/rooms/${room.id}`}>
                     <li className="bg-gray-400 p-2 mb-2 rounded-md hover-effect">
                       Room #{room.id} Screening: {room.movie.title}
                     </li>
-                  </a>
+                  </Link>
                 ))}
             </ul>
           ) : (

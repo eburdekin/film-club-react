@@ -1,13 +1,14 @@
 import FilmSearch from "../components/FilmSearch";
 import FilmList from "../components/FilmList";
-import LoadingScreen from "../components/LoadingScreen";
+// import LoadingScreen from "../components/LoadingScreen";
 
 import { useState, useEffect } from "react";
 
 export default function Films() {
   const [films, setFilms] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [selectedGenre, setSelectedGenre] = useState("");
+  // const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchFilms = async () => {
@@ -20,21 +21,30 @@ export default function Films() {
         setFilms(data);
       } catch (error) {
         console.error("Error fetching films:", error);
-      } finally {
-        setLoading(false);
       }
+      // finally {
+      //   setLoading(false);
+      // }
     };
 
     fetchFilms();
   }, []);
 
-  const filteredFilms = films.filter((film) =>
-    film.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  // const filteredFilms = films.filter((film) =>
+  //   film.title.toLowerCase().includes(searchTerm.toLowerCase())
+  // );
 
-  if (loading) {
-    return <LoadingScreen />;
-  }
+  const filteredFilms = films.filter((film) => {
+    const byTitle = film.title.toLowerCase().includes(searchTerm.toLowerCase());
+    const byGenre =
+      selectedGenre === "" ||
+      film.genres.some((genre) => genre.name === selectedGenre);
+    return byTitle && byGenre;
+  });
+
+  // if (loading) {
+  //   return <LoadingScreen />;
+  // }
 
   return (
     <>
@@ -42,7 +52,10 @@ export default function Films() {
         Browse films
       </h2>
       {/* <p className="text-2xl text-gray-700 dark:text-gray-300">Films here.</p> */}
-      <FilmSearch setSearchTerm={setSearchTerm} />
+      <FilmSearch
+        setSearchTerm={setSearchTerm}
+        setSelectedGenre={setSelectedGenre}
+      />
       <FilmList films={filteredFilms} />
     </>
   );
