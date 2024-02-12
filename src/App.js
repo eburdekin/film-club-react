@@ -14,6 +14,7 @@ import MyClubs from "./components/profile/MyClubs";
 import Settings from "./components/profile/Settings";
 import UserDash from "./components/admin/UserDash";
 import ClubDash from "./components/admin/ClubDash";
+import RoomDash from "./components/admin/RoomDash";
 
 import { UserProvider } from "./components/UserContext";
 
@@ -53,6 +54,9 @@ function App() {
               </Route>
               <Route exact path="/admin/club_dash">
                 <ClubDash />
+              </Route>
+              <Route exact path="/admin/room_dash">
+                <RoomDash />
               </Route>
             </Switch>
           </Flowbite>

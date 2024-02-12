@@ -28,7 +28,7 @@ export default function ScreeningRoom() {
   useEffect(() => {
     // Scroll to the bottom of the posts container whenever new posts are added
     if (room && postsEndRef.current) {
-      postsEndRef.current.scrollTop = postsEndRef.current.scrollHeight;
+      postsEndRef.current.scrollTop = 0;
     }
   }, [room]);
 
@@ -53,6 +53,16 @@ export default function ScreeningRoom() {
           // Clear the input field after submitting the post
           setNewPostContent("");
           console.log("New Post Submitted Successfully");
+
+          // Fetch the updated list of posts after submitting the new post
+          fetch(`/rooms/${roomId}`)
+            .then((response) => response.json())
+            .then((roomData) => {
+              setRoom(roomData);
+            })
+            .catch((error) => {
+              console.error("Error fetching room details:", error);
+            });
         } else {
           console.error("Error submitting new post");
         }
@@ -125,6 +135,36 @@ export default function ScreeningRoom() {
               src={`https://image.tmdb.org/t/p/w185${room.movie.poster_image}`}
               alt={room.movie.title}
             />
+            <div>
+              <h4 className="text-sm">
+                Average Rating from {room.club.name}:
+                <br />
+                <StarRating averageRating={averageRating} />
+                {averageRating} stars
+              </h4>
+            </div>
+            <div className="">
+              <h3>Rate Movie:</h3>
+              {/* Star rating system */}
+              {[1, 2, 3, 4, 5].map((star) => (
+                <span
+                  key={star}
+                  className={star <= selectedRating ? "star selected" : "star"}
+                  // onMouseEnter={() => setSelectedRating(star)}
+                  // onMouseLeave={() => setSelectedRating(null)}
+                  onClick={() => setSelectedRating(star)}
+                >
+                  &#9733;
+                </span>
+              ))}
+              <br />
+              <button
+                className="bg-cyan-600 dark:bg-cyan-400 text-sm p-1 rounded-xl text-white dark:text-black"
+                onClick={handleRatingSubmit}
+              >
+                Submit Rating
+              </button>
+            </div>
           </div>
         </nav>
         {/* Sidebar navigation on larger screens */}
@@ -146,59 +186,54 @@ export default function ScreeningRoom() {
                   {averageRating} stars
                 </h4>
               </div>
+              <div className="">
+                <h3>Rate Movie:</h3>
+                {/* Star rating system */}
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <span
+                    key={star}
+                    className={
+                      star <= selectedRating ? "star selected" : "star"
+                    }
+                    // onMouseEnter={() => setSelectedRating(star)}
+                    // onMouseLeave={() => setSelectedRating(null)}
+                    onClick={() => setSelectedRating(star)}
+                  >
+                    &#9733;
+                  </span>
+                ))}
+                <br />
+                <button
+                  className="bg-cyan-600 dark:bg-cyan-400 text-sm p-1 rounded-xl text-white dark:text-black"
+                  onClick={handleRatingSubmit}
+                >
+                  Submit Rating
+                </button>
+              </div>
             </div>
           </nav>
         </aside>
         <div className="bg-gray-100 dark:bg-gray-300 flex-[8] p-4 rounded min-h-[300px]">
-          <Posts postsEndRef={postsEndRef} room={room} />
-          {/* Display ratings */}
-          {/* <div>
-            <h3>Ratings:</h3>
-            <ul>
-              {room.ratings.map((rating) => (
-                <li key={rating.id}>{rating.rating}</li>
-              ))}
-            </ul>
-          </div> */}
-          {/* New post input form */}
-          <div>
-            <h3>New Post:</h3>
-            <input
-              type="text"
-              value={newPostContent}
-              onChange={(e) => setNewPostContent(e.target.value)}
-            />
-            <br />
-            <button
-              className="bg-cyan-600 dark:bg-cyan-400 text-sm p-1 rounded-xl text-white dark:text-black"
-              onClick={handlePostSubmit}
-            >
-              Submit Post
-            </button>
-          </div>
-          {/* Rate movie */}
-          <div>
-            <h3>Rate Movie:</h3>
-            {/* Star rating system */}
-            {[1, 2, 3, 4, 5].map((star) => (
-              <span
-                key={star}
-                className={star <= selectedRating ? "star selected" : "star"}
-                // onMouseEnter={() => setSelectedRating(star)}
-                // onMouseLeave={() => setSelectedRating(null)}
-                onClick={() => setSelectedRating(star)}
+          <div className="">
+            <div className="p-4">
+              <h3 className="font-bold">New Post:</h3>
+              <input
+                type="text"
+                value={newPostContent}
+                className="w-full rounded-xl h-20"
+                onChange={(e) => setNewPostContent(e.target.value)}
+              />
+              <br />
+              <button
+                className="bg-cyan-600 dark:bg-cyan-400 text-sm p-2 m-2 rounded-xl text-white dark:text-black"
+                onClick={handlePostSubmit}
               >
-                &#9733;
-              </span>
-            ))}
-            <br />
-            <button
-              className="bg-cyan-600 dark:bg-cyan-400 text-sm p-1 rounded-xl text-white dark:text-black"
-              onClick={handleRatingSubmit}
-            >
-              Submit Rating
-            </button>
+                Submit Post
+              </button>
+            </div>
+            {/* Rate movie */}
           </div>
+          <Posts postsEndRef={postsEndRef} room={room} />
         </div>
       </div>
       <Link

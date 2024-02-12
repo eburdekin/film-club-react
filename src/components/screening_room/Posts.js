@@ -25,25 +25,32 @@ export default function Posts({ room, postsEndRef }) {
 
   return (
     <div>
-      <h3>Posts:</h3>
-      <div ref={postsEndRef} className="h-80 overflow-y-auto">
+      <h3>Discussion</h3>
+      <div
+        ref={postsEndRef}
+        // style={{ height: 600 }}
+        className="overflow-y-auto"
+      >
         <ul className="list-none p-0">
-          {room.posts.map((post) => (
-            <li
-              key={post.id}
-              className="mb-2 bg-gray-200 dark:bg-gray-400 rounded-lg p-4"
-            >
-              <div>
-                <span className="font-bold text-sm">
-                  {post.author.username}{" "}
-                </span>
-                <span className="text-xs font-bold text-gray-500 mt-1">
-                  {formatTimestamp(post.timestamp)}
-                </span>
-              </div>
-              <div className="text-gray-700 mt-2">{post.content}</div>
-            </li>
-          ))}
+          {room.posts
+            .slice(0)
+            .reverse()
+            .map((post) => (
+              <li
+                key={post.id}
+                className="mb-2 bg-gray-200 dark:bg-gray-400 rounded-lg p-4"
+              >
+                <div>
+                  <span className="font-bold text-sm">
+                    {post.author.username}{" "}
+                  </span>
+                  <span className="text-xs font-bold text-gray-500 mt-1">
+                    {formatTimestamp(post.timestamp)}
+                  </span>
+                </div>
+                <div className="text-gray-700 mt-2">{post.content}</div>
+              </li>
+            ))}
         </ul>
       </div>
     </div>

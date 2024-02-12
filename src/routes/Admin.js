@@ -12,6 +12,9 @@ const AdminLayout = ({ children }) => {
           <li>
             <SideNavLink href="/admin/club_dash">Clubs</SideNavLink>
           </li>
+          <li>
+            <SideNavLink href="/admin/room_dash">Screening Rooms</SideNavLink>
+          </li>
         </ul>
       </nav>
       {/* Sidebar navigation on larger screens */}
@@ -23,6 +26,9 @@ const AdminLayout = ({ children }) => {
             </li>
             <li>
               <SideNavLink href="/admin/club_dash">Clubs</SideNavLink>
+            </li>
+            <li>
+              <SideNavLink href="/admin/room_dash">Screening Rooms</SideNavLink>
             </li>
           </ul>
         </nav>
