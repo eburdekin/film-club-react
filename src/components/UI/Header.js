@@ -10,7 +10,7 @@ const Header = React.memo(() => {
   const { user, loginUser, logoutUser } = useUser();
 
   const menuItems = [
-    { label: `Home`, url: `/home` },
+    // { label: `Home`, url: `/home` },
     { label: `Films`, url: `/films` },
     user ? { label: `Clubs`, url: `/clubs` } : null,
     user ? { label: `Profile`, url: `/profile/my_clubs` } : null,

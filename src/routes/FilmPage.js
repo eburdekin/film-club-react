@@ -26,7 +26,7 @@ export default function FilmPage() {
 
   return (
     <div>
-      <h2 className="text-3xl font-bold text-gray-900 leading-[1.4] mb-5">
+      <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 leading-[1.4] mb-5">
         {film.title}
       </h2>
       <div className="flex flex-col md:flex-row gap-8">
