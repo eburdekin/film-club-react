@@ -12,7 +12,7 @@ export default function ScreeningRoom() {
 
   useEffect(() => {
     // Fetch room details using roomId
-    fetch(`https://film-club.onrender.com/rooms/${roomId}`)
+    fetch(`http://127.0.0.1:5555/rooms/${roomId}`)
       .then((response) => response.json())
       .then((roomData) => {
         setRoom(roomData);
@@ -38,7 +38,7 @@ export default function ScreeningRoom() {
     };
 
     // Make a POST request to the backend route for creating new posts
-    fetch("https://film-club.onrender.com/posts", {
+    fetch("https://film-club..com/posts", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -73,7 +73,7 @@ export default function ScreeningRoom() {
     };
 
     // Make a POST request to the backend route for creating new ratings
-    fetch("https://film-club.onrender.com/ratings", {
+    fetch("http://127.0.0.1:5555/ratings", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

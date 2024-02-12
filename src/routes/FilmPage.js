@@ -8,7 +8,7 @@ export default function FilmPage() {
   const [film, setFilm] = useState([]);
 
   const fetchFilmDetails = () => {
-    fetch(`https://film-club.onrender.com/movies/${filmId}`)
+    fetch(`http://127.0.0.1:5555/movies/${filmId}`)
       .then((response) => response.json())
       .then((film) => {
         // Process club details

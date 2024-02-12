@@ -15,7 +15,7 @@ export default function ClubDetails() {
 
   // Fetch club details using clubId
   const fetchClubDetails = () => {
-    fetch(`https://film-club.onrender.com/clubs/${clubId}`)
+    fetch(`http://127.0.0.1:5555/clubs/${clubId}`)
       .then((response) => response.json())
       .then((club) => {
         // Process club details
@@ -38,8 +38,8 @@ export default function ClubDetails() {
 
   const handleJoinLeave = () => {
     const url = isMember
-      ? `/clubs/${clubId}/remove_user`
-      : `/clubs/${clubId}/add_user`;
+      ? `http://127.0.0.1:5555/clubs/${clubId}/remove_user`
+      : `http://127.0.0.1:5555/clubs/${clubId}/add_user`;
     const method = isMember ? "POST" : "POST";
 
     fetch(url, {

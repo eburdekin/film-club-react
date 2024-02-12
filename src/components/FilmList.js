@@ -82,7 +82,7 @@ export default function FilmList({ films }) {
           Next
         </button>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
         {/* Display movies for the current page */}
         {films.slice(startIndex, endIndex).map((film) => (
           <FilmCard key={film.id} film={film} onClick={handleCardClick} />
