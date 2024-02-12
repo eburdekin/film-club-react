@@ -1,6 +1,11 @@
 import { useState } from "react";
 
-const FilmSearch = ({ setSearchTerm, setSelectedGenre }) => {
+const FilmSearch = ({
+  setSearchTerm,
+  setSelectedGenre,
+  sortByPopularity,
+  sortByReleaseDate,
+}) => {
   const [search, setSearch] = useState("");
   const [selectedGenre, setSelectedGenreLocal] = useState("");
 
@@ -39,27 +44,43 @@ const FilmSearch = ({ setSearchTerm, setSelectedGenre }) => {
   ];
 
   return (
-    <div className="flex items-center space-x-4">
-      <input
-        type="text"
-        value={search}
-        onChange={handleSearchChange}
-        className="block w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-gray-500"
-        placeholder="Search films by name..."
-      />
-      <select
-        value={selectedGenre}
-        onChange={handleGenreChange}
-        className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-gray-500"
-      >
-        <option value="">Filter by genre</option>
-        {genres.map((genre) => (
-          <option key={genre.id} value={genre.name}>
-            {genre.name}
-          </option>
-        ))}
-      </select>
-    </div>
+    <>
+      <div className="flex items-center space-x-4">
+        <input
+          type="text"
+          value={search}
+          onChange={handleSearchChange}
+          className="block w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-gray-500"
+          placeholder="Search films by name..."
+        />
+        <select
+          value={selectedGenre}
+          onChange={handleGenreChange}
+          className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-gray-500"
+        >
+          <option value="">Filter by genre</option>
+          {genres.map((genre) => (
+            <option key={genre.id} value={genre.name}>
+              {genre.name}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div className="flex items-center space-x-4">
+        <button
+          onClick={sortByPopularity}
+          className="border border-gray-300 rounded-lg px-3 py-2"
+        >
+          Sort by pop
+        </button>
+        <button
+          onClick={sortByReleaseDate}
+          className="border border-gray-300 rounded-lg px-3 py-2"
+        >
+          Sort by release date
+        </button>
+      </div>
+    </>
   );
 };
 

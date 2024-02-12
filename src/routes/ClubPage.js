@@ -34,7 +34,7 @@ export default function ClubDetails() {
   // Fetch club details using clubId
   useEffect(() => {
     fetchClubDetails();
-  });
+  }, [clubId]);
 
   const handleJoinLeave = () => {
     const url = isMember

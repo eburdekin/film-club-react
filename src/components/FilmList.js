@@ -38,7 +38,6 @@ export default function FilmList({ films }) {
 
   return (
     <div className="mt-8">
-      <h3 className="text-2xl mb-6 dark:text-gray-300">All Films</h3>
       {/* Pagination */}
       <div className="flex justify-center mb-4">
         <button

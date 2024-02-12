@@ -34,6 +34,20 @@ export default function Films() {
   //   film.title.toLowerCase().includes(searchTerm.toLowerCase())
   // );
 
+  const sortByPopularity = () => {
+    const sortedFilms = [...films]; // Create a copy of the films array
+    sortedFilms.sort((a, b) => b.popularity - a.popularity);
+    setFilms(sortedFilms); // Update state with the sorted copy
+  };
+
+  const sortByReleaseDate = () => {
+    const sortedFilms = [...films]; // Create a copy of the films array
+    sortedFilms.sort(
+      (a, b) => new Date(b.release_date) - new Date(a.release_date)
+    );
+    setFilms(sortedFilms); // Update state with the sorted copy
+  };
+
   const filteredFilms = films.filter((film) => {
     const byTitle = film.title.toLowerCase().includes(searchTerm.toLowerCase());
     const byGenre =
@@ -55,6 +69,8 @@ export default function Films() {
       <FilmSearch
         setSearchTerm={setSearchTerm}
         setSelectedGenre={setSelectedGenre}
+        sortByPopularity={sortByPopularity}
+        sortByReleaseDate={sortByReleaseDate}
       />
       <FilmList films={filteredFilms} />
     </>
