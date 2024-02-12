@@ -4,7 +4,7 @@
 
 ### How to join
 
-hosted URL for demo will be here.
+<https://film-club.netlify.app>
 
 ### Features
 

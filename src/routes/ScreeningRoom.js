@@ -184,7 +184,7 @@ export default function ScreeningRoom() {
               type="text"
               value={newPostContent}
               onChange={(e) => setNewPostContent(e.target.value)}
-            />
+            /><br/>
             <button
               className="bg-cyan-600 dark:bg-cyan-400 text-sm p-1 rounded-xl text-white dark:text-black"
               onClick={handlePostSubmit}
@@ -207,6 +207,7 @@ export default function ScreeningRoom() {
                 &#9733;
               </span>
             ))}
+            <br/>
             <button
               className="bg-cyan-600 dark:bg-cyan-400 text-sm p-1 rounded-xl text-white dark:text-black"
               onClick={handleRatingSubmit}
