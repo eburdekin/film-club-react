@@ -12,7 +12,7 @@ export default function ScreeningRoom() {
 
   useEffect(() => {
     // Fetch room details using roomId
-    fetch(`http://127.0.0.1:5555/rooms/${roomId}`)
+    fetch(`https://film-club.onrender.com/rooms/${roomId}`)
       .then((response) => response.json())
       .then((roomData) => {
         setRoom(roomData);
@@ -38,7 +38,7 @@ export default function ScreeningRoom() {
     };
 
     // Make a POST request to the backend route for creating new posts
-    fetch("http://127.0.0.1:5555/posts", {
+    fetch("https://film-club.onrender.com/posts", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -73,7 +73,7 @@ export default function ScreeningRoom() {
     };
 
     // Make a POST request to the backend route for creating new ratings
-    fetch("http://127.0.0.1:5555/ratings", {
+    fetch("https://film-club.onrender.com/ratings", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -184,7 +184,8 @@ export default function ScreeningRoom() {
               type="text"
               value={newPostContent}
               onChange={(e) => setNewPostContent(e.target.value)}
-            /><br/>
+            />
+            <br />
             <button
               className="bg-cyan-600 dark:bg-cyan-400 text-sm p-1 rounded-xl text-white dark:text-black"
               onClick={handlePostSubmit}
@@ -207,7 +208,7 @@ export default function ScreeningRoom() {
                 &#9733;
               </span>
             ))}
-            <br/>
+            <br />
             <button
               className="bg-cyan-600 dark:bg-cyan-400 text-sm p-1 rounded-xl text-white dark:text-black"
               onClick={handleRatingSubmit}

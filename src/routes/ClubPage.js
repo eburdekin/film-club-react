@@ -15,7 +15,7 @@ export default function ClubDetails() {
 
   // Fetch club details using clubId
   const fetchClubDetails = () => {
-    fetch(`http://127.0.0.1:5555/clubs/${clubId}`)
+    fetch(`https://film-club.onrender.com/clubs/${clubId}`)
       .then((response) => response.json())
       .then((club) => {
         // Process club details
