@@ -1,5 +1,5 @@
 // this will be a Club's main page, showing members, join/leave, screening rooms future, active, past.
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Link, useParams } from "react-router-dom";
 import NewRoomModal from "../components/modals/NewRoomModal";
 import SideNavLink from "../components/UI/SideNavLink";
@@ -9,12 +9,12 @@ import { useUser } from "../components/UserContext";
 export default function ClubDetails() {
   const { user } = useUser();
   const { clubId } = useParams();
-  const [club, setClub] = useState([]);
+  const [club, setClub] = useState({});
   const [isMember, setIsMember] = useState(false);
   const [showModal, setShowModal] = useState(false); // State to control the visibility of the modal
 
   // Fetch club details using clubId
-  const fetchClubDetails = () => {
+  const fetchClubDetails = useCallback(() => {
     fetch(`/clubs/${clubId}`)
       .then((response) => response.json())
       .then((club) => {
@@ -29,12 +29,12 @@ export default function ClubDetails() {
       .catch((error) => {
         console.error("Error fetching club details:", error);
       });
-  };
+  }, [clubId, user]);
 
   // Fetch club details using clubId
   useEffect(() => {
     fetchClubDetails();
-  }, [clubId]);
+  }, []);
 
   const handleJoinLeave = () => {
     const url = isMember
@@ -70,7 +70,7 @@ export default function ClubDetails() {
   };
   const handleClose = () => {
     setShowModal(false);
-    setClub([]);
+    fetchClubDetails();
   };
 
   return (

@@ -1,6 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useUser } from "../components/UserContext";
+import StarRating from "../components/screening_room/StarRating";
+import Posts from "../components/screening_room/Posts";
+import Ratings from "../components/screening_room/Ratings";
 
 export default function ScreeningRoom() {
   const [room, setRoom] = useState(null);
@@ -12,7 +15,7 @@ export default function ScreeningRoom() {
 
   useEffect(() => {
     // Fetch room details using roomId
-    fetch(`http://127.0.0.1:5555/rooms/${roomId}`)
+    fetch(`/rooms/${roomId}`)
       .then((response) => response.json())
       .then((roomData) => {
         setRoom(roomData);
@@ -38,7 +41,7 @@ export default function ScreeningRoom() {
     };
 
     // Make a POST request to the backend route for creating new posts
-    fetch("https://film-club..com/posts", {
+    fetch("/posts", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -73,7 +76,7 @@ export default function ScreeningRoom() {
     };
 
     // Make a POST request to the backend route for creating new ratings
-    fetch("http://127.0.0.1:5555/ratings", {
+    fetch("/ratings", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -139,44 +142,24 @@ export default function ScreeningRoom() {
                 <h4 className="text-sm">
                   Average Rating from {room.club.name}:
                   <br />
-                  <span className="text-xl font-bold">{averageRating}</span>
+                  <StarRating averageRating={averageRating} />
+                  {averageRating} stars
                 </h4>
               </div>
             </div>
           </nav>
         </aside>
-
         <div className="bg-gray-100 dark:bg-gray-300 flex-[8] p-4 rounded min-h-[300px]">
-          <div>
-            <h3>Posts:</h3>
-            <div ref={postsEndRef} className="h-80 overflow-y-auto">
-              <ul className="list-none p-0">
-                {room.posts.map((post) => (
-                  <li
-                    key={post.id}
-                    className="mb-2 bg-gray-200 dark:bg-gray-400 rounded-lg p-4"
-                  >
-                    <div className="font-bold text-sm">
-                      {post.author.username}
-                    </div>
-                    <div className="text-gray-700 mt-2">{post.content}</div>
-                    <div className="text-xs font-bold text-gray-500 mt-1">
-                      {post.timestamp}
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          <Posts postsEndRef={postsEndRef} room={room} />
           {/* Display ratings */}
-          <div>
+          {/* <div>
             <h3>Ratings:</h3>
             <ul>
               {room.ratings.map((rating) => (
                 <li key={rating.id}>{rating.rating}</li>
               ))}
             </ul>
-          </div>
+          </div> */}
           {/* New post input form */}
           <div>
             <h3>New Post:</h3>
