@@ -10,7 +10,7 @@ import FilmPage from "./routes/FilmPage";
 import Clubs from "./routes/Clubs";
 import ClubPage from "./routes/ClubPage";
 import ScreeningRoom from "./routes/ScreeningRoom";
-import MyClubs from "./components/profile/MyClubs";
+import MyDashboard from "./components/profile/MyDashboard";
 import Settings from "./components/profile/Settings";
 import UserDash from "./components/admin/UserDash";
 import ClubDash from "./components/admin/ClubDash";
@@ -43,8 +43,8 @@ function App() {
               <Route path="/rooms/:roomId">
                 <ScreeningRoom />
               </Route>
-              <Route exact path="/profile/my_clubs">
-                <MyClubs />
+              <Route exact path="/profile/dashboard">
+                <MyDashboard />
               </Route>
               <Route exact path="/profile/settings">
                 <Settings />

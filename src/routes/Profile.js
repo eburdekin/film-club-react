@@ -7,7 +7,7 @@ const ProfileLayout = ({ children }) => {
       <nav className="bg-gray-700 p-2 rounded-md md:hidden">
         <ul className="flex justify-evenly">
           <li>
-            <SideNavLink href="/profile/my_clubs">My Clubs</SideNavLink>
+            <SideNavLink href="/profile/my_clubs">Dashboard</SideNavLink>
           </li>
           {/* Uncomment the following when needed */}
           {/* <li>
@@ -23,7 +23,7 @@ const ProfileLayout = ({ children }) => {
         <nav>
           <ul className="grid gap-3">
             <li>
-              <SideNavLink href="/profile/my_clubs">My Clubs</SideNavLink>
+              <SideNavLink href="/profile/my_clubs">Dashboard</SideNavLink>
             </li>
             {/* Uncomment the following when needed */}
             {/* <li>

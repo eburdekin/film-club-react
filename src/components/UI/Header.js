@@ -15,7 +15,7 @@ const Header = React.memo(() => {
     // { label: `Home`, url: `/home` },
     { label: `Films`, url: `/films` },
     user ? { label: `Clubs`, url: `/clubs` } : null,
-    user ? { label: `Profile`, url: `/profile/my_clubs` } : null,
+    user ? { label: `Profile`, url: `/profile/dashboard` } : null,
     user && user.role && user.role.name === "admin"
       ? { label: `Admin`, url: `/admin/user_dash` }
       : null,
