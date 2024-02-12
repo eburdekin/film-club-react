@@ -1,9 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useUser } from "../components/UserContext";
-import StarRating from "../components/screening_room/StarRating";
-import Posts from "../components/screening_room/Posts";
-import Ratings from "../components/screening_room/Ratings";
+import StarRating from "../components/StarRating";
 
 export default function ScreeningRoom() {
   const [room, setRoom] = useState(null);
@@ -12,6 +10,9 @@ export default function ScreeningRoom() {
   const { roomId } = useParams();
   const { user } = useUser();
   const postsEndRef = useRef(null);
+  const [hoveredPostId, setHoveredPostId] = useState(null);
+  const [editedContent, setEditedContent] = useState();
+  const [editingPostId, setEditingPostId] = useState(null);
 
   useEffect(() => {
     // Fetch room details using roomId
@@ -31,6 +32,30 @@ export default function ScreeningRoom() {
       postsEndRef.current.scrollTop = 0;
     }
   }, [room]);
+
+  const formatTimestamp = (timestamp) => {
+    const postDate = new Date(timestamp);
+
+    const options = { timeZone: "America/Los_Angeles" };
+
+    const currentDate = new Date();
+
+    // Check if the post is from today
+    if (
+      postDate.getDate() === currentDate.getDate() &&
+      postDate.getMonth() === currentDate.getMonth() &&
+      postDate.getFullYear() === currentDate.getFullYear()
+    ) {
+      // Format the timestamp to hh:mm format
+      return `at ${postDate.toLocaleTimeString("en-US", options)} today`;
+    } else {
+      // Format the timestamp to hh:mm format and the date to MM/DD/YYYY
+      return `at ${postDate.toLocaleTimeString(
+        "en-US",
+        options
+      )} ${postDate.toLocaleDateString("en-US", options)}`;
+    }
+  };
 
   const handlePostSubmit = () => {
     // Prepare data for the new post
@@ -119,6 +144,70 @@ export default function ScreeningRoom() {
   );
   const averageRating =
     totalRatings > 0 ? (sumOfRatings / totalRatings).toFixed(1) : 0;
+
+  const handleEditChange = (postId, updatedContent) => {
+    // Prepare data for updating the post
+    const postData = {
+      content: updatedContent,
+    };
+
+    // Make a PATCH request to the backend route for updating posts by ID
+    fetch(`/posts/${postId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(postData),
+    })
+      .then((response) => {
+        if (response.ok) {
+          console.log("Post updated successfully");
+          // Fetch the updated list of posts after updating the post
+          fetch(`/rooms/${roomId}`)
+            .then((response) => response.json())
+            .then((roomData) => {
+              setRoom(roomData);
+            })
+            .catch((error) => {
+              console.error("Error fetching room details:", error);
+            });
+        } else {
+          console.error("Error updating post");
+        }
+      })
+      .catch((error) => {
+        console.error("Error updating post:", error);
+      });
+  };
+
+  const handleDelete = (postId) => {
+    // Logic for handling delete functionality goes here
+    console.log("Deleting post with id:", postId);
+
+    // Make a DELETE request to your backend API to delete the post
+    fetch(`/posts/${postId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        // You might need to include authentication headers if required by your backend
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          console.log("Post deleted successfully");
+          // Update the state to remove the deleted post from the UI
+          setRoom((prevRoom) => ({
+            ...prevRoom,
+            posts: prevRoom.posts.filter((post) => post.id !== postId),
+          }));
+        } else {
+          console.error("Error deleting post");
+        }
+      })
+      .catch((error) => {
+        console.error("Error deleting post:", error);
+      });
+  };
 
   return (
     <>
@@ -233,7 +322,81 @@ export default function ScreeningRoom() {
             </div>
             {/* Rate movie */}
           </div>
-          <Posts postsEndRef={postsEndRef} room={room} />
+          <div>
+            <h3>Discussion</h3>
+            <div
+              ref={postsEndRef}
+              // style={{ height: 600 }}
+              className="overflow-y-auto"
+            >
+              <ul className="list-none p-0">
+                {room.posts
+                  .slice(0)
+                  .reverse()
+                  .map((post) => (
+                    <li
+                      key={post.id}
+                      className="mb-2 bg-gray-200 dark:bg-gray-400 rounded-lg p-4 flex justify-between items-start relative"
+                      onMouseEnter={() => setHoveredPostId(post.id)}
+                      onMouseLeave={() => setHoveredPostId(null)}
+                    >
+                      <div className="flex flex-col">
+                        <div>
+                          <span className="font-bold text-sm">
+                            {post.author.username}{" "}
+                          </span>
+                          <span className="text-xs font-bold text-gray-500 mt-1">
+                            {formatTimestamp(post.timestamp)}
+                          </span>
+                        </div>
+                        {editingPostId === post.id ? (
+                          // Render input field for editing
+                          <div>
+                            <input
+                              type="text"
+                              value={editedContent}
+                              onChange={(e) => setEditedContent(e.target.value)}
+                            />
+                            <button
+                              onClick={() => {
+                                handleEditChange(post.id, editedContent);
+                                setEditingPostId(null);
+                              }}
+                            >
+                              Submit
+                            </button>
+                            <button onClick={() => setEditingPostId(null)}>
+                              Cancel
+                            </button>
+                          </div>
+                        ) : (
+                          // Render post content
+                          <div className="text-gray-700 mt-2">
+                            {post.content}
+                          </div>
+                        )}
+                      </div>
+                      {post.author_id === user.id &&
+                        hoveredPostId === post.id && (
+                          <div className="absolute right-0 top-0">
+                            <button
+                              onClick={() => {
+                                setEditingPostId(post.id);
+                                setEditedContent(post.content);
+                              }}
+                            >
+                              Edit
+                            </button>
+                            <button onClick={() => handleDelete(post.id)}>
+                              Delete
+                            </button>
+                          </div>
+                        )}
+                    </li>
+                  ))}
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
       <Link

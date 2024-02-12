@@ -3,10 +3,12 @@ import { DarkThemeToggle } from "flowbite-react";
 import HeaderNavLink from "./HeaderNavLink";
 import SignupLoginModal from "../modals/SignupLoginModal";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom"; // Import useHistory hook
 
 import { useUser } from "../UserContext";
 
 const Header = React.memo(() => {
+  const history = useHistory();
   const { user, loginUser, logoutUser } = useUser();
 
   const menuItems = [
@@ -51,6 +53,7 @@ const Header = React.memo(() => {
       if (response.ok) {
         console.log("Logout successful");
         logoutUser();
+        history.push("/");
         // Perform any additional actions after successful logout
       } else {
         throw new Error("Logout failed");
