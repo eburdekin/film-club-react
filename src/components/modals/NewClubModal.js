@@ -149,7 +149,7 @@ const NewClubModal = ({ onClose }) => {
             <button
               type="button"
               onClick={onClose}
-              className="text-gray-600 hover:text-gray-800 focus:outline-none"
+              className="text-gray-600 hover:text-gray-900 focus:outline-none"
             >
               Cancel
             </button>

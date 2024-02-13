@@ -298,10 +298,10 @@ export default function ScreeningRoom() {
             </div>
           </nav>
         </aside>
-        <div className="bg-gray-100 dark:bg-gray-300 flex-[8] p-4 rounded min-h-[300px]">
+        <div className="bg-gray-100 dark:bg-gray-900 flex-[8] p-4 rounded min-h-[300px]">
           <div className="">
             <div className="p-4">
-              <h3 className="font-bold">New Post:</h3>
+              <h3 className="font-bold dark:text-white">New Post:</h3>
               <input
                 type="text"
                 value={newPostContent}
@@ -319,7 +319,7 @@ export default function ScreeningRoom() {
             {/* Rate movie */}
           </div>
           <div>
-            <h3>Discussion</h3>
+            <h3 className="dark:text-white">Discussion</h3>
             <div
               ref={postsEndRef}
               // style={{ height: 600 }}

@@ -4,6 +4,7 @@ import NewClubModal from "../modals/NewClubModal";
 import { Link } from "react-router-dom";
 import { useUser } from "../UserContext";
 import H3 from "../UI/H3";
+import ClubCard from "../ClubCard";
 
 export default function MyDashboard() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -162,13 +163,14 @@ export default function MyDashboard() {
         {user && userClubs.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {userClubs.map((club) => (
-              <Link to={`/clubs/${club.id}`} key={club.id}>
-                <div className="md:h-36 flex flex-col justify-center p-4 bg-gray-300 dark:bg-gray-400 rounded-md hover-effect">
-                  <b>{club.name}</b>
-                  <br />
-                  <span className="text-xs">{club.description}</span>
-                </div>
-              </Link>
+              // <Link to={`/clubs/${club.id}`} key={club.id}>
+              //   <div className="md:h-36 flex flex-col justify-center p-4 bg-gray-300 dark:bg-gray-400 rounded-md hover-effect">
+              //     <b>{club.name}</b>
+              //     <br />
+              //     <span className="text-xs">{club.description}</span>
+              //   </div>
+              // </Link>
+              <ClubCard key={club.id} club={club} />
             ))}
           </div>
         )}
@@ -189,9 +191,9 @@ export default function MyDashboard() {
                     }, new Map())
                   ).map(([title, posts]) => (
                     <div key={title}>
-                      <h3 className="text-lg font-semibold mt-2 mb-4">
+                      <h5 className="text-md font-semibold mt-6 mb-2 dark:text-gray-100">
                         {title}
-                      </h3>
+                      </h5>
                       {posts.map((post) => (
                         <div
                           key={post.id}

@@ -93,7 +93,7 @@ export default function FilmPage() {
     <div>
       <H2>{film.title}</H2>
       <div className="flex flex-col md:flex-row gap-8">
-        <div className="bg-gray-100 dark:bg-gray-800 flex-[8] p-4 rounded min-h-[300px] mb-6">
+        <div className=" bg-gray-100 dark:bg-gray-900 flex-[8] p-4 rounded min-h-[300px] mb-6">
           <div className="flex gap-2">
             <div className="flex-2 flex items-center">
               <div>

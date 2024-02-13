@@ -148,8 +148,8 @@ export default function ClubDetails() {
           ""
         )}
         {/* Main content */}
-        <div className="bg-gray-100 dark:bg-gray-800 flex-[8] p-4 rounded min-h-[300px]">
-          <h3 className="text-bold text-lg">{club.description}</h3>
+        <div className="bg-gray-100 dark:bg-gray-900 flex-[8] p-4 rounded min-h-[300px]">
+          <H4>{club.description}</H4>
           <H4>Screening Rooms</H4>
           {user ? (
             <ul>
@@ -170,7 +170,7 @@ export default function ClubDetails() {
             <ul>
               {club.members &&
                 club.members.map((member) => (
-                  <li key={member.id}>
+                  <li key={member.id} className="dark:text-gray-100">
                     <FontAwesomeIcon icon={faUser} /> {member.username}
                   </li>
                 ))}
