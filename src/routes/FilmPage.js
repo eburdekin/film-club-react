@@ -86,7 +86,7 @@ export default function FilmPage() {
     fetchFilmDetails();
     fetchLatestPosts();
     fetchSimilarMovies();
-  }, []);
+  }, [filmId]);
 
   return (
     <div>
@@ -184,20 +184,27 @@ export default function FilmPage() {
       <H3>You Might Also Like</H3>
       <div className="flex text-xs">
         {similarMovies.map((movie) => (
-          <Link to={`/films/${film.id}`} className="flex-1">
+          <Link to={`/films/${movie.id}`} className="flex-1">
             <div
               key={movie.id}
-              className="w-35 hover-effect dark:text-white text-center"
+              className="poster-container flex flex-col items-center hover-effect dark:text-white text-center"
             >
               <img
-                className="w-35"
+                className="w-35 h-auto"
                 src={`https://image.tmdb.org/t/p/w185${movie.poster_image}`}
                 alt={movie.title}
               />
-              {movie.title}
+              <div className="truncate">{movie.title}</div>
             </div>
           </Link>
         ))}
+        {similarMovies.length < 6 &&
+          [...Array(6 - similarMovies.length)].map((_, index) => (
+            <div
+              key={index}
+              className="poster-container flex flex-col items-center"
+            ></div>
+          ))}
       </div>
       <Link
         to="/films"

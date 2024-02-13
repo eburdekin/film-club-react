@@ -91,3 +91,14 @@ body {
   color: #ffcc00;
   /* Color for selected stars */
 }
+
+.poster-container {
+  width: 125px;
+  /* Adjust the width as needed */
+  height: 225px;
+  /* Adjust the height as needed */
+  margin-right: 10px;
+  /* Add some margin between each poster */
+  /* position: relative; */
+  /* Ensure the truncation text stays within the container */
+}
