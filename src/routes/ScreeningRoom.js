@@ -216,7 +216,7 @@ export default function ScreeningRoom() {
             <h4>Discussing:</h4>
             <h3 className="text-bold text-xl">{room.movie.title}</h3>
             <img
-              className="w-20 h-auto"
+              className="w-20 h-auto rounded-md"
               src={`https://image.tmdb.org/t/p/w185${room.movie.poster_image}`}
               alt={room.movie.title}
             />
