@@ -101,4 +101,5 @@ body {
   /* Add some margin between each poster */
   position: relative;
   /* Ensure the truncation text stays within the container */
+  margin-bottom: 10px;
 }

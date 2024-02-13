@@ -4,6 +4,7 @@ import { useUser } from "../components/UserContext";
 import StarRating from "../components/StarRating";
 import H2 from "../components/UI/H2";
 import H3 from "../components/UI/H3";
+import H4 from "../components/UI/H4";
 
 export default function FilmPage() {
   const { user } = useUser();
@@ -63,7 +64,7 @@ export default function FilmPage() {
     fetch(`http://127.0.0.1:5555/movies/${filmId}/posts`)
       .then((response) => response.json())
       .then((data) => {
-        setLatestPosts(data.posts.slice(0, 5)); // Slice to get only 5 latest posts
+        setLatestPosts(data.posts.slice(0, 4)); // Slice to get only 5 latest posts
       })
       .catch((error) => {
         console.error("Error fetching latest posts:", error);
@@ -92,20 +93,20 @@ export default function FilmPage() {
     <div>
       <H2>{film.title}</H2>
       <div className="flex flex-col md:flex-row gap-8">
-        <div className="bg-gray-100 dark:bg-gray-300 flex-[8] p-4 rounded min-h-[300px]">
+        <div className="bg-gray-100 dark:bg-gray-800 flex-[8] p-4 rounded min-h-[300px] mb-6">
           <div className="flex gap-2">
             <div className="flex-2 flex items-center">
               <div>
-                <h4 className="font-bold text-lg">{film.summary}</h4>
+                {/* <h4 className="font-bold text-lg">{film.summary}</h4> */}
                 <img
-                  className="w-60 h-auto"
+                  className="w-55 h-auto rounded-md"
                   src={`https://image.tmdb.org/t/p/w185${film.poster_image}`}
                   alt={film.title}
                 />
               </div>
             </div>
             <div className="flex-1">
-              <div className="text-left">
+              <div className="text-left dark:text-white">
                 <div>
                   <div>Release date: {film.release_date}</div>
                   <div>
@@ -116,13 +117,13 @@ export default function FilmPage() {
                       {averageRating && averageRating.toFixed(1)} stars
                     </h4>
                   </div>
-                  <div>
+                  <div className="flex">
                     Genres:{" "}
                     {film.genres &&
                       film.genres.map((genre) => (
                         <div
                           key={genre.id}
-                          className="bg-white p-1 rounded text-xs w-auto flex-3"
+                          className="border bg-purple-500 p-1 m-1 rounded-md text-xs w-auto flex-2"
                         >
                           {genre.name}
                         </div>
@@ -135,7 +136,7 @@ export default function FilmPage() {
 
           {user ? (
             <div>
-              <h4 className="text-bold text-lg mt-2">Screening Rooms</h4>
+              <H4>Screening Rooms</H4>
               <ul>
                 {film.screening_rooms &&
                   film.screening_rooms.map((room) => (
@@ -150,7 +151,7 @@ export default function FilmPage() {
                     </Link>
                   ))}
               </ul>
-              <h4 className="text-bold text-lg mt-2">Latest Posts</h4>
+              <H4>Latest Posts</H4>
               <ul>
                 {latestPosts.map((post) => (
                   <li
@@ -182,7 +183,7 @@ export default function FilmPage() {
         </div>
       </div>
       <H3>You Might Also Like</H3>
-      <div className="flex text-xs">
+      <div className="flex text-xs p-2">
         {similarMovies.map((movie) => (
           <Link to={`/films/${movie.id}`} className="flex-1">
             <div
@@ -190,7 +191,7 @@ export default function FilmPage() {
               className="poster-container flex flex-col items-center hover-effect dark:text-white text-center whitespace-normal break-words"
             >
               <img
-                className="w-35 h-auto"
+                className="w-35 h-auto rounded-md"
                 src={`https://image.tmdb.org/t/p/w185${movie.poster_image}`}
                 alt={movie.title}
               />

@@ -8,6 +8,8 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faDoorOpen } from "@fortawesome/free-solid-svg-icons";
 import { faDoorClosed } from "@fortawesome/free-solid-svg-icons";
 import { useUser } from "../components/UserContext";
+import H2 from "../components/UI/H2";
+import H4 from "../components/UI/H4";
 
 export default function ClubDetails() {
   const { user } = useUser();
@@ -78,9 +80,7 @@ export default function ClubDetails() {
 
   return (
     <div>
-      <h2 className="text-3xl font-bold text-gray-900 dark:text-white leading-[1.4] mb-5">
-        {club.name}
-      </h2>
+      <H2>{club.name}</H2>
       <div className="flex flex-col md:flex-row gap-8">
         {/* Navigation as tabs on small screens */}
         {user ? (
@@ -148,9 +148,9 @@ export default function ClubDetails() {
           ""
         )}
         {/* Main content */}
-        <div className="bg-gray-100 dark:bg-gray-300 flex-[8] p-4 rounded min-h-[300px]">
+        <div className="bg-gray-100 dark:bg-gray-800 flex-[8] p-4 rounded min-h-[300px]">
           <h3 className="text-bold text-lg">{club.description}</h3>
-          <h3 className="text-bold text-lg mt-2">Screening Rooms</h3>
+          <H4>Screening Rooms</H4>
           {user ? (
             <ul>
               {club.screening_rooms &&
@@ -165,7 +165,7 @@ export default function ClubDetails() {
           ) : (
             <>Log in or create an account to view.</>
           )}
-          <h3 className="text-bold text-lg mt-2">Members</h3>
+          <H4>Members</H4>
           {user ? (
             <ul>
               {club.members &&

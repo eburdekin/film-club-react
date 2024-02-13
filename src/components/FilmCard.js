@@ -6,7 +6,7 @@ export default function FilmCard({ film }) {
       <div className="hover-effect">
         {/* <h4 className="text-sm font-semibold text-gray-800">{film.title}</h4> */}
         <img
-          className="mt-2 w-full h-auto"
+          className="mt-2 w-full h-auto rounded-md"
           src={`https://image.tmdb.org/t/p/w185${film.poster_image}`}
           alt={film.title}
         />
