@@ -72,13 +72,13 @@ const FilmSearch = ({
       <div className="flex mx-auto items-center space-x-4 mt-4">
         <button
           onClick={sortByPopularity}
-          className="text-md border border-gray-300 dark:border-gray-600 dark:text-white rounded-lg px-2 py-2"
+          className="text-sm md:text-md border border-gray-300 dark:border-gray-600 dark:text-white rounded-lg px-2 py-2"
         >
           <FontAwesomeIcon icon={faFireFlameCurved} /> Sort by Popularity
         </button>
         <button
           onClick={sortByReleaseDate}
-          className="text-md border border-gray-300 dark:border-gray-600 dark:text-white rounded-lg px-2 py-2"
+          className="text-sm md:text-md border border-gray-300 dark:border-gray-600 dark:text-white rounded-lg px-2 py-2"
         >
           <FontAwesomeIcon icon={faCalendar} /> Sort by Release Date
         </button>

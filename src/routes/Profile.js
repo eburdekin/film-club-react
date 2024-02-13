@@ -1,10 +1,10 @@
 import SideNavLink from "../components/UI/SideNavLink";
-import H2 from "../components/H2";
+import H2 from "../components/UI/H2";
 
 const ProfileLayout = ({ children }) => {
   return (
     <>
-      <H2>My Profile</H2>
+      <H2>My profile</H2>
       <div className="flex flex-col md:flex-row gap-8">
         {/* Navigation as tabs on small screens */}
 

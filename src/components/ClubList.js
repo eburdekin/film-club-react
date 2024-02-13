@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import ClubCard from "./ClubCard";
+import H3 from "./UI/H3";
 
 import { useUser } from "./UserContext";
 
@@ -20,7 +21,7 @@ export default function ClubList({ clubs }) {
     <div className="mt-8">
       {user && userClubs.length > 0 && (
         <div className="mb-8">
-          <h3 className="text-2xl mb-6 dark:text-gray-300">My clubs</h3>
+          <H3>My clubs</H3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {userClubs.map((club) => (
               <ClubCard key={club.id} club={club} />
@@ -28,7 +29,7 @@ export default function ClubList({ clubs }) {
           </div>
         </div>
       )}
-      <h3 className="text-2xl mb-6 dark:text-gray-300">All clubs</h3>
+      <H3>All clubs</H3>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {clubs.map((club) => (
           <ClubCard key={club.id} club={club} />

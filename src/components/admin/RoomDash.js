@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import H3 from "../UI/H3";
 import Admin from "../../routes/Admin";
 
 export default function RoomDash() {
@@ -40,7 +40,7 @@ export default function RoomDash() {
   return (
     <Admin>
       <div>
-        <h3 className="text-2xl mb-6 font-bold">Rooms</h3>
+        <H3>Rooms</H3>
         <div className="overflow-x-auto text-xs md:text-md">
           <table className="table-auto w-full">
             <thead>

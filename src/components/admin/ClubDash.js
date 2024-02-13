@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import H3 from "../UI/H3";
 import Admin from "../../routes/Admin";
 
 export default function ClubDash() {
@@ -40,7 +40,7 @@ export default function ClubDash() {
   return (
     <Admin>
       <div>
-        <h3 className="text-2xl mb-6 font-bold">Clubs</h3>
+        <H3>Clubs</H3>
         <div className="overflow-x-auto text-xs md:text-md">
           <table className="table-auto w-full">
             <thead>

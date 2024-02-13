@@ -63,9 +63,9 @@ export default function ClubDetails() {
         // Toggle the membership status
         setIsMember(!isMember);
         // Only refetch club details if leaving club was successful
-        if (isMember) {
-          fetchClubDetails();
-        }
+        // if (isMember) {
+        fetchClubDetails();
+        // }
       })
       .catch((error) => {
         console.error("Error:", error);

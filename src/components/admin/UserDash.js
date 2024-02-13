@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import H3 from "../UI/H3";
 import Admin from "../../routes/Admin";
 
 import UserRoleModal from "../modals/UserRoleModal";
@@ -67,7 +67,7 @@ export default function UserDash() {
   return (
     <Admin>
       <div>
-        <h3 className="text-2xl mb-6 font-bold">Users</h3>
+        <H3>Users</H3>
         <table className="table-auto w-full text-xs md:text-md">
           <thead>
             <tr>

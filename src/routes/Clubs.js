@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import ClubSearch from "../components/ClubSearch";
 import ClubList from "../components/ClubList";
 import NewClubModal from "../components/modals/NewClubModal";
-import H2 from "../components/H2";
+import H2 from "../components/UI/H2";
 
 export default function Home() {
   const [clubs, setClubs] = useState([]);

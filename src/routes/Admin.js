@@ -1,5 +1,5 @@
 import SideNavLink from "../components/UI/SideNavLink";
-import H2 from "../components/H2";
+import H2 from "../components/UI/H2";
 
 const AdminLayout = ({ children }) => {
   return (

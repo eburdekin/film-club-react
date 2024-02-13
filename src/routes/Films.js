@@ -1,7 +1,7 @@
 import FilmSearch from "../components/FilmSearch";
 import FilmList from "../components/FilmList";
 // import LoadingScreen from "../components/LoadingScreen";
-import H2 from "../components/H2";
+import H2 from "../components/UI/H2";
 
 import { useState, useEffect } from "react";
 

@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import NewClubModal from "../modals/NewClubModal";
 import { Link } from "react-router-dom";
 import { useUser } from "../UserContext";
+import H3 from "../UI/H3";
 
 export default function MyDashboard() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -157,7 +158,7 @@ export default function MyDashboard() {
         + New Club
       </button>
       <div className="mb-8">
-        <h3 className="text-2xl mb-6">My clubs</h3>
+        <H3>My clubs</H3>
         {user && userClubs.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {userClubs.map((club) => (
@@ -173,7 +174,7 @@ export default function MyDashboard() {
         )}
       </div>
       <div className="mb-8">
-        <h3 className="text-2xl mb-6">My posts</h3>
+        <H3>My posts</H3>
         {userPosts.length > 0 && (
           <div className="grid grid-cols-1 gap-4">
             <ul>
