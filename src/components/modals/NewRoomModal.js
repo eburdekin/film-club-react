@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const NewRoomModal = ({ onClose, clubId }) => {
   const [formData, setFormData] = useState({
@@ -7,6 +7,8 @@ const NewRoomModal = ({ onClose, clubId }) => {
   });
 
   const [errorMessage, setErrorMessage] = useState("");
+  const [movieOptions, setMovieOptions] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -14,6 +16,10 @@ const NewRoomModal = ({ onClose, clubId }) => {
       ...formData,
       [name]: value,
     });
+  };
+
+  const handleSearchTermChange = (e) => {
+    setSearchTerm(e.target.value);
   };
 
   const handleSubmit = async (e) => {
@@ -44,6 +50,24 @@ const NewRoomModal = ({ onClose, clubId }) => {
     }
   };
 
+  useEffect(() => {
+    const fetchMovies = async () => {
+      try {
+        const response = await fetch(`/movies?q=${searchTerm}`);
+        if (response.ok) {
+          const data = await response.json();
+          setMovieOptions(data);
+        } else {
+          throw new Error("Failed to fetch movies");
+        }
+      } catch (error) {
+        console.error("Error fetching movies:", error.message);
+      }
+    };
+
+    fetchMovies();
+  }, [searchTerm]);
+
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50">
       <div className="absolute inset-0 bg-black opacity-50"></div>
@@ -51,25 +75,36 @@ const NewRoomModal = ({ onClose, clubId }) => {
         <h2 className="text-2xl font-semibold mb-4">New Screening Room</h2>
         {errorMessage && <p className="text-red-500 mb-2">{errorMessage}</p>}
         <form onSubmit={handleSubmit}>
-          {/* Add input field for movie ID */}
           <div className="mb-4">
             <label
               htmlFor="movie_id"
               className="block text-sm font-medium text-gray-700"
             >
-              Movie ID
+              Movie
             </label>
-            <input
-              type="text"
+            <select
               id="movie_id"
               name="movie_id"
               value={formData.movie_id}
               onChange={handleInputChange}
               className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               required
+            >
+              <option value="">Select a movie</option>
+              {movieOptions.map((movie) => (
+                <option key={movie.id} value={movie.id}>
+                  {movie.title}
+                </option>
+              ))}
+            </select>
+            <input
+              type="text"
+              placeholder="Search movies..."
+              value={searchTerm}
+              onChange={handleSearchTermChange}
+              className="mt-2 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
           </div>
-          {/* Add input field for club ID */}
           <div className="mb-4">
             <label
               htmlFor="club_id"
