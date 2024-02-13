@@ -51,7 +51,6 @@ const Header = React.memo(() => {
         },
       });
       if (response.ok) {
-        console.log("Logout successful");
         logoutUser();
         history.push("/");
         // Perform any additional actions after successful logout

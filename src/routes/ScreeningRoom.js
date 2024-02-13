@@ -275,8 +275,8 @@ export default function ScreeningRoom() {
                   {averageRating} stars
                 </h4>
               </div>
-              <div className="">
-                <h3>Rate Movie:</h3>
+              <div className="mt-4">
+                <h3>Add your rating:</h3>
                 {/* Star rating system */}
                 {[1, 2, 3, 4, 5].map((star) => (
                   <span
