@@ -1,11 +1,13 @@
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useUser } from "../components/UserContext";
+import StarRating from "../components/StarRating";
 
 export default function FilmPage() {
   const { user } = useUser();
   const { filmId } = useParams();
   const [film, setFilm] = useState([]);
+  const [averageRating, setAverageRating] = useState(null);
 
   const fetchFilmDetails = () => {
     fetch(`http://127.0.0.1:5555/movies/${filmId}`)
@@ -13,6 +15,15 @@ export default function FilmPage() {
       .then((film) => {
         // Process club details
         setFilm(film);
+
+        fetch(`http://127.0.0.1:5555/movies/${filmId}/average-rating`)
+          .then((response) => response.json())
+          .then((data) => {
+            setAverageRating(data.average_rating);
+          })
+          .catch((error) => {
+            console.error("Error fetching average rating:", error);
+          });
       })
       .catch((error) => {
         console.error("Error fetching film details:", error);
@@ -22,7 +33,7 @@ export default function FilmPage() {
   // Fetch club details using clubId
   useEffect(() => {
     fetchFilmDetails();
-  });
+  }, []);
 
   return (
     <div>
@@ -41,9 +52,17 @@ export default function FilmPage() {
               />
             </div>
             <div className="col-span-1 text-left">
-              <ul>
-                <li>Release date: {film.release_date}</li>
-                <li>
+              <div>
+                <div>Release date: {film.release_date}</div>
+                <div>
+                  <h4 className="text-sm">
+                    Average Rating from FilmClub:
+                    <br />
+                    <StarRating averageRating={averageRating} />
+                    {averageRating} stars
+                  </h4>
+                </div>
+                <div>
                   Genres:{" "}
                   {film.genres &&
                     film.genres.map((genre) => (
@@ -51,8 +70,8 @@ export default function FilmPage() {
                         {genre.name}
                       </div>
                     ))}
-                </li>
-              </ul>
+                </div>
+              </div>
             </div>
           </div>
 

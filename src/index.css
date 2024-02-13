@@ -76,3 +76,17 @@ body {
   color: #ffcc00;
   /* Color for selected stars */
 }
+
+.staticstar {
+  color: #ccc;
+  /* Default color for unselected stars */
+  font-size: 24px;
+  /* Adjust size as needed */
+  margin-right: 5px;
+  /* Adjust spacing between stars */
+}
+
+.staticstar.selected {
+  color: #ffcc00;
+  /* Color for selected stars */
+}
