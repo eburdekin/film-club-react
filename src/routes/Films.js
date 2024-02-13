@@ -1,6 +1,7 @@
 import FilmSearch from "../components/FilmSearch";
 import FilmList from "../components/FilmList";
 // import LoadingScreen from "../components/LoadingScreen";
+import H2 from "../components/H2";
 
 import { useState, useEffect } from "react";
 
@@ -63,9 +64,7 @@ export default function Films() {
 
   return (
     <>
-      <h2 className="text-3xl font-bold text-gray-900 dark:text-white leading-[1.4] mb-5">
-        Browse films
-      </h2>
+      <H2>Browse films</H2>
       {/* <p className="text-2xl text-gray-700 dark:text-gray-300">Films here.</p> */}
       <FilmSearch
         setSearchTerm={setSearchTerm}

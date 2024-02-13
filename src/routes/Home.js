@@ -40,7 +40,7 @@ export default function Home() {
       >
         FilmClub
       </h1>
-      <h2 className="text-xl md:text-2xl mb-20 font-bold text-purple-600 dark:text-purple-400">
+      <h2 className="text-xl md:text-2xl mb-20 font-bold text-purple-500 dark:text-purple-400">
         Always screening near you.
       </h2>
       <h4 className="text-lg font-bold mb-1 text-gray-700 dark:text-gray-300">

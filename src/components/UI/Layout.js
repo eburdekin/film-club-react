@@ -46,7 +46,7 @@ const Layout = ({ children }) => {
       <Footer />
       {showBackToTop && (
         <button
-          className="fixed bottom-4 p-1 right-4 rounded-2xl shadow-lg hover:bg-gray-100"
+          className="fixed bottom-4 right-4 rounded-2xl shadow-lg hover:bg-gray-100"
           onClick={scrollToTop}
         >
           <FontAwesomeIcon

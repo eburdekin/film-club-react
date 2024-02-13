@@ -58,7 +58,7 @@ export default function FilmList({ films }) {
           </button>
         )}
         <button
-          className={`text-white dark:text-black mx-1 px-3 py-1 border border-gray-300 dark:border-gray-600 before:rounded-md bg-purple-600 dark:bg-purple-400`}
+          className={`text-white dark:text-black mx-1 px-3 py-1 border border-gray-300 dark:border-gray-600 before:rounded-md bg-purple-500 dark:bg-purple-400`}
           onClick={() => paginate(currentPage)}
         >
           {currentPage}
@@ -107,7 +107,7 @@ export default function FilmList({ films }) {
           </button>
         )}
         <button
-          className={`text-white dark:text-black mx-1 px-3 py-1 border border-gray-300 dark:border-gray-600 rounded-md bg-purple-600 dark:bg-purple-400`}
+          className={`text-white dark:text-black mx-1 px-3 py-1 border border-gray-300 dark:border-gray-600 rounded-md bg-purple-500 dark:bg-purple-400`}
           onClick={() => paginate(currentPage)}
         >
           {currentPage}

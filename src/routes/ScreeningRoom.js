@@ -77,7 +77,6 @@ export default function ScreeningRoom() {
         if (response.ok) {
           // Clear the input field after submitting the post
           setNewPostContent("");
-          console.log("New Post Submitted Successfully");
 
           // Fetch the updated list of posts after submitting the new post
           fetch(`/rooms/${roomId}`)
@@ -122,7 +121,6 @@ export default function ScreeningRoom() {
         if (response.ok) {
           // Clear the selected rating after submitting the rating
           setSelectedRating(0);
-          console.log("New Rating Submitted Successfully");
         } else {
           console.error("Error submitting new rating");
         }
@@ -161,7 +159,6 @@ export default function ScreeningRoom() {
     })
       .then((response) => {
         if (response.ok) {
-          console.log("Post updated successfully");
           // Fetch the updated list of posts after updating the post
           fetch(`/rooms/${roomId}`)
             .then((response) => response.json())
@@ -194,7 +191,6 @@ export default function ScreeningRoom() {
     })
       .then((response) => {
         if (response.ok) {
-          console.log("Post deleted successfully");
           // Update the state to remove the deleted post from the UI
           setRoom((prevRoom) => ({
             ...prevRoom,
@@ -248,7 +244,7 @@ export default function ScreeningRoom() {
               ))}
               <br />
               <button
-                className="bg-purple-600 dark:bg-purple-400 text-sm p-1 rounded-xl text-white dark:text-black"
+                className="bg-purple-500 dark:bg-purple-400 text-sm p-1 rounded-xl text-white dark:text-black"
                 onClick={handleRatingSubmit}
               >
                 Submit Rating
@@ -293,7 +289,7 @@ export default function ScreeningRoom() {
                 ))}
                 <br />
                 <button
-                  className="bg-purple-600 dark:bg-purple-400 text-sm p-1 rounded-xl text-white dark:text-black"
+                  className="bg-purple-500 dark:bg-purple-400 text-sm p-1 rounded-xl text-white dark:text-black"
                   onClick={handleRatingSubmit}
                 >
                   Submit Rating
@@ -314,7 +310,7 @@ export default function ScreeningRoom() {
               />
               <br />
               <button
-                className="bg-purple-600 dark:bg-purple-400 text-sm p-2 m-2 rounded-xl text-white dark:text-black"
+                className="bg-purple-500 dark:bg-purple-400 text-sm p-2 m-2 rounded-xl text-white dark:text-black"
                 onClick={handlePostSubmit}
               >
                 Submit Post
@@ -355,31 +351,35 @@ export default function ScreeningRoom() {
                             <input
                               type="text"
                               value={editedContent}
+                              className="text-sm"
                               onChange={(e) => setEditedContent(e.target.value)}
                             />
                             <button
+                              className="p-1 m-1 rounded border text-sm"
                               onClick={() => {
                                 handleEditChange(post.id, editedContent);
                                 setEditingPostId(null);
                               }}
                             >
-                              Submit
+                              Submit Change
                             </button>
-                            <button onClick={() => setEditingPostId(null)}>
+                            <button
+                              className="p-1 m-1 rounded border text-sm"
+                              onClick={() => setEditingPostId(null)}
+                            >
                               Cancel
                             </button>
                           </div>
                         ) : (
                           // Render post content
-                          <div className="text-gray-700 mt-2">
-                            {post.content}
-                          </div>
+                          <div className="mt-2 text-sm">{post.content}</div>
                         )}
                       </div>
                       {post.author_id === user.id &&
                         hoveredPostId === post.id && (
                           <div className="absolute right-0 top-0">
                             <button
+                              className="p-1 m-1 rounded border text-xs"
                               onClick={() => {
                                 setEditingPostId(post.id);
                                 setEditedContent(post.content);
@@ -387,7 +387,10 @@ export default function ScreeningRoom() {
                             >
                               Edit
                             </button>
-                            <button onClick={() => handleDelete(post.id)}>
+                            <button
+                              className="p-1 m-1 rounded border text-xs"
+                              onClick={() => handleDelete(post.id)}
+                            >
                               Delete
                             </button>
                           </div>

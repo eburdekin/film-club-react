@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import ClubSearch from "../components/ClubSearch";
 import ClubList from "../components/ClubList";
 import NewClubModal from "../components/modals/NewClubModal";
+import H2 from "../components/H2";
 
 export default function Home() {
   const [clubs, setClubs] = useState([]);
@@ -40,9 +41,7 @@ export default function Home() {
 
   return (
     <>
-      <h2 className="text-3xl font-bold text-gray-900 dark:text-white leading-[1.4] mb-5">
-        Browse clubs
-      </h2>
+      <H2>Browse clubs</H2>
       <ClubSearch setSearchTerm={setSearchTerm} />
       <button
         onClick={toggleModal}

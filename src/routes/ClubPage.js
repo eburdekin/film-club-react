@@ -129,7 +129,7 @@ export default function ClubDetails() {
           ""
         )}
         {/* Main content */}
-        <div className="bg-white dark:bg-gray-300 flex-[8] p-4 rounded min-h-[300px]">
+        <div className="bg-gray-100 dark:bg-gray-300 flex-[8] p-4 rounded min-h-[300px]">
           <h3 className="text-bold text-lg">{club.description}</h3>
           <h3 className="text-bold text-lg mt-2">Screening Rooms</h3>
           {user ? (
@@ -137,7 +137,7 @@ export default function ClubDetails() {
               {club.screening_rooms &&
                 club.screening_rooms.map((room) => (
                   <Link key={room.id} to={`/rooms/${room.id}`}>
-                    <li className="bg-gray-400 p-2 mb-2 rounded-md hover-effect">
+                    <li className="bg-gray-300 dark:bg-gray-400 p-2 mb-2 rounded-md hover-effect">
                       Room #{room.id} Screening: {room.movie.title}
                     </li>
                   </Link>

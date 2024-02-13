@@ -72,7 +72,7 @@ const Header = React.memo(() => {
             alt="logo"
           />
           <h1
-            className=" text-gray-900 text-2xl md:text-3xl dark:text-white h-2 leading-[1.4] mb-5"
+            className="text-purple-500 dark:text-purple-400  text-2xl md:text-3xl h-2 leading-[1.4] mb-5"
             style={{ fontWeight: 800 }}
           >
             FilmClub
@@ -94,14 +94,14 @@ const Header = React.memo(() => {
             {user ? (
               <button
                 onClick={handleLogout}
-                className=" bg-purple-600 dark:bg-purple-400 text-white dark:text-black dark:hover:text-white p-2 rounded-xl block hover-effect"
+                className=" bg-purple-500 dark:bg-purple-400 text-white dark:text-black dark:hover:text-white p-2 rounded-xl block hover-effect"
               >
                 Log out
               </button>
             ) : (
               <button
                 onClick={toggleModal}
-                className=" bg-purple-600 dark:bg-purple-400 text-white dark:text-black dark:hover:text-white p-2 rounded-xl block hover-effect"
+                className=" bg-purple-500 dark:bg-purple-400 text-white dark:text-black dark:hover:text-white p-2 rounded-xl block hover-effect"
               >
                 Log in
               </button>
@@ -148,7 +148,7 @@ const Header = React.memo(() => {
                 alt="logo"
               />
               <h1
-                className=" text-gray-900 text-2xl md:text-3xl dark:text-white h-2 leading-[1.4] mb-5"
+                className="text-purple-500 dark:text-purple-400 text-2xl md:text-3xl h-2 leading-[1.4] mb-5"
                 style={{ fontWeight: 800 }}
               >
                 FilmClub
@@ -157,7 +157,7 @@ const Header = React.memo(() => {
             <DarkThemeToggle />
             <button onClick={closeMenu}>
               <svg
-                className="w-6 h-6 text-gray-900 dark:text-white"
+                className="w-6 h-6"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -183,14 +183,14 @@ const Header = React.memo(() => {
             {user ? (
               <button
                 onClick={handleLogout}
-                className="text-xl bg-purple-600 dark:bg-purple-400 text-white dark:text-black dark:hover:text-white mt-4 p-3 rounded-xl block hover-effect"
+                className="text-xl bg-purple-500 dark:bg-purple-400 text-white dark:text-black dark:hover:text-white mt-4 p-3 rounded-xl block hover-effect"
               >
                 Log out
               </button>
             ) : (
               <button
                 onClick={toggleModal}
-                className="text-xl bg-purple-600 dark:bg-purple-400 text-white dark:text-black dark:hover:text-white mt-4 p-3 rounded-xl block hover-effect"
+                className="text-xl bg-purple-500 dark:bg-purple-400 text-white dark:text-black dark:hover:text-white mt-4 p-3 rounded-xl block hover-effect"
               >
                 Log in
               </button>

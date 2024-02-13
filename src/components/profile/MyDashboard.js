@@ -162,7 +162,7 @@ export default function MyDashboard() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {userClubs.map((club) => (
               <Link to={`/clubs/${club.id}`} key={club.id}>
-                <div className="md:h-36 flex flex-col justify-center p-4 bg-gray-200 dark:bg-gray-400 rounded-md hover-effect">
+                <div className="md:h-36 flex flex-col justify-center p-4 bg-gray-300 dark:bg-gray-400 rounded-md hover-effect">
                   <b>{club.name}</b>
                   <br />
                   <span className="text-xs">{club.description}</span>
@@ -188,11 +188,13 @@ export default function MyDashboard() {
                     }, new Map())
                   ).map(([title, posts]) => (
                     <div key={title}>
-                      <h3 className="text-xl font-semibold mb-4">{title}</h3>
+                      <h3 className="text-lg font-semibold mt-2 mb-4">
+                        {title}
+                      </h3>
                       {posts.map((post) => (
                         <div
                           key={post.id}
-                          className="mb-2 bg-gray-200 dark:bg-gray-400 rounded-lg p-4 flex justify-between items-start relative"
+                          className="mb-2 bg-gray-300 dark:bg-gray-400 rounded-lg p-4 flex justify-between items-start relative"
                           onMouseEnter={() => setHoveredPostId(post.id)}
                           onMouseLeave={() => setHoveredPostId(null)}
                         >
@@ -205,14 +207,42 @@ export default function MyDashboard() {
                                 {formatTimestamp(post.timestamp)}
                               </span>
                             </div>
-                            <div className="text-gray-700 mt-2">
-                              {post.content}
-                            </div>
+                            {editingPostId === post.id ? (
+                              // Render input field for editing
+                              <div>
+                                <input
+                                  type="text"
+                                  value={editedContent}
+                                  onChange={(e) =>
+                                    setEditedContent(e.target.value)
+                                  }
+                                />
+                                <button
+                                  className="p-1 m-1 rounded border text-sm"
+                                  onClick={() => {
+                                    handleEditChange(post.id, editedContent);
+                                    setEditingPostId(null);
+                                  }}
+                                >
+                                  Submit Change
+                                </button>
+                                <button
+                                  className="p-1 m-1 rounded border text-sm"
+                                  onClick={() => setEditingPostId(null)}
+                                >
+                                  Cancel
+                                </button>
+                              </div>
+                            ) : (
+                              // Render post content
+                              <div className="mt-2 text-sm">{post.content}</div>
+                            )}
                           </div>
                           {post.author_id === user.id &&
                             hoveredPostId === post.id && (
                               <div className="absolute right-0 top-0">
                                 <button
+                                  className="p-1 m-1 rounded border text-xs"
                                   onClick={() => {
                                     setEditingPostId(post.id);
                                     setEditedContent(post.content);
@@ -220,7 +250,10 @@ export default function MyDashboard() {
                                 >
                                   Edit
                                 </button>
-                                <button onClick={() => handleDelete(post.id)}>
+                                <button
+                                  className="p-1 m-1 rounded border text-xs"
+                                  onClick={() => handleDelete(post.id)}
+                                >
                                   Delete
                                 </button>
                               </div>
