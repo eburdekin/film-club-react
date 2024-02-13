@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage, useFormik } from "formik";
 import * as Yup from "yup";
+import { useHistory } from "react-router-dom"; // Import useHistory hook
 
 const LoginModal = ({ onClose, onLogin }) => {
+  const history = useHistory();
   const [isLoginMode, setIsLoginMode] = useState(true);
 
   // email requirement not working with state variable
@@ -30,6 +32,7 @@ const LoginModal = ({ onClose, onLogin }) => {
       if (response.ok) {
         const userData = await response.json(); // Assuming the response contains user data
         onLogin(userData);
+        history.push("/clubs");
       } else {
         const errorData = await response.json();
         // Handle errors
