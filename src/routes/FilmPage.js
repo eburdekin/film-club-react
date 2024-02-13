@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useUser } from "../components/UserContext";
 import StarRating from "../components/StarRating";
 import H2 from "../components/UI/H2";
-// import h4 from "../components/UI/h4";
+import H3 from "../components/UI/H3";
 
 export default function FilmPage() {
   const { user } = useUser();
@@ -98,7 +98,7 @@ export default function FilmPage() {
               <div>
                 <h4 className="font-bold text-lg">{film.summary}</h4>
                 <img
-                  className="w-30 h-auto"
+                  className="w-60 h-auto"
                   src={`https://image.tmdb.org/t/p/w185${film.poster_image}`}
                   alt={film.title}
                 />
@@ -172,12 +172,6 @@ export default function FilmPage() {
                   </li>
                 ))}
               </ul>
-              <h4 className="text-bold text-lg mt-2">
-                You Might Also Like: in the same genre
-              </h4>
-              {similarMovies.map((movie) => (
-                <div>{movie.title}</div>
-              ))}
             </div>
           ) : (
             <div className="font-bold text-xl p-4 m-4">
@@ -186,6 +180,24 @@ export default function FilmPage() {
             </div>
           )}
         </div>
+      </div>
+      <H3>You Might Also Like</H3>
+      <div className="flex text-xs">
+        {similarMovies.map((movie) => (
+          <Link to={`/films/${film.id}`} className="flex-1">
+            <div
+              key={movie.id}
+              className="w-35 hover-effect dark:text-white text-center"
+            >
+              <img
+                className="w-35"
+                src={`https://image.tmdb.org/t/p/w185${movie.poster_image}`}
+                alt={movie.title}
+              />
+              {movie.title}
+            </div>
+          </Link>
+        ))}
       </div>
       <Link
         to="/films"
