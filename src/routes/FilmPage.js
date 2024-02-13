@@ -5,6 +5,7 @@ import StarRating from "../components/StarRating";
 import H2 from "../components/UI/H2";
 import H3 from "../components/UI/H3";
 import H4 from "../components/UI/H4";
+import NewRoomModalFromFilm from "../components/modals/NewRoomModalFromFilm";
 
 export default function FilmPage() {
   const { user } = useUser();
@@ -12,8 +13,8 @@ export default function FilmPage() {
   const [film, setFilm] = useState([]);
   const [averageRating, setAverageRating] = useState(null);
   const [latestPosts, setLatestPosts] = useState([]);
-
   const [similarMovies, setSimilarMovies] = useState([]);
+  const [showModal, setShowModal] = useState(false);
 
   const formatTimestamp = (timestamp) => {
     const postDate = new Date(timestamp);
@@ -89,6 +90,18 @@ export default function FilmPage() {
     fetchSimilarMovies();
   }, [filmId]);
 
+  const openModal = () => {
+    setShowModal(!showModal);
+    // fetchFilmDetails();
+    // fetchLatestPosts();
+    // fetchSimilarMovies();
+  };
+
+  const closeModal = () => {
+    setShowModal(!showModal);
+    fetchFilmDetails();
+  };
+
   return (
     <div>
       <H2>{film.title}</H2>
@@ -136,6 +149,12 @@ export default function FilmPage() {
 
           {user ? (
             <div>
+              <button
+                onClick={openModal}
+                className="bg-purple-500 dark:bg-purple-400 text-white dark:text-black dark:hover:text-white my-4 p-2 rounded-xl block hover-effect"
+              >
+                + New Screening Room
+              </button>
               <H4>Screening Rooms</H4>
               <ul>
                 {film.screening_rooms &&
@@ -225,6 +244,13 @@ export default function FilmPage() {
         </svg>
         Back to Films
       </Link>
+      {showModal && (
+        <NewRoomModalFromFilm
+          // clubId={clubId}
+          filmId={filmId}
+          onClose={closeModal}
+        />
+      )}
     </div>
   );
 }

@@ -154,7 +154,7 @@ export default function MyDashboard() {
     <Profile>
       <button
         onClick={toggleModal}
-        className="bg-gray-200 text-black dark:hover:text-white p-2 rounded block hover-effect"
+        className="bg-purple-500 dark:bg-purple-400 text-white dark:text-black dark:hover:text-white my-4 p-2 rounded-xl block hover-effect"
       >
         + New Club
       </button>
