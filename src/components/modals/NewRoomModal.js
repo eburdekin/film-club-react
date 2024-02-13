@@ -82,6 +82,13 @@ const NewRoomModal = ({ onClose, clubId }) => {
             >
               Movie
             </label>
+            <input
+              type="text"
+              placeholder="Filter movies..."
+              value={searchTerm}
+              onChange={handleSearchTermChange}
+              className="mt-2 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            />
             <select
               id="movie_id"
               name="movie_id"
@@ -97,13 +104,6 @@ const NewRoomModal = ({ onClose, clubId }) => {
                 </option>
               ))}
             </select>
-            <input
-              type="text"
-              placeholder="Search movies..."
-              value={searchTerm}
-              onChange={handleSearchTermChange}
-              className="mt-2 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-            />
           </div>
           <div className="mb-4">
             <label
