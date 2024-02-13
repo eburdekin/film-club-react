@@ -177,68 +177,60 @@ export default function MyDashboard() {
         {userPosts.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <ul>
-              {userPosts
-                .slice(0)
-                .reverse()
-                .map((post) => (
-                  <li
-                    key={post.id}
-                    className="mb-2 bg-gray-200 dark:bg-gray-400 rounded-lg p-4 flex justify-between items-start relative"
-                    onMouseEnter={() => setHoveredPostId(post.id)}
-                    onMouseLeave={() => setHoveredPostId(null)}
-                  >
-                    <div className="flex flex-col">
-                      <div>
-                        <span className="font-bold text-sm">
-                          {post.author.username}{" "}
-                        </span>
-                        <span className="text-xs font-bold text-gray-500 mt-1">
-                          {formatTimestamp(post.timestamp)}
-                        </span>
-                      </div>
-                      {editingPostId === post.id ? (
-                        // Render input field for editing
-                        <div>
-                          <input
-                            type="text"
-                            value={editedContent}
-                            onChange={(e) => setEditedContent(e.target.value)}
-                          />
-                          <button
-                            onClick={() => {
-                              handleEditChange(post.id, editedContent);
-                              setEditingPostId(null);
-                            }}
-                          >
-                            Submit
-                          </button>
-                          <button onClick={() => setEditingPostId(null)}>
-                            Cancel
-                          </button>
+              {userPosts.length > 0 && (
+                <div>
+                  {Array.from(
+                    userPosts.reduce((map, post) => {
+                      const title = post.movie.title;
+                      if (!map.has(title)) map.set(title, []);
+                      map.get(title).push(post);
+                      return map;
+                    }, new Map())
+                  ).map(([title, posts]) => (
+                    <div key={title}>
+                      <h3 className="text-xl font-semibold mb-4">{title}</h3>
+                      {posts.map((post) => (
+                        <div
+                          key={post.id}
+                          className="mb-2 bg-gray-200 dark:bg-gray-400 rounded-lg p-4 flex justify-between items-start relative"
+                          onMouseEnter={() => setHoveredPostId(post.id)}
+                          onMouseLeave={() => setHoveredPostId(null)}
+                        >
+                          <div className="flex flex-col">
+                            <div>
+                              <span className="font-bold text-sm">
+                                {post.author.username}{" "}
+                              </span>
+                              <span className="text-xs font-bold text-gray-500 mt-1">
+                                {formatTimestamp(post.timestamp)}
+                              </span>
+                            </div>
+                            <div className="text-gray-700 mt-2">
+                              {post.content}
+                            </div>
+                          </div>
+                          {post.author_id === user.id &&
+                            hoveredPostId === post.id && (
+                              <div className="absolute right-0 top-0">
+                                <button
+                                  onClick={() => {
+                                    setEditingPostId(post.id);
+                                    setEditedContent(post.content);
+                                  }}
+                                >
+                                  Edit
+                                </button>
+                                <button onClick={() => handleDelete(post.id)}>
+                                  Delete
+                                </button>
+                              </div>
+                            )}
                         </div>
-                      ) : (
-                        // Render post content
-                        <div className="text-gray-700 mt-2">{post.content}</div>
-                      )}
+                      ))}
                     </div>
-                    {post.author_id === user.id &&
-                      hoveredPostId === post.id && (
-                        <div className="absolute right-0 top-0">
-                          <button
-                            onClick={() => {
-                              setEditingPostId(post.id);
-                              setEditedContent(post.content);
-                            }}
-                          >
-                            Edit
-                          </button>
-                          <button onClick={() => handleDelete(post.id)}>
-                            Delete
-                          </button>
-                        </div>
-                      )}
-                  </li>
-                ))}
+                  ))}
+                </div>
+              )}
             </ul>
           </div>
         )}
