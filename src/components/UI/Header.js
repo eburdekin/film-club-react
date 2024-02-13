@@ -139,7 +139,7 @@ const Header = React.memo(() => {
       </div>
       {/* Overlay menu */}
       {isMenuOpen && (
-        <div className="md:hidden fixed inset-0 bg-white dark:bg-black  z-10">
+        <div className="md:hidden fixed inset-0 bg-white dark:bg-black z-10">
           <div className="container mx-auto px-4 py-4 flex items-center justify-between">
             <Link to="/" className="flex items-center">
               <img
@@ -157,7 +157,7 @@ const Header = React.memo(() => {
             <DarkThemeToggle />
             <button onClick={closeMenu}>
               <svg
-                className="w-6 h-6"
+                className="w-6 h-6 text-gray-900 dark:text-white"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
