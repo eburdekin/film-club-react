@@ -53,6 +53,7 @@ const Header = React.memo(() => {
       if (response.ok) {
         logoutUser();
         history.push("/");
+        closeMenu();
         // Perform any additional actions after successful logout
       } else {
         throw new Error("Logout failed");

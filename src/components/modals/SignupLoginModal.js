@@ -32,7 +32,7 @@ const LoginModal = ({ onClose, onLogin }) => {
       if (response.ok) {
         const userData = await response.json(); // Assuming the response contains user data
         onLogin(userData);
-        history.push("/clubs");
+        history.push("/films");
       } else {
         const errorData = await response.json();
         // Handle errors
