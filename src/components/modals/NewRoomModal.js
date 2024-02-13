@@ -56,7 +56,10 @@ const NewRoomModal = ({ onClose, clubId }) => {
         const response = await fetch(`/movies?q=${searchTerm}`);
         if (response.ok) {
           const data = await response.json();
-          setMovieOptions(data);
+          const sortedData = data.sort((a, b) =>
+            a.title.localeCompare(b.title)
+          );
+          setMovieOptions(sortedData);
         } else {
           throw new Error("Failed to fetch movies");
         }
