@@ -187,14 +187,14 @@ export default function FilmPage() {
           <Link to={`/films/${movie.id}`} className="flex-1">
             <div
               key={movie.id}
-              className="poster-container flex flex-col items-center hover-effect dark:text-white text-center"
+              className="poster-container flex flex-col items-center hover-effect dark:text-white text-center whitespace-normal break-words"
             >
               <img
                 className="w-35 h-auto"
                 src={`https://image.tmdb.org/t/p/w185${movie.poster_image}`}
                 alt={movie.title}
               />
-              <div className="truncate">{movie.title}</div>
+              <div>{movie.title}</div>
             </div>
           </Link>
         ))}
