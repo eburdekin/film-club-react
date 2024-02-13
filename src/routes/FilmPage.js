@@ -2,12 +2,41 @@ import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useUser } from "../components/UserContext";
 import StarRating from "../components/StarRating";
+import H2 from "../components/UI/H2";
+// import h4 from "../components/UI/h4";
 
 export default function FilmPage() {
   const { user } = useUser();
   const { filmId } = useParams();
   const [film, setFilm] = useState([]);
   const [averageRating, setAverageRating] = useState(null);
+  const [latestPosts, setLatestPosts] = useState([]);
+
+  const [similarMovies, setSimilarMovies] = useState([]);
+
+  const formatTimestamp = (timestamp) => {
+    const postDate = new Date(timestamp);
+
+    const options = { timeZone: "America/Los_Angeles" };
+
+    const currentDate = new Date();
+
+    // Check if the post is from today
+    if (
+      postDate.getDate() === currentDate.getDate() &&
+      postDate.getMonth() === currentDate.getMonth() &&
+      postDate.getFullYear() === currentDate.getFullYear()
+    ) {
+      // Format the timestamp to hh:mm format
+      return `at ${postDate.toLocaleTimeString("en-US", options)} today`;
+    } else {
+      // Format the timestamp to hh:mm format and the date to MM/DD/YYYY
+      return `at ${postDate.toLocaleTimeString(
+        "en-US",
+        options
+      )} ${postDate.toLocaleDateString("en-US", options)}`;
+    }
+  };
 
   const fetchFilmDetails = () => {
     fetch(`http://127.0.0.1:5555/movies/${filmId}`)
@@ -30,46 +59,75 @@ export default function FilmPage() {
       });
   };
 
+  const fetchLatestPosts = () => {
+    fetch(`http://127.0.0.1:5555/movies/${filmId}/posts`)
+      .then((response) => response.json())
+      .then((data) => {
+        setLatestPosts(data.posts.slice(0, 5)); // Slice to get only 5 latest posts
+      })
+      .catch((error) => {
+        console.error("Error fetching latest posts:", error);
+      });
+  };
+
+  const fetchSimilarMovies = () => {
+    fetch(`http://127.0.0.1:5555/movies/${filmId}/similar`)
+      .then((response) => response.json())
+      .then((data) => {
+        setSimilarMovies(data); // Slice to get only 5 latest posts
+      })
+      .catch((error) => {
+        console.error("Error fetching latest posts:", error);
+      });
+  };
+
   // Fetch club details using clubId
   useEffect(() => {
     fetchFilmDetails();
+    fetchLatestPosts();
+    fetchSimilarMovies();
   }, []);
 
   return (
     <div>
-      <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 leading-[1.4] mb-5">
-        {film.title}
-      </h2>
+      <H2>{film.title}</H2>
       <div className="flex flex-col md:flex-row gap-8">
         <div className="bg-gray-100 dark:bg-gray-300 flex-[8] p-4 rounded min-h-[300px]">
-          <div className="grid grid-cols-2 gap-4">
-            <div className="col-span-1">
-              <h3 className="text-bold text-lg">{film.summary}</h3>
-              <img
-                className="w-30 h-auto"
-                src={`https://image.tmdb.org/t/p/w185${film.poster_image}`}
-                alt={film.title}
-              />
-            </div>
-            <div className="col-span-1 text-left">
+          <div className="flex gap-2">
+            <div className="flex-2 flex items-center">
               <div>
-                <div>Release date: {film.release_date}</div>
+                <h4 className="font-bold text-lg">{film.summary}</h4>
+                <img
+                  className="w-30 h-auto"
+                  src={`https://image.tmdb.org/t/p/w185${film.poster_image}`}
+                  alt={film.title}
+                />
+              </div>
+            </div>
+            <div className="flex-1">
+              <div className="text-left">
                 <div>
-                  <h4 className="text-sm">
-                    Average Rating from FilmClub:
-                    <br />
-                    <StarRating averageRating={averageRating} />
-                    {averageRating} stars
-                  </h4>
-                </div>
-                <div>
-                  Genres:{" "}
-                  {film.genres &&
-                    film.genres.map((genre) => (
-                      <div key={genre.id} className="bg-white">
-                        {genre.name}
-                      </div>
-                    ))}
+                  <div>Release date: {film.release_date}</div>
+                  <div>
+                    <h4 className="text-sm">
+                      Average Rating from FilmClub:
+                      <br />
+                      <StarRating averageRating={averageRating} />
+                      {averageRating && averageRating.toFixed(1)} stars
+                    </h4>
+                  </div>
+                  <div>
+                    Genres:{" "}
+                    {film.genres &&
+                      film.genres.map((genre) => (
+                        <div
+                          key={genre.id}
+                          className="bg-white p-1 rounded text-xs w-auto flex-3"
+                        >
+                          {genre.name}
+                        </div>
+                      ))}
+                  </div>
                 </div>
               </div>
             </div>
@@ -77,7 +135,7 @@ export default function FilmPage() {
 
           {user ? (
             <div>
-              <h3 className="text-bold text-lg mt-2">Screening Rooms</h3>
+              <h4 className="text-bold text-lg mt-2">Screening Rooms</h4>
               <ul>
                 {film.screening_rooms &&
                   film.screening_rooms.map((room) => (
@@ -92,6 +150,34 @@ export default function FilmPage() {
                     </Link>
                   ))}
               </ul>
+              <h4 className="text-bold text-lg mt-2">Latest Posts</h4>
+              <ul>
+                {latestPosts.map((post) => (
+                  <li
+                    key={post.id}
+                    className="mb-2 bg-gray-200 dark:bg-gray-400 rounded-lg p-4 flex justify-between items-start relative"
+                  >
+                    <div className="flex flex-col">
+                      <div>
+                        <span className="font-bold text-sm">
+                          {post.author.username}{" "}
+                        </span>
+                        <span className="text-xs font-bold text-gray-500 mt-1">
+                          {formatTimestamp(post.timestamp)}
+                        </span>
+                      </div>
+
+                      <div className="mt-2 text-sm">{post.content}</div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+              <h4 className="text-bold text-lg mt-2">
+                You Might Also Like: in the same genre
+              </h4>
+              {similarMovies.map((movie) => (
+                <div>{movie.title}</div>
+              ))}
             </div>
           ) : (
             <div className="font-bold text-xl p-4 m-4">
