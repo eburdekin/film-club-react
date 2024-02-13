@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFireFlameCurved } from "@fortawesome/free-solid-svg-icons";
+import { faCalendar } from "@fortawesome/free-solid-svg-icons";
 
 const FilmSearch = ({
   setSearchTerm,
@@ -71,13 +74,13 @@ const FilmSearch = ({
           onClick={sortByPopularity}
           className="text-md border border-gray-300 dark:border-gray-600 dark:text-white rounded-lg px-2 py-2"
         >
-          Sort by Popularity
+          <FontAwesomeIcon icon={faFireFlameCurved} /> Sort by Popularity
         </button>
         <button
           onClick={sortByReleaseDate}
           className="text-md border border-gray-300 dark:border-gray-600 dark:text-white rounded-lg px-2 py-2"
         >
-          Sort by Release Date
+          <FontAwesomeIcon icon={faCalendar} /> Sort by Release Date
         </button>
       </div>
     </>

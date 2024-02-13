@@ -2,8 +2,11 @@
 import { useState, useEffect, useCallback } from "react";
 import { Link, useParams } from "react-router-dom";
 import NewRoomModal from "../components/modals/NewRoomModal";
-import SideNavLink from "../components/UI/SideNavLink";
-
+// import SideNavLink from "../components/UI/SideNavLink";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faDoorOpen } from "@fortawesome/free-solid-svg-icons";
+import { faDoorClosed } from "@fortawesome/free-solid-svg-icons";
 import { useUser } from "../components/UserContext";
 
 export default function ClubDetails() {
@@ -88,7 +91,15 @@ export default function ClubDetails() {
                   className="dark:text-gray-100"
                   onClick={handleJoinLeave}
                 >
-                  {isMember ? "Leave club" : "Join club"}
+                  {isMember ? (
+                    <>
+                      <FontAwesomeIcon icon={faDoorOpen} /> Leave club
+                    </>
+                  ) : (
+                    <>
+                      <FontAwesomeIcon icon={faDoorClosed} /> Join club
+                    </>
+                  )}
                 </button>
                 {isMember ? (
                   <button
@@ -109,7 +120,15 @@ export default function ClubDetails() {
                     className="dark:text-gray-100"
                     onClick={handleJoinLeave}
                   >
-                    {isMember ? "Leave club" : "Join club"}
+                    {isMember ? (
+                      <>
+                        <FontAwesomeIcon icon={faDoorOpen} /> Leave club
+                      </>
+                    ) : (
+                      <>
+                        <FontAwesomeIcon icon={faDoorClosed} /> Join club
+                      </>
+                    )}
                   </button>
                   {isMember ? (
                     <button
@@ -151,7 +170,9 @@ export default function ClubDetails() {
             <ul>
               {club.members &&
                 club.members.map((member) => (
-                  <li key={member.id}>{member.username}</li>
+                  <li key={member.id}>
+                    <FontAwesomeIcon icon={faUser} /> {member.username}
+                  </li>
                 ))}
             </ul>
           ) : (
