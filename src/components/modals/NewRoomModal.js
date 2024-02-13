@@ -90,7 +90,7 @@ const NewRoomModal = ({ onClose, clubId }) => {
           <div className="flex items-center justify-between">
             <button
               type="submit"
-              className="bg-cyan-500 text-white px-4 py-2 rounded-md hover:bg-cyan-600 focus:outline-none focus:bg-cyan-600"
+              className="bg-purple-500 text-white px-4 py-2 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600"
             >
               Add Screening Room
             </button>

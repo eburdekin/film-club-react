@@ -66,18 +66,18 @@ const FilmSearch = ({
           ))}
         </select>
       </div>
-      <div className="flex items-center space-x-4">
+      <div className="flex mx-auto items-center space-x-4 mt-5">
         <button
           onClick={sortByPopularity}
-          className="border border-gray-300 rounded-lg px-3 py-2"
+          className="border border-gray-300 dark:border-gray-600 dark:text-white rounded-lg px-3 py-2"
         >
-          Sort by pop
+          Sort by Popularity
         </button>
         <button
           onClick={sortByReleaseDate}
-          className="border border-gray-300 rounded-lg px-3 py-2"
+          className="border border-gray-300 dark:border-gray-600 dark:text-white rounded-lg px-3 py-2"
         >
-          Sort by release date
+          Sort by Release Date
         </button>
       </div>
     </>

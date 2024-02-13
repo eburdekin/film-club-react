@@ -43,6 +43,7 @@ body {
   font-family: 'Inter';
 }
 
+
 .scroll-container {
   overflow-x: auto;
   /* Enable horizontal scrolling */

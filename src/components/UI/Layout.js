@@ -32,7 +32,7 @@ const Layout = ({ children }) => {
   };
 
   return (
-    <div className="bg-gray-100 dark:bg-gray-900">
+    <div className="dark:bg-black">
       <Header />
       <div className="flex flex-col min-h-screen mx-auto max-w-4xl px-4 pt-8 pb-16">
         <div className="flex-grow">

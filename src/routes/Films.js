@@ -49,7 +49,8 @@ export default function Films() {
   };
 
   const filteredFilms = films.filter((film) => {
-    const byTitle = film.title.toLowerCase().includes(searchTerm.toLowerCase());
+    const byTitle =
+      film && film.title.toLowerCase().includes(searchTerm.toLowerCase());
     const byGenre =
       selectedGenre === "" ||
       film.genres.some((genre) => genre.name === selectedGenre);

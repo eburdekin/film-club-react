@@ -248,7 +248,7 @@ export default function ScreeningRoom() {
               ))}
               <br />
               <button
-                className="bg-cyan-600 dark:bg-cyan-400 text-sm p-1 rounded-xl text-white dark:text-black"
+                className="bg-purple-600 dark:bg-purple-400 text-sm p-1 rounded-xl text-white dark:text-black"
                 onClick={handleRatingSubmit}
               >
                 Submit Rating
@@ -293,7 +293,7 @@ export default function ScreeningRoom() {
                 ))}
                 <br />
                 <button
-                  className="bg-cyan-600 dark:bg-cyan-400 text-sm p-1 rounded-xl text-white dark:text-black"
+                  className="bg-purple-600 dark:bg-purple-400 text-sm p-1 rounded-xl text-white dark:text-black"
                   onClick={handleRatingSubmit}
                 >
                   Submit Rating
@@ -314,7 +314,7 @@ export default function ScreeningRoom() {
               />
               <br />
               <button
-                className="bg-cyan-600 dark:bg-cyan-400 text-sm p-2 m-2 rounded-xl text-white dark:text-black"
+                className="bg-purple-600 dark:bg-purple-400 text-sm p-2 m-2 rounded-xl text-white dark:text-black"
                 onClick={handlePostSubmit}
               >
                 Submit Post

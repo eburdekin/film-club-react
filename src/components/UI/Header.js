@@ -63,7 +63,7 @@ const Header = React.memo(() => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-gray-100 dark:bg-gray-900 backdrop-blur-md dark:backdrop-blur-md bg-opacity-60 dark:bg-opacity-60">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-black backdrop-blur-md dark:backdrop-blur-md bg-opacity-60 dark:bg-opacity-60">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center">
           <img
@@ -94,14 +94,14 @@ const Header = React.memo(() => {
             {user ? (
               <button
                 onClick={handleLogout}
-                className=" bg-cyan-600 dark:bg-cyan-400 text-white dark:text-black dark:hover:text-white p-2 rounded-xl block hover-effect"
+                className=" bg-purple-600 dark:bg-purple-400 text-white dark:text-black dark:hover:text-white p-2 rounded-xl block hover-effect"
               >
                 Log out
               </button>
             ) : (
               <button
                 onClick={toggleModal}
-                className=" bg-cyan-600 dark:bg-cyan-400 text-white dark:text-black dark:hover:text-white p-2 rounded-xl block hover-effect"
+                className=" bg-purple-600 dark:bg-purple-400 text-white dark:text-black dark:hover:text-white p-2 rounded-xl block hover-effect"
               >
                 Log in
               </button>
@@ -139,7 +139,7 @@ const Header = React.memo(() => {
       </div>
       {/* Overlay menu */}
       {isMenuOpen && (
-        <div className="md:hidden fixed inset-0 bg-gray-100 dark:bg-gray-900  z-10">
+        <div className="md:hidden fixed inset-0 bg-white dark:bg-black  z-10">
           <div className="container mx-auto px-4 py-4 flex items-center justify-between">
             <Link to="/" className="flex items-center">
               <img
@@ -172,7 +172,7 @@ const Header = React.memo(() => {
               </svg>
             </button>
           </div>
-          <ul className="flex flex-col items-center pt-12 bg-gray-100 dark:bg-gray-900 min-h-screen">
+          <ul className="flex flex-col items-center pt-12 bg-white dark:bg-black min-h-screen">
             {menuItems.map(({ url, label }, index) => (
               <li key={index} className="my-4 text-2xl">
                 <HeaderNavLink href={url} onClick={closeMenu}>
@@ -183,14 +183,14 @@ const Header = React.memo(() => {
             {user ? (
               <button
                 onClick={handleLogout}
-                className="text-xl bg-cyan-600 dark:bg-cyan-400 text-white dark:text-black dark:hover:text-white mt-4 p-3 rounded-xl block hover-effect"
+                className="text-xl bg-purple-600 dark:bg-purple-400 text-white dark:text-black dark:hover:text-white mt-4 p-3 rounded-xl block hover-effect"
               >
                 Log out
               </button>
             ) : (
               <button
                 onClick={toggleModal}
-                className="text-xl bg-cyan-600 dark:bg-cyan-400 text-white dark:text-black dark:hover:text-white mt-4 p-3 rounded-xl block hover-effect"
+                className="text-xl bg-purple-600 dark:bg-purple-400 text-white dark:text-black dark:hover:text-white mt-4 p-3 rounded-xl block hover-effect"
               >
                 Log in
               </button>

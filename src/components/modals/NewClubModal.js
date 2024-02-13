@@ -134,7 +134,7 @@ const NewClubModal = ({ onClose }) => {
                 name="isPublic"
                 checked={formData.public}
                 onChange={handleToggleChange}
-                className="h-5 w-5 text-cyan-600 focus:ring-cyan-500 border-gray-300 rounded-md"
+                className="h-5 w-5 text-purple-600 focus:ring-purple-500 border-gray-300 rounded-md"
               />
               <span className="ml-2 text-sm text-gray-700">Public</span>
             </label>
@@ -142,7 +142,7 @@ const NewClubModal = ({ onClose }) => {
           <div className="flex items-center justify-between">
             <button
               type="submit"
-              className="bg-cyan-500 text-white px-4 py-2 rounded-md hover:bg-cyan-600 focus:outline-none focus:bg-cyan-600"
+              className="bg-purple-500 text-white px-4 py-2 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600"
             >
               Create Club
             </button>

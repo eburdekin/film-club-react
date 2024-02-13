@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="dark:bg-gray-900 p-2 text-black dark:text-white text-sm flex flex-col items-center justify-between">
+    <footer className="dark:bg-black p-2 text-black dark:text-white text-sm flex flex-col items-center justify-between">
       {/* <div className="container mx-auto flex items-center justify-between">
        */}
       <div>
@@ -41,7 +41,7 @@ const Footer = () => {
           &copy; {new Date().getFullYear().toString()} by
           <a
             href="https://github.com/eburdekin"
-            className="text-cyan-600 dark:text-cyan-400"
+            className="text-purple-600 dark:text-purple-400"
           >
             {" "}
             @eburdekin
@@ -49,7 +49,7 @@ const Footer = () => {
           . Film data from{" "}
           <a
             href="https://developer.themoviedb.org/docs/getting-started"
-            className="text-cyan-600 dark:text-cyan-400"
+            className="text-purple-600 dark:text-purple-400"
           >
             TMDB
           </a>
