@@ -9,7 +9,7 @@ import Films from "./routes/Films";
 import FilmPage from "./routes/FilmPage";
 import Clubs from "./routes/Clubs";
 import ClubPage from "./routes/ClubPage";
-import ScreeningRoom from "./routes/ScreeningRoom";
+import ScreeningRoom from "./routes/RoomPage";
 import MyDashboard from "./components/profile/MyDashboard";
 import Settings from "./components/profile/Settings";
 import UserDash from "./components/admin/UserDash";

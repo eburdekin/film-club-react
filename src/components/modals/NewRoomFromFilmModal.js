@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { useUser } from "../UserContext";
 
-const NewRoomModalFromFilm = ({ onClose, filmId }) => {
+export default function NewRoomFromFilmModal({ onClose, filmId }) {
   const { user } = useUser();
 
   const [formData, setFormData] = useState({
@@ -116,6 +116,4 @@ const NewRoomModalFromFilm = ({ onClose, filmId }) => {
       </div>
     </div>
   );
-};
-
-export default NewRoomModalFromFilm;
+}

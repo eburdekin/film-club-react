@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { useUser } from "../components/UserContext";
 import StarRating from "../components/StarRating";
 
-export default function ScreeningRoom() {
+export default function RoomPage() {
   const [room, setRoom] = useState(null);
   const [newPostContent, setNewPostContent] = useState("");
   const [selectedRating, setSelectedRating] = useState(null);

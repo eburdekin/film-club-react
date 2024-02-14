@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { useUser } from "../UserContext";
 
-const NewClubModal = ({ onClose }) => {
+export default function NewClubModal({ onClose }) {
   const { user } = useUser();
 
   const [formData, setFormData] = useState({
@@ -158,6 +158,4 @@ const NewClubModal = ({ onClose }) => {
       </div>
     </div>
   );
-};
-
-export default NewClubModal;
+}

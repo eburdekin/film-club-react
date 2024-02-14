@@ -10,6 +10,7 @@ import { faDoorClosed } from "@fortawesome/free-solid-svg-icons";
 import { useUser } from "../components/UserContext";
 import H2 from "../components/UI/H2";
 import H4 from "../components/UI/H4";
+import ClubPageRoomCard from "../components/ClubPageRoomCard";
 
 export default function ClubDetails() {
   const { user } = useUser();
@@ -88,7 +89,8 @@ export default function ClubDetails() {
             <nav className="bg-white p-2 rounded-md md:hidden">
               <ul className="flex justify-evenly">
                 <button
-                  className="dark:text-gray-100"
+                  // className="bg-purple-500 dark:bg-purple-400 text-white dark:text-black dark:hover:text-white my-4 p-2 rounded-xl block hover-effect"
+                  className="text-gray-100"
                   onClick={handleJoinLeave}
                 >
                   {isMember ? (
@@ -103,7 +105,7 @@ export default function ClubDetails() {
                 </button>
                 {isMember ? (
                   <button
-                    className="dark:text-gray-100"
+                    className="bg-purple-500 dark:bg-purple-400 text-white dark:text-black dark:hover:text-white my-4 p-2 rounded-xl block hover-effect"
                     onClick={() => setShowModal(true)}
                   >
                     + Screening Room
@@ -117,7 +119,8 @@ export default function ClubDetails() {
               <nav>
                 <ul className="grid gap-3 rounded">
                   <button
-                    className="dark:text-gray-100"
+                    className="text-gray-100"
+                    // className="bg-purple-500 dark:bg-purple-400 text-white dark:text-black dark:hover:text-white my-1 p-2 rounded-xl block hover-effect"
                     onClick={handleJoinLeave}
                   >
                     {isMember ? (
@@ -132,7 +135,7 @@ export default function ClubDetails() {
                   </button>
                   {isMember ? (
                     <button
-                      className="dark:text-gray-100"
+                      className="bg-purple-500 dark:bg-purple-400 text-white dark:text-black dark:hover:text-white my-1 p-2 rounded-xl block hover-effect"
                       onClick={() => setShowModal(true)}
                     >
                       + Screening Room
@@ -152,16 +155,14 @@ export default function ClubDetails() {
           <H4>{club.description}</H4>
           <H4>Screening Rooms</H4>
           {user ? (
-            <ul>
+            <div className="flex flex-wrap gap-2">
               {club.screening_rooms &&
                 club.screening_rooms.map((room) => (
-                  <Link key={room.id} to={`/rooms/${room.id}`}>
-                    <li className="bg-gray-300 dark:bg-gray-400 p-2 mb-2 rounded-md hover-effect">
-                      Room #{room.id} Screening: {room.movie.title}
-                    </li>
-                  </Link>
+                  <div key={room.id} className="w-full md:w-1/3">
+                    <ClubPageRoomCard room={room} />
+                  </div>
                 ))}
-            </ul>
+            </div>
           ) : (
             <>Log in or create an account to view.</>
           )}

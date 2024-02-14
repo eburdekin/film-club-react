@@ -5,7 +5,8 @@ import StarRating from "../components/StarRating";
 import H2 from "../components/UI/H2";
 import H3 from "../components/UI/H3";
 import H4 from "../components/UI/H4";
-import NewRoomModalFromFilm from "../components/modals/NewRoomModalFromFilm";
+import NewRoomFromFilmModal from "../components/modals/NewRoomFromFilmModal";
+import FilmPageRoomCard from "../components/FilmPageRoomCard";
 
 export default function FilmPage() {
   const { user } = useUser();
@@ -156,20 +157,14 @@ export default function FilmPage() {
                 + New Screening Room
               </button>
               <H4>Screening Rooms</H4>
-              <ul>
+              <div className="flex flex-wrap gap-2">
                 {film.screening_rooms &&
                   film.screening_rooms.map((room) => (
-                    <Link key={room.id} to={`/rooms/${room.id}`}>
-                      <li className="bg-gray-300 dark:bg-gray-400 p-2 rounded-md hover-effect text-md">
-                        <b>Room #{room.id}</b>
-                        <br />
-                        <span className="text-xs">
-                          hosted by <b>{room.club.name}</b>
-                        </span>
-                      </li>
-                    </Link>
+                    <div key={room.id} className="w-1/3">
+                      <FilmPageRoomCard room={room} />
+                    </div>
                   ))}
-              </ul>
+              </div>
               <H4>Latest Posts</H4>
               <ul>
                 {latestPosts.map((post) => (
@@ -204,11 +199,8 @@ export default function FilmPage() {
       <H3>You Might Also Like</H3>
       <div className="flex text-xs p-2">
         {similarMovies.map((movie) => (
-          <Link to={`/films/${movie.id}`} className="flex-1">
-            <div
-              key={movie.id}
-              className="poster-container flex flex-col items-center hover-effect dark:text-white text-center whitespace-normal break-words"
-            >
+          <Link to={`/films/${movie.id}`} key={movie.id} className="flex-1">
+            <div className="poster-container flex flex-col items-center hover-effect dark:text-white text-center whitespace-normal break-words">
               <img
                 className="w-35 h-auto rounded-md"
                 src={`https://image.tmdb.org/t/p/w185${movie.poster_image}`}
@@ -245,7 +237,7 @@ export default function FilmPage() {
         Back to Films
       </Link>
       {showModal && (
-        <NewRoomModalFromFilm
+        <NewRoomFromFilmModal
           // clubId={clubId}
           filmId={filmId}
           onClose={closeModal}
