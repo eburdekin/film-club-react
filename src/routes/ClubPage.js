@@ -86,7 +86,7 @@ export default function ClubDetails() {
         {/* Navigation as tabs on small screens */}
         {user ? (
           <>
-            <nav className="bg-white p-2 rounded-md md:hidden">
+            <nav className="bg-gray-100 dark:bg-gray-900 p-2 rounded-md md:hidden">
               <ul className="flex justify-evenly">
                 <button
                   // className="bg-purple-500 dark:bg-purple-400 text-white dark:text-black dark:hover:text-white my-4 p-2 rounded-xl block hover-effect"

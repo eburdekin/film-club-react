@@ -8,7 +8,7 @@ export default function FilmPageRoomCard({ room }) {
       <div className="bg-gray-300 dark:bg-gray-900 hover-effect text-md justify-center p-4 border border-purple-500 dark:border-purple-300  dark:text-white rounded-md">
         <b>
           {" "}
-          <FontAwesomeIcon icon={faFilm} /> Room #{room.id}
+          <FontAwesomeIcon icon={faFilm} size="lg" /> Room #{room.id}
         </b>
         <br />
         <span className="text-xs">

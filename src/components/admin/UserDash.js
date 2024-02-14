@@ -3,6 +3,8 @@ import H3 from "../UI/H3";
 import Admin from "../../routes/Admin";
 
 import UserRoleModal from "../modals/UserRoleModal";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 export default function UserDash() {
   const [users, setUsers] = useState([]);
@@ -67,7 +69,9 @@ export default function UserDash() {
   return (
     <Admin>
       <div>
-        <H3>Users</H3>
+        <H3>
+          <FontAwesomeIcon icon={faUser} /> Users
+        </H3>
         <table className="table-auto w-full text-xs md:text-md">
           <thead>
             <tr>

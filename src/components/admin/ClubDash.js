@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import H3 from "../UI/H3";
 import Admin from "../../routes/Admin";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUsers } from "@fortawesome/free-solid-svg-icons";
 
 export default function ClubDash() {
   const [clubs, setClubs] = useState([]);
@@ -40,7 +42,9 @@ export default function ClubDash() {
   return (
     <Admin>
       <div>
-        <H3>Clubs</H3>
+        <H3>
+          <FontAwesomeIcon icon={faUsers} /> Clubs
+        </H3>
         <div className="overflow-x-auto text-xs md:text-md">
           <table className="table-auto w-full">
             <thead>

@@ -211,15 +211,19 @@ export default function RoomPage() {
         <b>{room.club.name}</b>: Screening Room #{room.id}
       </h2>
       <div className="flex flex-col md:flex-row gap-8">
-        <nav className="p-2 rounded-md md:hidden">
+        <nav className="p-2 rounded-md md:hidden dark:text-white">
           <div className="col-span-1">
             <h4>Discussing:</h4>
-            <h3 className="text-bold text-xl">{room.movie.title}</h3>
-            <img
-              className="w-20 h-auto rounded-md"
-              src={`https://image.tmdb.org/t/p/w185${room.movie.poster_image}`}
-              alt={room.movie.title}
-            />
+            <Link to={`/films/${room.movie.id}`}>
+              <div>
+                <h3 className="text-bold text-xl">{room.movie.title}</h3>
+                <img
+                  className="w-20 h-auto rounded-md"
+                  src={`https://image.tmdb.org/t/p/w185${room.movie.poster_image}`}
+                  alt={room.movie.title}
+                />
+              </div>
+            </Link>
             <div>
               <h4 className="text-sm">
                 Average Rating from {room.club.name}:
@@ -257,12 +261,14 @@ export default function RoomPage() {
           <nav>
             <div className="col-span-1">
               <h4>Discussing:</h4>
-              <h3 className="text-bold text-xl">{room.movie.title}</h3>
-              <img
-                className="w-30 h-auto"
-                src={`https://image.tmdb.org/t/p/w185${room.movie.poster_image}`}
-                alt={room.movie.title}
-              />
+              <Link to={`/films/${room.movie.id}`}>
+                <h3 className="text-bold text-xl">{room.movie.title}</h3>
+                <img
+                  className="w-20 h-auto rounded-md"
+                  src={`https://image.tmdb.org/t/p/w185${room.movie.poster_image}`}
+                  alt={room.movie.title}
+                />
+              </Link>
               <div>
                 <h4 className="text-sm">
                   Average Rating from {room.club.name}:
@@ -271,8 +277,10 @@ export default function RoomPage() {
                   {averageRating} stars
                 </h4>
               </div>
-              <div className="mt-4">
-                <h3>Add your rating:</h3>
+              <div className="mt-4 bg-gray-100 dark:bg-gray-900 rounded-xl p-1 text-center items-center">
+                <h3 className="font-bold dark:text-white text-sm">
+                  Add your rating:
+                </h3>
                 {/* Star rating system */}
                 {[1, 2, 3, 4, 5].map((star) => (
                   <span

@@ -87,7 +87,7 @@ const NewRoomModal = ({ onClose, clubId }) => {
             </label>
             <input
               type="text"
-              placeholder="Filter movies..."
+              placeholder="Filter by title..."
               value={searchTerm}
               onChange={handleSearchTermChange}
               className="mt-2 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"

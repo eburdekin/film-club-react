@@ -54,7 +54,7 @@ const FilmSearch = ({
           value={search}
           onChange={handleSearchChange}
           className="block w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-gray-500"
-          placeholder="Search films by name..."
+          placeholder="Filter by title..."
         />
         <select
           value={selectedGenre}
