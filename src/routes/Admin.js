@@ -8,7 +8,7 @@ const AdminLayout = ({ children }) => {
       <div className="flex flex-col md:flex-row gap-8">
         {/* Navigation as tabs on small screens */}
 
-        <nav className="bg-gray-700 p-2 rounded-md md:hidden">
+        <nav className="bg-gray-100 dark:bg-gray-900 p-2 rounded-md md:hidden">
           <ul className="flex justify-evenly">
             <li>
               <SideNavLink href="/admin/user_dash">Users/Roles</SideNavLink>

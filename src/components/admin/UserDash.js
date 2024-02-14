@@ -72,39 +72,41 @@ export default function UserDash() {
         <H3>
           <FontAwesomeIcon icon={faUser} /> Users
         </H3>
-        <table className="table-auto w-full text-xs md:text-md">
-          <thead>
-            <tr>
-              <th className="px-2 md:px-4 py-2">Username</th>
-              <th className="px-2 md:px-4 py-2">Email</th>
-              <th className="px-2 md:px-4 py-2">Role</th>
-              <th className="px-2 md:px-4 py-2">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((user) => (
-              <tr key={user.id}>
-                <td className="border px-2 md:px-4 py-2">{user.username}</td>
-                <td className="border px-2 md:px-4 py-2">{user.email}</td>
-                <td className="border px-2 md:px-4 py-2">{user.role.name}</td>
-                <td className="border px-2 md:px-4 py-2">
-                  <button
-                    onClick={(e) => toggleModal(user)}
-                    className="mr-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                  >
-                    Edit
-                  </button>
-                  <button
-                    onClick={() => handleUserDelete(user.id)}
-                    className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-                  >
-                    Delete
-                  </button>
-                </td>
+        <div className="overflow-x-auto text-xs md:text-md">
+          <table className="table-auto w-full">
+            <thead>
+              <tr>
+                <th className="px-2 md:px-4 py-2">Username</th>
+                <th className="px-2 md:px-4 py-2">Email</th>
+                <th className="px-2 md:px-4 py-2">Role</th>
+                <th className="px-2 md:px-4 py-2">Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {users.map((user) => (
+                <tr key={user.id}>
+                  <td className="border px-2 md:px-4 py-2">{user.username}</td>
+                  <td className="border px-2 md:px-4 py-2">{user.email}</td>
+                  <td className="border px-2 md:px-4 py-2">{user.role.name}</td>
+                  <td className="border px-2 md:px-4 py-2">
+                    <button
+                      onClick={(e) => toggleModal(user)}
+                      className="mr-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      onClick={() => handleUserDelete(user.id)}
+                      className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
 
         {isModalOpen && (
           <UserRoleModal

@@ -90,7 +90,7 @@ export default function ClubDetails() {
               <ul className="flex justify-evenly">
                 <button
                   // className="bg-purple-500 dark:bg-purple-400 text-white dark:text-black dark:hover:text-white my-4 p-2 rounded-xl block hover-effect"
-                  className="text-gray-100"
+                  className="text-black dark:text-gray-100"
                   onClick={handleJoinLeave}
                 >
                   {isMember ? (
@@ -119,7 +119,7 @@ export default function ClubDetails() {
               <nav>
                 <ul className="grid gap-3 rounded">
                   <button
-                    className="text-gray-100"
+                    className="text-black dark:text-gray-100"
                     // className="bg-purple-500 dark:bg-purple-400 text-white dark:text-black dark:hover:text-white my-1 p-2 rounded-xl block hover-effect"
                     onClick={handleJoinLeave}
                   >
