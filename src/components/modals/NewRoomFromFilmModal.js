@@ -74,7 +74,7 @@ export default function NewRoomFromFilmModal({ onClose, filmId }) {
             />
           </div>
           {/* Add input field for club ID */}
-          <div className="mb-4">
+          <div className="mb-4 relative">
             <label
               htmlFor="club_id"
               className="block text-sm font-medium text-gray-700"
@@ -86,7 +86,7 @@ export default function NewRoomFromFilmModal({ onClose, filmId }) {
               name="club_id"
               value={formData.club_id}
               onChange={handleInputChange}
-              className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
               required
             >
               <option value="">Select one of your clubs</option>

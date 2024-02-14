@@ -107,94 +107,86 @@ export default function FilmPage() {
     <div>
       <H2>{film.title}</H2>
       <div className="flex flex-col md:flex-row gap-8">
-        <div className=" bg-gray-100 dark:bg-gray-900 flex-[8] p-4 rounded min-h-[300px] mb-6">
-          <div className="flex gap-2">
-            <div className="flex-2 flex items-center">
-              <div>
-                {/* <h4 className="font-bold text-lg">{film.summary}</h4> */}
-                <img
-                  className="w-55 h-auto rounded-md"
-                  src={`https://image.tmdb.org/t/p/w185${film.poster_image}`}
-                  alt={film.title}
-                />
-              </div>
-            </div>
-            <div className="flex-1">
-              <div className="text-left dark:text-white">
-                <div>
-                  <div>Release date: {film.release_date}</div>
-                  <div>
-                    <h4 className="text-sm">
-                      Average Rating from FilmClub:
-                      <br />
-                      <StarRating averageRating={averageRating} />
-                      {averageRating && averageRating.toFixed(1)} stars
-                    </h4>
-                  </div>
-                  <div className="flex">
-                    Genres:{" "}
-                    {film.genres &&
-                      film.genres.map((genre) => (
-                        <div
-                          key={genre.id}
-                          className="border bg-purple-500 p-1 m-1 rounded-md text-xs w-auto flex-2"
-                        >
-                          {genre.name}
-                        </div>
-                      ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {user ? (
+        <div>
+          {/* <h4 className="font-bold text-lg">{film.summary}</h4> */}
+          <img
+            className="w-55 h-auto rounded-md"
+            src={`https://image.tmdb.org/t/p/w185${film.poster_image}`}
+            alt={film.title}
+          />
+          <div className="text-left dark:text-white">
             <div>
-              <button
-                onClick={openModal}
-                className="bg-purple-500 dark:bg-purple-400 text-white dark:text-black dark:hover:text-white my-4 p-2 rounded-xl block hover-effect"
-              >
-                + New Screening Room
-              </button>
-              <H4>Screening Rooms</H4>
-              <div className="flex flex-wrap gap-2">
-                {film.screening_rooms &&
-                  film.screening_rooms.map((room) => (
-                    <div key={room.id} className="w-full md:w-1/2">
-                      <FilmPageRoomCard room={room} />
-                    </div>
-                  ))}
+              <div>Release date: {film.release_date}</div>
+              <div>
+                <h4 className="text-sm">
+                  Average Rating on FilmClub:
+                  <br />
+                  <StarRating averageRating={averageRating} />
+                  {averageRating && averageRating.toFixed(1)} stars
+                </h4>
               </div>
-              <H4>Latest Posts</H4>
+              Genres:{" "}
               <ul>
-                {latestPosts.map((post) => (
-                  <li
-                    key={post.id}
-                    className="mb-2 bg-gray-200 dark:bg-gray-400 rounded-lg p-4 flex justify-between items-start relative"
-                  >
-                    <div className="flex flex-col">
-                      <div>
-                        <span className="font-bold text-sm">
-                          {post.author.username}{" "}
-                        </span>
-                        <span className="text-xs font-bold text-gray-500 mt-1">
-                          {formatTimestamp(post.timestamp)}
-                        </span>
-                      </div>
-
-                      <div className="mt-2 text-sm">{post.content}</div>
-                    </div>
-                  </li>
-                ))}
+                {film.genres &&
+                  film.genres.map((genre) => (
+                    <li
+                      key={genre.id}
+                      className="border text-white bg-purple-500 p-1 m-1 rounded-md text-xs text-center w-1/3"
+                    >
+                      {genre.name}
+                    </li>
+                  ))}
               </ul>
             </div>
-          ) : (
-            <div className="font-bold text-xl p-4 m-4">
-              Log in or create an account to view average user rating, latest
-              posts, and more!
-            </div>
-          )}
+          </div>
         </div>
+
+        {user ? (
+          <div className="bg-gray-100 dark:bg-gray-900 flex-[8] p-4 rounded min-h-[300px]">
+            <button
+              onClick={openModal}
+              className="bg-purple-500 dark:bg-purple-400 text-white dark:text-black dark:hover:text-white my-4 p-2 rounded-xl block hover-effect"
+            >
+              + New Screening Room
+            </button>
+            <H4>Screening Rooms</H4>
+            <div className="flex flex-wrap gap-2">
+              {film.screening_rooms &&
+                film.screening_rooms.map((room) => (
+                  <div key={room.id} className="w-full md:w-1/2">
+                    <FilmPageRoomCard room={room} />
+                  </div>
+                ))}
+            </div>
+            <H4>Latest Posts</H4>
+            <ul>
+              {latestPosts.map((post) => (
+                <li
+                  key={post.id}
+                  className="mb-2 bg-gray-200 dark:bg-gray-400 rounded-lg p-4 flex justify-between items-start relative"
+                >
+                  <div className="flex flex-col">
+                    <div>
+                      <span className="font-bold text-sm">
+                        {post.author.username}{" "}
+                      </span>
+                      <span className="text-xs font-bold text-gray-500 mt-1">
+                        {formatTimestamp(post.timestamp)}
+                      </span>
+                    </div>
+
+                    <div className="mt-2 text-sm">{post.content}</div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : (
+          <div className="font-bold text-xl p-4 m-4">
+            Log in or create an account to view average user rating, latest
+            posts, and more!
+          </div>
+        )}
       </div>
       <H3>You Might Also Like</H3>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
