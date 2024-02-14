@@ -199,8 +199,11 @@ export default function FilmPage() {
       <H3>You Might Also Like</H3>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
         {similarMovies.map((movie) => (
-          <Link to={`/films/${movie.id}`} key={movie.id} className="flex-1">
-            <div className="poster-container flex flex-col items-center hover-effect dark:text-white text-center whitespace-normal break-words">
+          <Link to={`/films/${movie.id}`} className="flex-1">
+            <div
+              key={movie.id}
+              className="poster-container flex flex-col items-center hover-effect dark:text-white text-center whitespace-normal break-words"
+            >
               <img
                 className="w-35 h-auto rounded-md"
                 src={`https://image.tmdb.org/t/p/w185${movie.poster_image}`}

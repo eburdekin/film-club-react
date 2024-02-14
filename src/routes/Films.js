@@ -9,7 +9,7 @@ export default function Films() {
   const [films, setFilms] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedGenre, setSelectedGenre] = useState("");
-  // const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchFilms = async () => {
@@ -22,10 +22,9 @@ export default function Films() {
         setFilms(data);
       } catch (error) {
         console.error("Error fetching films:", error);
+      } finally {
+        setLoading(false);
       }
-      // finally {
-      //   setLoading(false);
-      // }
     };
 
     fetchFilms();
@@ -58,21 +57,34 @@ export default function Films() {
     return byTitle && byGenre;
   });
 
-  // if (loading) {
-  //   return <LoadingScreen />;
-  // }
-
   return (
     <>
       <H2>Browse films</H2>
-      {/* <p className="text-2xl text-gray-700 dark:text-gray-300">Films here.</p> */}
       <FilmSearch
         setSearchTerm={setSearchTerm}
         setSelectedGenre={setSelectedGenre}
         sortByPopularity={sortByPopularity}
         sortByReleaseDate={sortByReleaseDate}
       />
-      <FilmList films={filteredFilms} />
+      {loading ? (
+        <div
+          //   className="dark:bg-gray-900 fixed top-0 left-0 w-full flex items-center justify-center h-full"
+          style={{ zIndex: 9999 }}
+        >
+          <div
+            className="relative flex items-center justify-center min-h-screen"
+            style={{ marginTop: "-10vh" }}
+          >
+            <img
+              src="/reel.png"
+              alt="loading film screen"
+              className="animate-spin h-20 w-20 dark:invert"
+            />
+          </div>
+        </div>
+      ) : (
+        <FilmList films={filteredFilms} />
+      )}
     </>
   );
 }
