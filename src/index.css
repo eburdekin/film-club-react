@@ -93,10 +93,8 @@ body {
 }
 
 .poster-container {
-  width: 125px;
-  /* Adjust the width as needed */
-  height: 225px;
-  /* Adjust the height as needed */
+  /* width: 125px;
+  height: 225px; */
   margin-right: 6px;
   /* Add some margin between each poster */
   position: relative;

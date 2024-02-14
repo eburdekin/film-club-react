@@ -160,7 +160,7 @@ export default function FilmPage() {
               <div className="flex flex-wrap gap-2">
                 {film.screening_rooms &&
                   film.screening_rooms.map((room) => (
-                    <div key={room.id} className="w-1/3">
+                    <div key={room.id} className="w-full md:w-1/2">
                       <FilmPageRoomCard room={room} />
                     </div>
                   ))}
@@ -197,7 +197,7 @@ export default function FilmPage() {
         </div>
       </div>
       <H3>You Might Also Like</H3>
-      <div className="flex text-xs p-2">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
         {similarMovies.map((movie) => (
           <Link to={`/films/${movie.id}`} key={movie.id} className="flex-1">
             <div className="poster-container flex flex-col items-center hover-effect dark:text-white text-center whitespace-normal break-words">
@@ -206,7 +206,7 @@ export default function FilmPage() {
                 src={`https://image.tmdb.org/t/p/w185${movie.poster_image}`}
                 alt={movie.title}
               />
-              <div>{movie.title}</div>
+              <div className="text-xs">{movie.title}</div>
             </div>
           </Link>
         ))}
