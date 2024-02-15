@@ -22,7 +22,7 @@ Access map will be here.
 
 #### Backend
 
-![dbdiagram](/public/dbdiagram.png)
+![dbdiagram](/public/dbdiagram_updated.png)
 
 - Flask app
 - SQLite for development, will be PostgreSQL for deployment
