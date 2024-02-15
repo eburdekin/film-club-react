@@ -24,8 +24,6 @@ Access map will be here.
 
 ![dbdiagram](/public/dbdiagram.png)
 
-User role map will be here.
-
 - Flask app
 - SQLite for development, will be PostgreSQL for deployment
 - SQLAlchemy
