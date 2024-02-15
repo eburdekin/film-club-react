@@ -93,9 +93,6 @@ export default function FilmPage() {
 
   const openModal = () => {
     setShowModal(!showModal);
-    // fetchFilmDetails();
-    // fetchLatestPosts();
-    // fetchSimilarMovies();
   };
 
   const closeModal = () => {

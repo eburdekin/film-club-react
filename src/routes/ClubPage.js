@@ -79,16 +79,6 @@ export default function ClubDetails() {
     fetchClubDetails();
   };
 
-  function memberTooltip(member) {
-    return `
-    <div>
-      <strong>Username:</strong> ${member.username}<br />
-      <strong>Bio:</strong> ${member.bio}<br />
-      <strong>Location:</strong> ${member.location}
-    </div>
-  `;
-  }
-
   return (
     <div>
       <H2>{club.name}</H2>

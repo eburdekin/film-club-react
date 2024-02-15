@@ -1,7 +1,6 @@
 import Profile from "../../routes/Profile";
 import { useState, useEffect } from "react";
 import NewClubModal from "../modals/NewClubModal";
-import { Link } from "react-router-dom";
 import { useUser } from "../UserContext";
 import H3 from "../UI/H3";
 import ClubCard from "../ClubCard";

@@ -13,6 +13,7 @@ export default function RoomPage() {
   const [hoveredPostId, setHoveredPostId] = useState(null);
   const [editedContent, setEditedContent] = useState();
   const [editingPostId, setEditingPostId] = useState(null);
+  const [charCount, setCharCount] = useState(0);
 
   useEffect(() => {
     // Fetch room details using roomId
@@ -215,10 +216,10 @@ export default function RoomPage() {
           <div className="col-span-1">
             <h4>Discussing:</h4>
             <Link to={`/films/${room.movie.id}`}>
-              <div>
+              <div className="flex-shrink-0">
                 <h3 className="text-bold text-xl">{room.movie.title}</h3>
                 <img
-                  className="w-20 h-auto rounded-md"
+                  className="w-26 h-auto rounded-md"
                   src={`https://image.tmdb.org/t/p/w185${room.movie.poster_image}`}
                   alt={room.movie.title}
                 />
@@ -310,13 +311,22 @@ export default function RoomPage() {
           <div className="">
             <div className="p-4">
               <h3 className="font-bold dark:text-white">New Post:</h3>
-              <input
-                type="text"
+              <textarea
                 value={newPostContent}
                 className="w-full rounded-xl h-20"
-                onChange={(e) => setNewPostContent(e.target.value)}
+                onChange={(e) => {
+                  setNewPostContent(e.target.value);
+                  setCharCount(e.target.value.length);
+                }}
+                maxLength={200}
               />
-              <br />
+              <div
+                className={`text-right dark:text-white ${
+                  charCount === 200 ? "text-red-500" : ""
+                }`}
+              >
+                {charCount}/200
+              </div>
               <button
                 className="bg-purple-500 dark:bg-purple-400 text-sm p-2 m-2 rounded-xl text-white dark:text-black"
                 onClick={handlePostSubmit}

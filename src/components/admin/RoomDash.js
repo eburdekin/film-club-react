@@ -43,7 +43,7 @@ export default function RoomDash() {
     <Admin>
       <div>
         <H3>
-          <FontAwesomeIcon icon={faFilm} /> Rooms
+          <FontAwesomeIcon icon={faFilm} /> Screening Rooms
         </H3>
         <div className="overflow-x-auto text-xs md:text-md">
           <table className="table-auto w-full">
