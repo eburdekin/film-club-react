@@ -212,8 +212,8 @@ export default function RoomPage() {
         <b>{room.club.name}</b>: Screening Room #{room.id}
       </h2>
       <div className="flex flex-col md:flex-row gap-8">
-        <nav className="p-2 rounded-md md:hidden dark:text-white">
-          <div className="col-span-1">
+        <div className="md:flex-[3] dark:text-white">
+          <div className="flex-shrink-0">
             <h4>Discussing:</h4>
             <Link to={`/films/${room.movie.id}`}>
               <div className="flex-shrink-0">
@@ -225,88 +225,38 @@ export default function RoomPage() {
                 />
               </div>
             </Link>
-            <div>
-              <h4 className="text-sm">
-                Average Rating from {room.club.name}:
-                <br />
-                <StarRating averageRating={averageRating} />
-                {averageRating} stars
-              </h4>
-            </div>
-            <div className="">
-              <h3>Rate Movie:</h3>
-              {/* Star rating system */}
-              {[1, 2, 3, 4, 5].map((star) => (
-                <span
-                  key={star}
-                  className={star <= selectedRating ? "star selected" : "star"}
-                  // onMouseEnter={() => setSelectedRating(star)}
-                  // onMouseLeave={() => setSelectedRating(null)}
-                  onClick={() => setSelectedRating(star)}
-                >
-                  &#9733;
-                </span>
-              ))}
+            <div></div>
+            <h4 className="text-sm whitespace-auto">
+              Average Rating from {room.club.name}:
               <br />
-              <button
-                className="bg-purple-500 dark:bg-purple-400 text-sm p-1 rounded-xl text-white dark:text-black"
-                onClick={handleRatingSubmit}
-              >
-                Submit Rating
-              </button>
-            </div>
+              <StarRating averageRating={averageRating} />
+              {averageRating} stars
+            </h4>
           </div>
-        </nav>
-        {/* Sidebar navigation on larger screens */}
-        <aside className="hidden md:flex md:flex-[2] dark:text-white">
-          <nav>
-            <div className="col-span-1">
-              <h4>Discussing:</h4>
-              <Link to={`/films/${room.movie.id}`}>
-                <h3 className="text-bold text-xl">{room.movie.title}</h3>
-                <img
-                  className="w-20 h-auto rounded-md"
-                  src={`https://image.tmdb.org/t/p/w185${room.movie.poster_image}`}
-                  alt={room.movie.title}
-                />
-              </Link>
-              <div>
-                <h4 className="text-sm">
-                  Average Rating from {room.club.name}:
-                  <br />
-                  <StarRating averageRating={averageRating} />
-                  {averageRating} stars
-                </h4>
-              </div>
-              <div className="mt-4 bg-gray-100 dark:bg-gray-900 rounded-xl p-1 text-center items-center">
-                <h3 className="font-bold dark:text-white text-sm">
-                  Add your rating:
-                </h3>
-                {/* Star rating system */}
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <span
-                    key={star}
-                    className={
-                      star <= selectedRating ? "star selected" : "star"
-                    }
-                    // onMouseEnter={() => setSelectedRating(star)}
-                    // onMouseLeave={() => setSelectedRating(null)}
-                    onClick={() => setSelectedRating(star)}
-                  >
-                    &#9733;
-                  </span>
-                ))}
-                <br />
-                <button
-                  className="bg-purple-500 dark:bg-purple-400 text-sm p-1 rounded-xl text-white dark:text-black"
-                  onClick={handleRatingSubmit}
-                >
-                  Submit Rating
-                </button>
-              </div>
-            </div>
-          </nav>
-        </aside>
+          <div className="bg-gray-100 dark:bg-gray-900 rounded-lg text-center items-center p-1 mt-4">
+            <h3>Add Your Rating:</h3>
+            {/* Star rating system */}
+            {[1, 2, 3, 4, 5].map((star) => (
+              <span
+                key={star}
+                className={star <= selectedRating ? "star selected" : "star"}
+                // onMouseEnter={() => setSelectedRating(star)}
+                // onMouseLeave={() => setSelectedRating(null)}
+                onClick={() => setSelectedRating(star)}
+              >
+                &#9733;
+              </span>
+            ))}
+            <br />
+            <button
+              className="bg-purple-500 dark:bg-purple-400 text-sm p-1 rounded-xl text-white dark:text-black"
+              onClick={handleRatingSubmit}
+            >
+              Submit Rating
+            </button>
+          </div>
+        </div>
+
         <div className="bg-gray-100 dark:bg-gray-900 flex-[8] p-4 rounded min-h-[300px]">
           <div className="">
             <div className="p-4">
