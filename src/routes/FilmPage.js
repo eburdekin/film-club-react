@@ -131,7 +131,7 @@ export default function FilmPage() {
                   film.genres.map((genre) => (
                     <li
                       key={genre.id}
-                      className="border text-white bg-purple-500 p-1 m-1 rounded-md text-xs text-center w-1/3"
+                      className="border text-white bg-purple-500 p-1 m-1 rounded-md text-xs text-center inline-block"
                     >
                       {genre.name}
                     </li>
@@ -142,7 +142,7 @@ export default function FilmPage() {
         </div>
 
         {user ? (
-          <div className="bg-gray-100 dark:bg-gray-900 flex-[8] p-4 rounded min-h-[300px]">
+          <div className="bg-gray-100 dark:bg-gray-900 flex-[8] p-4 rounded min-h-[300px] mb-4">
             <button
               onClick={openModal}
               className="bg-purple-500 dark:bg-purple-400 text-white dark:text-black dark:hover:text-white my-4 p-2 rounded-xl block hover-effect"
