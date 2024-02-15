@@ -8,7 +8,6 @@ export default function NewClubModal({ onClose }) {
   const [formData, setFormData] = useState({
     name: "",
     description: "",
-    // public: true,
   });
 
   const [errorMessage, setErrorMessage] = useState("");
@@ -20,13 +19,6 @@ export default function NewClubModal({ onClose }) {
       [name]: value,
     });
   };
-
-  // const handleToggleChange = () => {
-  //   setFormData({
-  //     ...formData,
-  //     public: !formData.public,
-  //   });
-  // };
 
   const handleJoin = (clubId) => {
     const url = `/clubs/${clubId}/add_user`;
@@ -101,6 +93,7 @@ export default function NewClubModal({ onClose }) {
               type="text"
               id="name"
               name="name"
+              maxlength="50"
               value={formData.name}
               onChange={handleInputChange}
               className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -118,27 +111,13 @@ export default function NewClubModal({ onClose }) {
               type="text"
               id="description"
               name="description"
+              maxlength="150"
               value={formData.description}
               onChange={handleInputChange}
               className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               required
             ></input>
           </div>
-          {/* <div className="flex items-center justify-between mb-4">
-            <span className="text-sm font-medium text-gray-700">
-              Visibility:
-            </span>
-            <label className="inline-flex items-center">
-              <input
-                type="checkbox"
-                name="isPublic"
-                checked={formData.public}
-                onChange={handleToggleChange}
-                className="h-5 w-5 text-purple-500 focus:ring-purple-500 border-gray-300 rounded-md"
-              />
-              <span className="ml-2 text-sm text-gray-700">Public</span>
-            </label>
-          </div> */}
           <div className="flex items-center justify-between">
             <button
               type="submit"

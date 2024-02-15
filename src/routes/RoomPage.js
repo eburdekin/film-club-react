@@ -313,7 +313,7 @@ export default function RoomPage() {
               <h3 className="font-bold dark:text-white">New Post:</h3>
               <textarea
                 value={newPostContent}
-                className="w-full rounded-xl h-20"
+                className="w-full rounded-xl"
                 onChange={(e) => {
                   setNewPostContent(e.target.value);
                   setCharCount(e.target.value.length);
@@ -321,9 +321,13 @@ export default function RoomPage() {
                 maxLength={200}
               />
               <div
-                className={`text-right dark:text-white ${
-                  charCount === 200 ? "text-red-500" : ""
-                }`}
+                className={`text-right ${
+                  charCount >= 190
+                    ? charCount === 200
+                      ? "text-red-500"
+                      : "text-orange-500"
+                    : ""
+                } dark:text-white`}
               >
                 {charCount}/200
               </div>

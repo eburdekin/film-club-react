@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Profile from "../../routes/Profile";
 import { useUser } from "../UserContext";
 import H3 from "../UI/H3";
+import H4 from "../UI/H4";
 
 export default function Settings() {
   const { user, setUser } = useUser();
@@ -136,9 +137,11 @@ export default function Settings() {
   return (
     <Profile>
       <div className="dark:text-gray-100">
-        <H3>Settings for user: {user.username}</H3>
+        <H3>
+          Settings for user: <b>{user.username}</b>
+        </H3>
         <div>
-          <h4>User settings</h4>
+          <H4>User settings</H4>
           <div>
             <label htmlFor="email" className="font-bold">
               Email:
@@ -173,7 +176,7 @@ export default function Settings() {
             {isEditingUser ? (
               <>
                 <button
-                  className="bg-purple-500 dark:bg-purple-400 text-sm p-1 rounded-xl text-white dark:text-black"
+                  className="bg-purple-500 dark:bg-purple-400 text-sm p-2 m-1 rounded-xl text-white dark:text-black"
                   onClick={handleChangeEmail}
                 >
                   Update Email
@@ -185,7 +188,7 @@ export default function Settings() {
                   Update Password
                 </button> */}
                 <button
-                  className="bg-purple-500 dark:bg-purple-400 text-sm p-1 rounded-xl text-white dark:text-black"
+                  className="bg-purple-500 dark:bg-purple-400 text-sm p-2 m-1 rounded-xl text-white dark:text-black"
                   onClick={handleToggleEditingUser}
                 >
                   Cancel
@@ -193,22 +196,22 @@ export default function Settings() {
               </>
             ) : (
               <button
-                className="bg-purple-500 dark:bg-purple-400 text-sm p-1 rounded-xl text-white dark:text-black"
+                className="bg-purple-500 dark:bg-purple-400 text-sm p-2 m-1 rounded-xl text-white dark:text-black"
                 onClick={handleToggleEditingUser}
               >
-                Edit
+                Edit User
               </button>
             )}
           </div>
-          <h4>Profile settings</h4>
+          <H4>Profile settings</H4>
           <label htmlFor="bio" className="font-bold">
             Bio:
           </label>
           {isEditingProfile ? (
-            <input
-              type="text"
+            <textarea
               id="bio"
               value={editedBio}
+              maxlength="100"
               className="text-gray-900"
               onChange={(e) => setEditedBio(e.target.value)}
             />
@@ -221,9 +224,9 @@ export default function Settings() {
             Location:
           </label>
           {isEditingProfile ? (
-            <input
-              type="text"
+            <textarea
               id="location"
+              maxlength="50"
               value={editedLocation}
               className="text-gray-900"
               onChange={(e) => setEditedLocation(e.target.value)}
@@ -236,13 +239,13 @@ export default function Settings() {
           {isEditingProfile ? (
             <>
               <button
-                className="bg-purple-500 dark:bg-purple-400 text-sm p-1 rounded-xl text-white dark:text-black"
+                className="bg-purple-500 dark:bg-purple-400 text-sm p-2 m-1 rounded-xl text-white dark:text-black"
                 onClick={handleSaveChanges}
               >
                 Save Changes
               </button>
               <button
-                className="bg-purple-500 dark:bg-purple-400 text-sm p-1 rounded-xl text-white dark:text-black"
+                className="bg-purple-500 dark:bg-purple-400 text-sm p-2 m-1 rounded-xl text-white dark:text-black"
                 onClick={handleToggleEditingProfile}
               >
                 Cancel
@@ -250,10 +253,10 @@ export default function Settings() {
             </>
           ) : (
             <button
-              className="bg-purple-500 dark:bg-purple-400 text-sm p-1 rounded-xl text-white dark:text-black"
+              className="bg-purple-500 dark:bg-purple-400 text-sm p-2 m-1 rounded-xl text-white dark:text-black"
               onClick={handleToggleEditingProfile}
             >
-              Edit
+              Edit Profile
             </button>
           )}
         </div>

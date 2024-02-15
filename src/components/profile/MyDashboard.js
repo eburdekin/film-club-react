@@ -190,7 +190,7 @@ export default function MyDashboard() {
                     }, new Map())
                   ).map(([title, posts]) => (
                     <div key={title}>
-                      <h5 className="text-md font-semibold mt-6 mb-2 dark:text-gray-100">
+                      <h5 className="text-md font-semibold mt-4 mb-2 dark:text-gray-100">
                         {title}
                       </h5>
                       {posts.map((post) => (
@@ -200,7 +200,7 @@ export default function MyDashboard() {
                           onMouseEnter={() => setHoveredPostId(post.id)}
                           onMouseLeave={() => setHoveredPostId(null)}
                         >
-                          <div className="flex flex-col">
+                          <div className="flex flex-col mb-4">
                             <div>
                               <span className="font-bold text-sm">
                                 {post.author.username}{" "}
@@ -215,12 +215,13 @@ export default function MyDashboard() {
                                 <input
                                   type="text"
                                   value={editedContent}
+                                  className="rounded"
                                   onChange={(e) =>
                                     setEditedContent(e.target.value)
                                   }
                                 />
                                 <button
-                                  className="p-1 m-1 rounded border text-sm"
+                                  className="p-1 m-2 rounded border text-sm"
                                   onClick={() => {
                                     handleEditChange(post.id, editedContent);
                                     setEditingPostId(null);
@@ -229,7 +230,7 @@ export default function MyDashboard() {
                                   Submit Change
                                 </button>
                                 <button
-                                  className="p-1 m-1 rounded border text-sm"
+                                  className="p-1 m-2 rounded border text-sm"
                                   onClick={() => setEditingPostId(null)}
                                 >
                                   Cancel
