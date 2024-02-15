@@ -211,7 +211,7 @@ export default function Settings() {
             <textarea
               id="bio"
               value={editedBio}
-              maxlength="100"
+              maxLength="100"
               className="text-gray-900"
               onChange={(e) => setEditedBio(e.target.value)}
             />
@@ -226,7 +226,7 @@ export default function Settings() {
           {isEditingProfile ? (
             <textarea
               id="location"
-              maxlength="50"
+              maxLength="50"
               value={editedLocation}
               className="text-gray-900"
               onChange={(e) => setEditedLocation(e.target.value)}

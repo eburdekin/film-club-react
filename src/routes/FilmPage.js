@@ -134,7 +134,7 @@ export default function FilmPage() {
   return (
     <>
       <H2>{film.title}</H2>
-      <div className="flex flex-col md:flex-row gap-8">
+      <div className="flex flex-col md:flex-row gap-2">
         <div className="md:flex-[3]">
           <div className="flex-shrink-0">
             <img
@@ -155,7 +155,7 @@ export default function FilmPage() {
                 </h4>
               </div>
               Genres:{" "}
-              <ul className="flex flex-wrap">
+              <ul className="flex flex-wrap mb-6">
                 {film.genres &&
                   film.genres.map((genre) => (
                     <li
@@ -194,7 +194,7 @@ export default function FilmPage() {
                   key={post.id}
                   className="mb-2 bg-gray-200 dark:bg-gray-400 rounded-lg p-4 flex justify-between items-start relative"
                 >
-                  <div className="flex flex-col">
+                  <div className="flex flex-col" key={post.id}>
                     <div>
                       <span className="font-bold text-sm">
                         {post.author.username}{" "}

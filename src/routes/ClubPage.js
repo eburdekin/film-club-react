@@ -171,7 +171,7 @@ export default function ClubDetails() {
             <ul>
               {club.members &&
                 club.members.map((member) => (
-                  <li key={member.id} className="dark:text-gray-100">
+                  <li key={member.id} className="dark:text-gray-100 my-1">
                     <FontAwesomeIcon icon={faUser} /> {member.username}
                   </li>
                 ))}

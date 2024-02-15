@@ -93,7 +93,7 @@ export default function NewClubModal({ onClose }) {
               type="text"
               id="name"
               name="name"
-              maxlength="50"
+              maxLength="50"
               value={formData.name}
               onChange={handleInputChange}
               className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -111,7 +111,7 @@ export default function NewClubModal({ onClose }) {
               type="text"
               id="description"
               name="description"
-              maxlength="150"
+              maxLength="150"
               value={formData.description}
               onChange={handleInputChange}
               className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"

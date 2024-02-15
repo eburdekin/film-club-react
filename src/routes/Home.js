@@ -27,7 +27,7 @@ export default function Home() {
       if (scrollContainerRef.current) {
         scrollContainerRef.current.scrollLeft += 1;
       }
-    }, 30); // Adjust scrolling speed as needed
+    }, 30); // scroll interval
 
     return () => clearInterval(interval);
   }, []);
@@ -54,9 +54,6 @@ export default function Home() {
           <div key={film.id} className="inline-block px-1 md:px-2 m-2 md:m-4">
             <a href={`/films/${film.id}`}>
               <div className="hover-effect">
-                {/* <h4 className="text-sm font-semibold text-gray-900">
-                  {film.title}
-                </h4> */}
                 <img
                   className="mt-2 mb-4 w-auto h-80 rounded-lg"
                   src={`https://image.tmdb.org/t/p/w185${film.poster_image}`}
