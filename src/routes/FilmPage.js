@@ -103,20 +103,50 @@ export default function FilmPage() {
     fetchFilmDetails();
   };
 
+  function reformatDate(inputDate) {
+    // Create a Date object from the input date string
+    const dateObj = new Date(inputDate);
+
+    // Array of month names
+    const monthNames = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "June",
+      "July",
+      "Aug",
+      "Sept",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
+
+    // Get the month, day, and year components from the date object
+    const month = monthNames[dateObj.getMonth()];
+    const day = dateObj.getDate();
+    const year = dateObj.getFullYear();
+
+    // Reformat the date string
+    const reformattedDate = `${month} ${day}, ${year}`;
+
+    return reformattedDate;
+  }
+
   return (
-    <div>
+    <>
       <H2>{film.title}</H2>
       <div className="flex flex-col md:flex-row gap-8">
-        <div>
-          {/* <h4 className="font-bold text-lg">{film.summary}</h4> */}
+        <div className="flex md:flex-[2]">
           <img
-            className="w-55 h-auto rounded-md"
+            className="w-24 md:w-55 h-auto rounded-md mr-4"
             src={`https://image.tmdb.org/t/p/w185${film.poster_image}`}
             alt={film.title}
           />
-          <div className="text-left dark:text-white">
+          <div className="flex text-left dark:text-white">
             <div>
-              <div>Release date: {film.release_date}</div>
+              <div>Release date: {reformatDate(film.release_date)}</div>
               <div>
                 <h4 className="text-sm">
                   Average Rating on FilmClub:
@@ -126,7 +156,7 @@ export default function FilmPage() {
                 </h4>
               </div>
               Genres:{" "}
-              <ul>
+              <ul className="flex flex-wrap">
                 {film.genres &&
                   film.genres.map((genre) => (
                     <li
@@ -238,6 +268,6 @@ export default function FilmPage() {
           onClose={closeModal}
         />
       )}
-    </div>
+    </>
   );
 }
