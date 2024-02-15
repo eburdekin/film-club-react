@@ -7,10 +7,20 @@ import Footer from "./Footer";
 import LoadingScreen from "../LoadingScreen";
 
 import { useUser } from "../UserContext";
+import CookiesPopup from "./CookiesPopup";
 
 const Layout = ({ children }) => {
   const { loading } = useUser();
   const [showBackToTop, setShowBackToTop] = useState(false);
+
+  const [cookiesAccepted, setCookiesAccepted] = useState(
+    localStorage.getItem("cookiesAccepted") === "true"
+  );
+
+  const handleAcceptCookies = () => {
+    localStorage.setItem("cookiesAccepted", "true");
+    setCookiesAccepted(true);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,6 +54,7 @@ const Layout = ({ children }) => {
         </div>
       </div>
       <Footer />
+      <CookiesPopup onAccept={handleAcceptCookies} />
       {showBackToTop && (
         <button
           className="fixed bottom-4 right-4 rounded-2xl shadow-lg hover:bg-gray-100"

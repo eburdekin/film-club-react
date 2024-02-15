@@ -21,6 +21,7 @@ code {
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 
+
 .hover-effect {
   transition: transform 0.3s ease;
   /* Add a transition for the transform property */

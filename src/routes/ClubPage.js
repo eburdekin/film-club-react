@@ -79,6 +79,16 @@ export default function ClubDetails() {
     fetchClubDetails();
   };
 
+  function memberTooltip(member) {
+    return `
+    <div>
+      <strong>Username:</strong> ${member.username}<br />
+      <strong>Bio:</strong> ${member.bio}<br />
+      <strong>Location:</strong> ${member.location}
+    </div>
+  `;
+  }
+
   return (
     <div>
       <H2>{club.name}</H2>
@@ -172,7 +182,17 @@ export default function ClubDetails() {
               {club.members &&
                 club.members.map((member) => (
                   <li key={member.id} className="dark:text-gray-100">
-                    <FontAwesomeIcon icon={faUser} /> {member.username}
+                    <FontAwesomeIcon icon={faUser} />{" "}
+                    <span className="relative">
+                      {member.username}
+                      <span className="tooltip absolute top-[-30px] bg-black text-white text-sm p-1 rounded whitespace-nowrap">
+                        <strong>Username:</strong> {member.username}
+                        <br />
+                        <strong>Bio:</strong> {member.bio}
+                        <br />
+                        <strong>Location:</strong> {member.location}
+                      </span>
+                    </span>
                   </li>
                 ))}
             </ul>
