@@ -138,15 +138,17 @@ export default function FilmPage() {
     <>
       <H2>{film.title}</H2>
       <div className="flex flex-col md:flex-row gap-8">
-        <div className="flex md:flex-[2]">
-          <img
-            className="w-24 md:w-55 h-auto rounded-md mr-4"
-            src={`https://image.tmdb.org/t/p/w185${film.poster_image}`}
-            alt={film.title}
-          />
+        <div className="md:flex-[3]">
+          <div className="flex-shrink-0">
+            <img
+              className="block w-26 h-auto rounded-md mr-4"
+              src={`https://image.tmdb.org/t/p/w185${film.poster_image}`}
+              alt={film.title}
+            />
+          </div>
           <div className="flex text-left dark:text-white">
             <div>
-              <div>Release date: {reformatDate(film.release_date)}</div>
+              <div>Released {reformatDate(film.release_date)}</div>
               <div>
                 <h4 className="text-sm">
                   Average Rating on FilmClub:
