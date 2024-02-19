@@ -16,6 +16,7 @@ export default function FilmPage() {
   const [latestPosts, setLatestPosts] = useState([]);
   const [similarMovies, setSimilarMovies] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const formatTimestamp = (timestamp) => {
     const postDate = new Date(timestamp);
@@ -57,6 +58,9 @@ export default function FilmPage() {
           })
           .catch((error) => {
             console.error("Error fetching average rating:", error);
+          })
+          .finally(() => {
+            setLoading(false);
           });
       })
       .catch((error) => {
@@ -133,6 +137,26 @@ export default function FilmPage() {
     return reformattedDate;
   }
 
+  if (loading) {
+    return (
+      <div
+        //   className="dark:bg-gray-900 fixed top-0 left-0 w-full flex items-center justify-center h-full"
+        style={{ zIndex: 9999 }}
+      >
+        <div
+          className="relative flex items-center justify-center min-h-screen"
+          style={{ marginTop: "-10vh" }}
+        >
+          <img
+            src="/reel.png"
+            alt="loading film screen"
+            className="animate-spin h-20 w-20 dark:invert"
+          />
+        </div>
+      </div>
+    );
+  }
+
   return (
     <>
       <H2>{film.title}</H2>
@@ -148,14 +172,18 @@ export default function FilmPage() {
           <div className="flex text-left dark:text-white">
             <div>
               <div>Released {reformatDate(film.release_date)}</div>
-              <div>
-                <h4 className="text-sm">
-                  Average Rating on FilmClub:
-                  <br />
-                  <StarRating averageRating={averageRating} />
-                  {averageRating && averageRating.toFixed(1)} stars
-                </h4>
-              </div>
+              {user ? (
+                <div>
+                  <h4 className="text-sm">
+                    Average Rating on FilmClub:
+                    <br />
+                    <StarRating averageRating={averageRating} />
+                    {averageRating && averageRating.toFixed(1)} stars
+                  </h4>
+                </div>
+              ) : (
+                ""
+              )}
               Genres:{" "}
               <ul className="flex flex-wrap mb-6">
                 {film.genres &&
@@ -213,9 +241,9 @@ export default function FilmPage() {
             </ul>
           </div>
         ) : (
-          <div className="font-bold text-xl p-4 m-4">
-            Log in or create an account to view average user rating, latest
-            posts, and more!
+          <div className="font-bold text-xl dark:text-white bg-gray-100 dark:bg-gray-900 flex-[8] p-4 rounded min-h-[300px] mb-4">
+            Log in or create an account to view this film's average star rating
+            on FilmClub, latest posts, and more!
           </div>
         )}
       </div>
