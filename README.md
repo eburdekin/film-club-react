@@ -1,39 +1,19 @@
 [Server repo here](https://github.com/eburdekin/film-club-server)
 
-## Film Club
+# Film Club
 
-### How to join
+## Features
 
-<https://film-club.netlify.app>
+### Frontend
 
-### Features
+- Fully-responsive React app with nested layouts and dark mode built with Tailwind CSS
+- Global user state management with React's useContext hook
+- Modals using Formik for validating user data entry
 
-#### Frontend
-
-animated screenshot demo will be here.
-
-- React app with nested layout
-- Tailwind CSS - fully responsive - dark mode / "theatre mode"
-- useContext hook for user state
-- Navbar, loading animation controlled by global user state
-- Modals for user data entry
-
-Access map will be here.
-
-#### Backend
+### Backend
 
 ![dbdiagram](/public/dbdiagram_updated.png)
 
-- Flask app
-- SQLite for development, will be PostgreSQL for deployment
-- SQLAlchemy
-- Bcrypt for password hashing
-- Manually built user/moderator/admin roles
+- Flask app built with SQLAlchemy and Flask-Restful
+- Bcrypt for password hashing and user authentication
 - Marshmallow for serialization and validation
-
-### Goals & lessons learned
-
-- Python object relationships
-- User authentication, user/moderator/admin roles - didn't use Flask-User because latest version was yanked
-- Connecting API CRUD routes to front-end routes
-- Translating backend error messages to frontend errors/alerts
