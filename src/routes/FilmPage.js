@@ -43,15 +43,13 @@ export default function FilmPage() {
   };
 
   const fetchFilmDetails = () => {
-    fetch(`https://film-club-server.onrender.com/movies/${filmId}`)
+    fetch(`http://127.0.0.1:5555/movies/${filmId}`)
       .then((response) => response.json())
       .then((film) => {
         // Process club details
         setFilm(film);
 
-        fetch(
-          `https://film-club-server.onrender.com/movies/${filmId}/average-rating`
-        )
+        fetch(`http://127.0.0.1:5555/movies/${filmId}/average-rating`)
           .then((response) => response.json())
           .then((data) => {
             setAverageRating(data.average_rating);
@@ -69,7 +67,7 @@ export default function FilmPage() {
   };
 
   const fetchLatestPosts = () => {
-    fetch(`https://film-club-server.onrender.com/movies/${filmId}/posts`)
+    fetch(`http://127.0.0.1:5555/movies/${filmId}/posts`)
       .then((response) => response.json())
       .then((data) => {
         setLatestPosts(data.posts.slice(0, 4)); // Slice to get only 5 latest posts
@@ -80,7 +78,7 @@ export default function FilmPage() {
   };
 
   const fetchSimilarMovies = () => {
-    fetch(`https://film-club-server.onrender.com/movies/${filmId}/similar`)
+    fetch(`http://127.0.0.1:5555/movies/${filmId}/similar`)
       .then((response) => response.json())
       .then((data) => {
         setSimilarMovies(data); // Slice to get only 5 latest posts

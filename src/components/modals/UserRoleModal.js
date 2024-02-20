@@ -16,19 +16,16 @@ const UserRoleModal = ({ onClose, user, onRoleAssigned }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(
-        "https://film-club-server.onrender.com/assign_role",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            user_id: user.id,
-            role_id: formData.role, // assuming role_id corresponds to the role's ID
-          }),
-        }
-      );
+      const response = await fetch("http://127.0.0.1:5555/assign_role", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          user_id: user.id,
+          role_id: formData.role, // assuming role_id corresponds to the role's ID
+        }),
+      });
       if (response.ok) {
         console.log("Role assigned successfully");
         onRoleAssigned(); // update parent component when role is changed
