@@ -18,12 +18,12 @@ export default function RoomPage() {
   useEffect(() => {
     // Fetch room details using roomId
     fetch(`/rooms/${roomId}`)
-      .then((response) => response.json())
+      .then((res) => res.json())
       .then((roomData) => {
         setRoom(roomData);
       })
-      .catch((error) => {
-        console.error("Error fetching room details:", error);
+      .catch((err) => {
+        console.error("Error fetching room details:", err);
       });
   }, [roomId, newPostContent, selectedRating]);
 
@@ -187,12 +187,10 @@ export default function RoomPage() {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        // You might need to include authentication headers if required by your backend
       },
     })
-      .then((response) => {
-        if (response.ok) {
-          // Update the state to remove the deleted post from the UI
+      .then((res) => {
+        if (res.ok) {
           setRoom((prevRoom) => ({
             ...prevRoom,
             posts: prevRoom.posts.filter((post) => post.id !== postId),
@@ -201,8 +199,8 @@ export default function RoomPage() {
           console.error("Error deleting post");
         }
       })
-      .catch((error) => {
-        console.error("Error deleting post:", error);
+      .catch((err) => {
+        console.error("Error deleting post:", err);
       });
   };
 
@@ -235,13 +233,10 @@ export default function RoomPage() {
           </div>
           <div className="bg-gray-100 dark:bg-gray-900 rounded-lg text-center items-center p-1 mt-4">
             <h3>Add Your Rating:</h3>
-            {/* Star rating system */}
             {[1, 2, 3, 4, 5].map((star) => (
               <span
                 key={star}
                 className={star <= selectedRating ? "star selected" : "star"}
-                // onMouseEnter={() => setSelectedRating(star)}
-                // onMouseLeave={() => setSelectedRating(null)}
                 onClick={() => setSelectedRating(star)}
               >
                 &#9733;
@@ -288,15 +283,10 @@ export default function RoomPage() {
                 Submit Post
               </button>
             </div>
-            {/* Rate movie */}
           </div>
           <div>
             <h3 className="dark:text-white">Discussion</h3>
-            <div
-              ref={postsEndRef}
-              // style={{ height: 600 }}
-              className="overflow-y-auto"
-            >
+            <div ref={postsEndRef} className="overflow-y-auto">
               <ul className="list-none p-0">
                 {room.posts
                   .slice(0)
@@ -318,7 +308,6 @@ export default function RoomPage() {
                           </span>
                         </div>
                         {editingPostId === post.id ? (
-                          // Render input field for editing
                           <div>
                             <input
                               type="text"
@@ -343,7 +332,6 @@ export default function RoomPage() {
                             </button>
                           </div>
                         ) : (
-                          // Render post content
                           <div className="mt-2 text-sm">{post.content}</div>
                         )}
                       </div>

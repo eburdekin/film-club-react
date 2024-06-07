@@ -3,7 +3,7 @@ import { DarkThemeToggle } from "flowbite-react";
 import HeaderNavLink from "./HeaderNavLink";
 import SignupLoginModal from "../modals/SignupLoginModal";
 import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom"; // Import useHistory hook
+import { useHistory } from "react-router-dom";
 
 import { useUser } from "../../contexts/userContext";
 
