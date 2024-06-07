@@ -1,7 +1,7 @@
-import Profile from "../../routes/Profile";
+import Profile from "../../pages/Profile";
 import { useState, useEffect } from "react";
 import NewClubModal from "../modals/NewClubModal";
-import { useUser } from "../UserContext";
+import { useUser } from "../../contexts/userContext";
 import H3 from "../UI/H3";
 import ClubCard from "../ClubCard";
 

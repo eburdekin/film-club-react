@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { useUser } from "../UserContext";
+import { useUser } from "../../contexts/userContext";
 
 export default function NewClubModal({ onClose }) {
   const { user } = useUser();

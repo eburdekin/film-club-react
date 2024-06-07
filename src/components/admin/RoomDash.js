@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import H3 from "../UI/H3";
-import Admin from "../../routes/Admin";
+import Admin from "../../pages/Admin";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilm } from "@fortawesome/free-solid-svg-icons";
 

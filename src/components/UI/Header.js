@@ -5,7 +5,7 @@ import SignupLoginModal from "../modals/SignupLoginModal";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom"; // Import useHistory hook
 
-import { useUser } from "../UserContext";
+import { useUser } from "../../contexts/userContext";
 
 const Header = React.memo(() => {
   const history = useHistory();

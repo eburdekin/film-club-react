@@ -6,7 +6,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import LoadingScreen from "../LoadingScreen";
 
-import { useUser } from "../UserContext";
+import { useUser } from "../../contexts/userContext";
 import CookiesPopup from "./CookiesPopup";
 
 const Layout = ({ children }) => {

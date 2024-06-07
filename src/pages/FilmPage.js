@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useUser } from "../components/UserContext";
+import { useUser } from "../contexts/userContext";
 import StarRating from "../components/StarRating";
 import H2 from "../components/UI/H2";
 import H3 from "../components/UI/H3";

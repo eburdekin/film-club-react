@@ -4,19 +4,19 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Flowbite } from "flowbite-react";
 
 import Layout from "./components/UI/Layout";
-import Home from "./routes/Home";
-import Films from "./routes/Films";
-import FilmPage from "./routes/FilmPage";
-import Clubs from "./routes/Clubs";
-import ClubPage from "./routes/ClubPage";
-import ScreeningRoom from "./routes/RoomPage";
+import Home from "./pages/Home";
+import Films from "./pages/Films";
+import FilmPage from "./pages/FilmPage";
+import Clubs from "./pages/Clubs";
+import ClubPage from "./pages/ClubPage";
+import ScreeningRoom from "./pages/RoomPage";
 import MyDashboard from "./components/profile/MyDashboard";
 import Settings from "./components/profile/Settings";
 import UserDash from "./components/admin/UserDash";
 import ClubDash from "./components/admin/ClubDash";
 import RoomDash from "./components/admin/RoomDash";
 
-import { UserProvider } from "./components/UserContext";
+import { UserProvider } from "./contexts/userContext";
 
 function App() {
   return (

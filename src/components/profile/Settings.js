@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Profile from "../../routes/Profile";
-import { useUser } from "../UserContext";
+import Profile from "../../pages/Profile";
+import { useUser } from "../../contexts/userContext";
 import H3 from "../UI/H3";
 import H4 from "../UI/H4";
 

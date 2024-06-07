@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import ClubCard from "./ClubCard";
 import H3 from "./UI/H3";
 
-import { useUser } from "./UserContext";
+import { useUser } from "../contexts/userContext";
 
 export default function ClubList({ clubs }) {
   const { user } = useUser();

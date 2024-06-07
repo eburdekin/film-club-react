@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useParams } from "react-router-dom";
-import { useUser } from "../components/UserContext";
+import { useUser } from "../contexts/userContext";
 import StarRating from "../components/StarRating";
 
 export default function RoomPage() {

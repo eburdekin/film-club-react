@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faDoorOpen } from "@fortawesome/free-solid-svg-icons";
 import { faDoorClosed } from "@fortawesome/free-solid-svg-icons";
-import { useUser } from "../components/UserContext";
+import { useUser } from "../contexts/userContext";
 import H2 from "../components/UI/H2";
 import H4 from "../components/UI/H4";
 import ClubPageRoomCard from "../components/ClubPageRoomCard";
